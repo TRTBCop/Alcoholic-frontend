@@ -1,0 +1,12 @@
+.searchBarBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+.searchBar{
+    width: 40vw;
+    height: 50px;
+    background-color: #222222;
+    border-radius: 10px;
+}
