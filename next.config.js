@@ -1,22 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${process.env.SERVER_URL}/:path*`,
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      { source: '/oauth/kakao', destination: '/auth/oauth', permanent: true },
-      { source: '/oauth/google', destination: '/auth/oauth', permanent: true },
-    ];
-  },
   reactStrictMode: true,
-  swcMinify: true,
   webpack(config) {
     config.resolve = {
       alias: {
