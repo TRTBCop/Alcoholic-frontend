@@ -1,13 +1,17 @@
+import Main from '@layouts/index';
 import AlcoholCard from '@components/AlocholType/AlcoholCard';
 import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
 import styles from '@styles/AlcoholType/Alcoholtype.module.css';
 import SearchBar from '@components/AlocholType/SearchBar';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // TEST CASE
 const alcoholCardTest = [
-    {
-      name: '핸드릭스 진',
+  {
+      id: 1,
+      name: 'Hendrick\'s Gin',
       category: '진',
       degree: 44,
       drinkSize: 700,
@@ -17,12 +21,12 @@ const alcoholCardTest = [
       hashtags: [
         '시원한 오이향' ,
         '깔끔함',
-        '핸드릭스 진토닉',
         '부드러워요',
       ]
     },
     {
-      name: '핸드릭스 진',
+      id: 2,
+      name: 'Hendrick\'s Gin',
       category: '진',
       degree: 44,
       drinkSize: 700,
@@ -32,12 +36,12 @@ const alcoholCardTest = [
       hashtags: [
         '시원한 오이향' ,
         '깔끔함',
-        '핸드릭스 진토닉',
         '부드러워요',
       ]
     },
     {
-      name: '핸드릭스 진',
+      id: 3,
+      name: 'Hendrick\'s Gin',
       category: '진',
       degree: 44,
       drinkSize: 700,
@@ -46,27 +50,48 @@ const alcoholCardTest = [
       maxPrice: 60000,
       hashtags: [
         '시원한 오이향' ,
+        '시원한 오이향' ,
+        '시원한 오이향' ,
+        '시원한 오이향' ,
+        '시원한 오이향' ,
         '깔끔함',
-        '핸드릭스 진토닉',
         '부드러워요',
       ]
     },
   ];
 const AlcoholTypePage: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <SearchBar />
       <h3>당신을 위한 추천! {'>'} </h3>
       <div className={styles.cardListMain}>
-      {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
-        <AlcoholCard key={alcoholCard.id} type={'md'} {...alcoholCard} />
-      ))}
+        {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
+          <AlcoholCard
+            key={alcoholCard.id}
+            type={'md'} 
+            onClick={() =>
+              router.push({
+                pathname: `/alcoholtype/detail`,
+                query: { id: alcoholCard.id }
+              })}
+            {...alcoholCard} />
+            ))}
       </div>
       <h3>요즘 핫해요 {'>'} </h3>
       <div className={styles.cardListMain}>
       {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
-        <AlcoholCard key={alcoholCard.id} type={'md'} {...alcoholCard} />
-      ))}
+          <AlcoholCard
+            key={alcoholCard.id}
+            type={'md'} 
+            onClick={() =>
+              router.push({
+                pathname: `/alcoholtype/detail`,
+                query: { id: alcoholCard.id }
+              })}
+            {...alcoholCard} />
+          ))}
       </div>
     </>
   )}

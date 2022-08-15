@@ -12,17 +12,18 @@ interface AlcoholCardTypeProps {
 }
 
 interface AlcoholCardProps extends AlcoholCardTypeProps{
+    onClick: ()=>void;
     type: 'sm' | 'md' | 'lg';
 }
 
 
-const AlcoholCard = ({ type, ...info }: AlcoholCardProps) => {
+const AlcoholCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: AlcoholCardProps) => {
     function changeNumberToMoney (num: number) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
     return (
-        <div className={styles.alcoholCard}>
+        <div className={styles.card} onClick={onClick}>
             <div className={styles.alcoholImageBox} >
                 <img className={styles.alcoholImage} src={info.image}></img>
             </div>
