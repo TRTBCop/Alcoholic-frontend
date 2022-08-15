@@ -1,0 +1,45 @@
+/* ########################## 알코올 히스토리 메인 ########################## */
+.hs_list_btn_section {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hs_main_content {
+  margin-bottom: 3rem;
+}
+
+.hs_main_content > h4 {
+  border-bottom: 1px solid #999999;
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hs_main_content > ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hs_list_more {
+  text-align: center;
+}
+
+.hs_list_more > button {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.hs_list_more > button:hover {
+  color: #999;
+}
+
+/* 알코올 히스토리 작성, 수정 페이지 */
+.hs_write_container {
+  width: 650px;
+  margin: auto;
+}

@@ -5,6 +5,7 @@ module.exports = {
   webpack(config) {
     config.resolve = {
       alias: {
+        '@layouts': path.resolve(__dirname, './layouts'),
         '@lib': path.resolve(__dirname, './lib'),
         '@hooks': path.resolve(__dirname, './hooks'),
         '@styles': path.resolve(__dirname, './styles'),
