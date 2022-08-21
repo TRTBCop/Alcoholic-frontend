@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import AlcoholHistoryLayout from '@layouts/AlcoholHistoryLayout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
@@ -8,10 +8,10 @@ import AlcoholHistoryMainCard from '@components/AlcoholHistory/AlcoholHistoryMai
 import AlcoholHistoryDetailModal from '@components/AlcoholHistory/AlcoholHistoryDetailModal';
 import Link from 'next/link';
 import { getAlcHistory } from 'api/alcHistory';
-import { AlcHistoryWeek } from 'api/model/alcHistory';
+import { AlcHistoryDay } from 'api/model/alcHistory';
 
 interface AlcoholHistoryPageProps {
-  weekData: AlcHistoryWeek[];
+  weekData: AlcHistoryDay[];
 }
 
 const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
@@ -76,7 +76,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   );
 };
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await getAlcHistory();
 
   return {
@@ -84,6 +84,6 @@ export async function getServerSideProps() {
       weekData: data.data,
     },
   };
-}
+};
 
 export default AlcoholHistoryPage;
