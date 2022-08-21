@@ -1,13 +1,10 @@
-.card{
+.container{
     display: flex;
     flex-direction: row;
     gap: 5%;
     padding: 0.5rem;
     width: auto;
-    height: 30vh;
-}
-.card:hover{
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    height: 35vh;
 }
 .alcoholImageBox{
     width: 25%;
@@ -33,9 +30,10 @@
 
 .title{
     margin: 0;
-    font-size: 1.85rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #000;
+    margin-bottom: 2rem;
 }
 .basic{
     margin: 0;
@@ -48,7 +46,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    padding-top: 0.2rem;
+    padding-top: 0.5rem;
     
     gap: 10px;
     font-size: 0.75rem;

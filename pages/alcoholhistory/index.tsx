@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import AlcoholHistoryLayout from '@layouts/AlcoholHistoryLayout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
 
@@ -70,7 +69,6 @@ const AlcoholHistoryPage: NextPage = () => {
 
   return (
     <>
-      <AlcoholHistoryLayout>
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         <section className={styles.hs_main_section}>
           <div className="container">
@@ -104,7 +102,6 @@ const AlcoholHistoryPage: NextPage = () => {
             </article>
           </div>
         </section>
-      </AlcoholHistoryLayout>
       <AlcoholHistoryDetailModal is_show={false} />
     </>
   );
