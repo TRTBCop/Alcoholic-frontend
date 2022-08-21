@@ -2,60 +2,21 @@ import { NextPage } from 'next';
 import AlcoholHistoryLayout from '@layouts/AlcoholHistoryLayout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AlcoholHistoryMainCard from '@components/AlcoholHistory/AlcoholHistoryMainCard';
 import AlcoholHistoryDetailModal from '@components/AlcoholHistory/AlcoholHistoryDetailModal';
 import Link from 'next/link';
+import { getAlcHistory } from 'api/alcHistory';
+import { AlcHistoryWeek } from 'api/model/alcHistory';
 
-// TEST CASE
-const data = [
-  {
-    id: 'A005D',
-    write_date: '2022-07-31',
-    alcohol_list: [
-      {
-        alcohol_name: '핸드릭스 진',
-        alcohol_type: '진',
-        drunked: 464,
-        alcohol_intake: 35.34,
-        alcohol_image:
-          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      },
-    ],
-  },
-  {
-    id: 'A005D',
-    write_date: '2022-07-20',
-    alcohol_list: [
-      {
-        alcohol_name: '핸드릭스 진',
-        alcohol_type: '진',
-        drunked: 464,
-        alcohol_intake: 35.34,
-        alcohol_image:
-          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      },
-    ],
-  },
-  {
-    id: 'A005D',
-    write_date: '2021-07-21',
-    alcohol_list: [
-      {
-        alcohol_name: '핸드릭스 진',
-        alcohol_type: '진',
-        drunked: 464,
-        alcohol_intake: 35.34,
-        alcohol_image:
-          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      },
-    ],
-  },
-];
+interface AlcoholHistoryPageProps {
+  weekData: AlcHistoryWeek[];
+}
 
-const AlcoholHistoryPage: NextPage = () => {
+const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
+  const { weekData } = props;
+
   /** "yyyy년 mm월 dd일 x요일" 형식으로 날짜를 포맷 시킴 */
   const formatDate = (data: string) => {
     const weekList = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
@@ -71,9 +32,12 @@ const AlcoholHistoryPage: NextPage = () => {
   return (
     <>
       <AlcoholHistoryLayout>
+        {/* ############# 타이틀 ############# */}
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
+        {/* ############# 메인 ############# */}
         <section className={styles.hs_main_section}>
           <div className="container">
+            {/* 필터 버튼 및 글작성 */}
             <article className={styles.hs_list_btn_section}>
               <Link
                 href={{
@@ -85,8 +49,9 @@ const AlcoholHistoryPage: NextPage = () => {
                 </button>
               </Link>
             </article>
+            {/* 일자별 술 일지 리스트 */}
             <article className={styles.hs_main_contents_section}>
-              {data.map((item, i) => (
+              {weekData.map((item, i) => (
                 <div className={styles.hs_main_content} key={i}>
                   <h4>{formatDate(item.write_date)}</h4>
                   <ul>
@@ -97,6 +62,7 @@ const AlcoholHistoryPage: NextPage = () => {
                 </div>
               ))}
             </article>
+            {/* 더보기 버튼 */}
             <article className={styles.hs_list_more}>
               <button>
                 더보기 <FontAwesomeIcon icon={faAngleDown} />
@@ -109,5 +75,15 @@ const AlcoholHistoryPage: NextPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const { data } = await getAlcHistory();
+
+  return {
+    props: {
+      weekData: data.data,
+    },
+  };
+}
 
 export default AlcoholHistoryPage;
