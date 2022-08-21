@@ -4,7 +4,6 @@ import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
 import styles from '@styles/AlcoholType/Alcoholtype.module.css';
 import SearchBar from '@components/AlocholType/SearchBar';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 // TEST CASE
@@ -65,7 +64,7 @@ const AlcoholTypePage: NextPage = () => {
   return (
     <>
       <SearchBar />
-      <h3>당신을 위한 추천! {'>'} </h3>
+      <h3 className={styles.cardListTitle}>당신을 위한 추천! {'>'} </h3>
       <div className={styles.cardListMain}>
         {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
           <AlcoholCard
@@ -79,7 +78,7 @@ const AlcoholTypePage: NextPage = () => {
             {...alcoholCard} />
             ))}
       </div>
-      <h3>요즘 핫해요 {'>'} </h3>
+      <h3 className={styles.cardListTitle}>요즘 핫해요 {'>'} </h3>
       <div className={styles.cardListMain}>
       {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
           <AlcoholCard
