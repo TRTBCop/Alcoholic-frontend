@@ -3,6 +3,7 @@ import AlcoholCard from '@components/AlocholType/AlcoholCard';
 import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
 import styles from '@styles/AlcoholType/Alcoholtype.module.css';
+import layoutStyles from '@layouts/Layout.module.css';
 import SearchBar from '@components/AlocholType/SearchBar';
 import { useRouter } from 'next/router';
 
@@ -62,17 +63,17 @@ const AlcoholTypePage: NextPage = () => {
   const router = useRouter();
 
   return (
-    <>
+    <div className={layoutStyles.basic}>
       <SearchBar />
       <h3 className={styles.cardListTitle}>당신을 위한 추천! {'>'} </h3>
       <div className={styles.cardListMain}>
         {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
-          <AlcoholCard
+          <AlcoholCard 
             key={alcoholCard.id}
             type={'md'} 
             onClick={() =>
               router.push({
-                pathname: `/alcoholtype/detail`,
+                pathname: `/alcoholtype/detail/${alcoholCard.id}`,
                 query: { id: alcoholCard.id }
               })}
             {...alcoholCard} />
@@ -92,7 +93,7 @@ const AlcoholTypePage: NextPage = () => {
             {...alcoholCard} />
           ))}
       </div>
-    </>
+    </div>
   )}
 
 export default AlcoholTypePage;

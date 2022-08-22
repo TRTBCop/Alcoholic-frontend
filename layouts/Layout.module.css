@@ -1,19 +1,27 @@
 @media screen and (min-width: 1060px) {
-    .main{
+    .wide{
+        width: 100%;
+    }
+    .basic{
+        width: 1060px;
+        margin: 2rem auto 3rem auto;
+    }
+    .narrow{
         width: 1060px;
         margin: 2rem auto 3rem auto;
     }
 }
 
+
 @media screen and (max-width: 1060px) and (min-width: 768px) {
-    .main{
+    .basic{
         width: 768px;
         margin: 2rem auto 3rem auto;
     }
 }
     
 @media screen and (max-width: 768px) {
-    .main{
+    .basic{
         width: 96%;
         margin: 2rem auto 3rem auto;
     }
