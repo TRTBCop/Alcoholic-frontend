@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import AlcoholHistoryLayout from '@layouts/AlcoholHistoryLayout';
+import AlcoholHistoryLayout from '@layouts/Layout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,7 +31,6 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
 
   return (
     <>
-      <AlcoholHistoryLayout>
         {/* ############# 타이틀 ############# */}
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}

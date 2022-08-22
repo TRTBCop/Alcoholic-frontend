@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
             <header className={styles.header}>
                 <section>Header</section>
             </header>
-            <main className={styles.main}>
+            <main>
                 {children}
             </main>
             <footer className={styles.footer}>
