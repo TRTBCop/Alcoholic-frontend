@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
-import styles from './AlcoholHistoryWriteForm.module.scss';
+import styles from './AhWriteForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';

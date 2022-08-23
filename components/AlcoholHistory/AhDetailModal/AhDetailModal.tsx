@@ -1,13 +1,13 @@
-import styles from './AlcoholHistoryDetailModal.module.scss';
+import styles from './AhDetailModal.module.scss';
 import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-interface AlcoholHistoryDetailModalProps {
+interface AhDetailModalProps {
   is_show: boolean;
 }
 
-const AlcoholHistoryDetailModal: React.FC<AlcoholHistoryDetailModalProps> = (
+const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = (
   props = {
     is_show: false,
   },

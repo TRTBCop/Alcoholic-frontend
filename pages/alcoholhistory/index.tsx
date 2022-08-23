@@ -1,12 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next';
-import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
+import AhTitle from '@components/AlcoholHistory/AhTtile';
 import layoutStyles from '@layouts/Layout.module.css';
 import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import AlcoholHistoryMainCard from '@components/AlcoholHistory/AlcoholHistoryMainCard';
-import AlcoholHistoryDetailModal from '@components/AlcoholHistory/AlcoholHistoryDetailModal';
+import AhMainCard from '@components/AlcoholHistory/AhMainCard';
+import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
 import Link from 'next/link';
 import { getAlcHistory } from 'api/alcHistory';
 import { AlcHistoryDay } from 'api/model/alcHistory';
@@ -33,7 +33,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   return (
     <>
         {/* ############# 타이틀 ############# */}
-        <AlcoholHistoryTitle titleName="당신의 술 일지" />
+        <AhTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
         <section>
           <div className={layoutStyles.basic}>
@@ -56,7 +56,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
                   <h4>{formatDate(item.write_date)}</h4>
                   <ul>
                     {item.alcohol_list.map((alcoholData: any, j) => (
-                      <AlcoholHistoryMainCard {...alcoholData} write_date={item.write_date} key={j} />
+                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} />
                     ))}
                   </ul>
                 </div>
@@ -70,7 +70,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
             </article>
           </div>
         </section>
-      <AlcoholHistoryDetailModal is_show={false} />
+      <AhDetailModal is_show={true} />
     </>
   );
 };

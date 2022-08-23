@@ -1,4 +1,4 @@
-import styles from './AlcoholHistoryTitle.module.scss';
+import styles from './AhTitle.module.scss';
 
 interface AlcoholHistoryTitleProps {
   titleName: string;

@@ -1,6 +1,6 @@
-import styles from './AlcoholHistoryMainCard.module.scss';
+import styles from './AhMainCard.module.scss';
 
-interface AlcoholHistoryMainCardProps {
+interface AhMainCardProps {
   alcohol_name: string;
   alcohol_type: string;
   drunked: number;
@@ -9,7 +9,7 @@ interface AlcoholHistoryMainCardProps {
   alcohol_image: string;
 }
 
-const AlcoholHistoryMainCard: React.FC<AlcoholHistoryMainCardProps> = props => {
+const AlcoholHistoryMainCard: React.FC<AhMainCardProps> = props => {
   return (
     <li className={styles.ahMainCard}>
       <div className={styles.ahMainCardTxt}>
