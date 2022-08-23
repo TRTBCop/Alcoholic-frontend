@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import layoutStyles from '@layouts/Layout.module.css';
-import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
+import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AlcoholHistoryMainCard from '@components/AlcoholHistory/AlcoholHistoryMainCard';

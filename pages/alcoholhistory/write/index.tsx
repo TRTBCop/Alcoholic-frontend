@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import layoutStyles from '@layouts/Layout.module.css';
-import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
+import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import AlcoholHistoryWriteForm from '@components/AlcoholHistory/AlcoholHistoryWriteForm';
 import { GetServerSideProps } from 'next';
 

@@ -8,11 +8,12 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
+  &.on {
+    display: flex;
+  }
 }
 
-.popupWrap.on {
-  display: flex;
-}
+
 
 .hsDetailPopup {
   position: relative;
@@ -41,12 +42,11 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-}
-
-.hsDetailPopupContent h3 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .hsDetailDrunkedContent {
@@ -62,13 +62,13 @@
   width: 45%;
   margin-right: 10%;
   margin-bottom: 2rem;
-}
-.hsDetailDrunkedAddedItem:nth-child(2n) {
-  margin-right: 0;
-}
-.hsDetailDrunkedAddedItem:nth-last-child(1),
-.hsDetailDrunkedAddedItem:nth-last-child(2) {
-  margin-bottom: 0;
+  &:nth-child(2n) {
+    margin-right: 0;
+  }
+  &:nth-last-child(1),
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
 }
 
 .hsDetailDrunkedAddedImg {
@@ -79,31 +79,31 @@
   border-radius: 10px;
   margin-bottom: 1rem;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hsDetailDrunkedAddedImg > img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hsDetailDrunkedAddedImg > figcaption {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1rem 0;
-  color: #fff;
-}
-
-.hsDetailDrunkedAddedImg > figcaption > p {
-  margin-bottom: 0.5rem;
-}
-
-.hsDetailDrunkedAddedImg > figcaption > span {
-  font-size: 0.8rem;
-  font-weight: 300;
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  & > figcaption {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem 0;
+    color: #fff;
+  }
+  
+  & > figcaption > p {
+    margin-bottom: 0.5rem;
+  }
+  
+  & > figcaption > span {
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+  
 }
 
 .hsDetailDrunkedAddedContent {

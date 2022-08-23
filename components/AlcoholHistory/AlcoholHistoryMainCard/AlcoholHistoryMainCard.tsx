@@ -1,4 +1,4 @@
-import styles from './AlcoholHistoryMainCard.module.css';
+import styles from './AlcoholHistoryMainCard.module.scss';
 
 interface AlcoholHistoryMainCardProps {
   alcohol_name: string;

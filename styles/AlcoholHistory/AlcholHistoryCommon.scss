@@ -4,10 +4,9 @@
   transition: color 0.3s;
   font-weight: bold;
   font-size: 1rem;
-}
-
-.btnType1:hover {
-  color: #551b85;
+  &:hover {
+    color: #551b85;
+  }
 }
 
 .btnType2,
@@ -23,21 +22,21 @@
 
 .btnType2 {
   background: #924dcb;
-}
-.btnType2:hover {
-  background: #551b85;
+  &:hover {
+    background: #551b85;
+  }
 }
 
 .btnType3 {
   background: #999;
-}
-.btnType3:hover {
-  background: rgb(96, 96, 96);
+  &:hover {
+    background: rgb(96, 96, 96);
+  }
 }
 
 .btnType4 {
   background: rgb(227, 107, 107);
-}
-.btnType4:hover {
-  background: rgb(171, 70, 70);
+  &:hover {
+    background: rgb(171, 70, 70);
+  }
 }

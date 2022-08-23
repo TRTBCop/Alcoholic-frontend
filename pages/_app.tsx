@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import '../styles/AlcoholHistory/AlcholHistoryCommon.css';
+import '../styles/AlcoholHistory/AlcholHistoryCommon.scss';
 
 import type { AppProps } from 'next/app';
 import Layout from '@layouts/Layout';
