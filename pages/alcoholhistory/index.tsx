@@ -1,15 +1,17 @@
 import { GetServerSideProps, NextPage } from 'next';
 import AhTitle from '@components/AlcoholHistory/AhTtile';
+import AhButton from '@components/AlcoholHistory/AhButton';
 import layoutStyles from '@layouts/Layout.module.css';
-import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AhMainCard from '@components/AlcoholHistory/AhMainCard';
 import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
-import Link from 'next/link';
 import { getAlcHistory } from 'api/alcHistory';
 import { AlcHistoryDay } from 'api/model/alcHistory';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+
 
 interface AlcoholHistoryPageProps {
   weekData: AlcHistoryDay[];
@@ -17,6 +19,7 @@ interface AlcoholHistoryPageProps {
 
 const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   const { weekData } = props;
+  const router = useRouter();
 
   /** "yyyy년 mm월 dd일 x요일" 형식으로 날짜를 포맷 시킴 */
   const formatDate = (data: string) => {
@@ -30,6 +33,26 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
     return `${year}년 ${month <= 9 ? '0' + month : month}월 ${day <= 9 ? '0' + day : day}일 ${week}`;
   };
 
+  /** 일지 작성하기 페이지로 이동 */
+  const goWritePage = () => {
+    router.push({
+      pathname: `/alcoholhistory/write`,
+    })
+  }
+
+  /** 상세 모달 오픈 */
+  const showDetailModal = () => {  
+    setIsShowDetailModal(true);
+  }
+
+
+  /** 상세 모달을 숨김 */
+  const hideDetailModal = () => {  
+    setIsShowDetailModal(false);
+  }
+
+  const [isShowDetailModal, setIsShowDetailModal] = useState<boolean>(false);
+
   return (
     <>
         {/* ############# 타이틀 ############# */}
@@ -39,15 +62,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
           <div className={layoutStyles.basic}>
             {/* 필터 버튼 및 글작성 */}
             <article className={styles.ahListBtnSection}>
-              <Link
-                href={{
-                  pathname: '/alcoholhistory/write',
-                }}
-              >
-                <button className={buttonStyles.btnType1}>
-                  일지쓰기 <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
+                <AhButton buttonType='btnType1' clickEvent={goWritePage}>일지쓰기 <FontAwesomeIcon icon={faPencil} /></AhButton>
             </article>
             {/* 일자별 술 일지 리스트 */}
             <article>
@@ -56,7 +71,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
                   <h4>{formatDate(item.write_date)}</h4>
                   <ul>
                     {item.alcohol_list.map((alcoholData: any, j) => (
-                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} />
+                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} showDetailModal={showDetailModal} />
                     ))}
                   </ul>
                 </div>
@@ -70,7 +85,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
             </article>
           </div>
         </section>
-      <AhDetailModal is_show={true} />
+      <AhDetailModal isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />
     </>
   );
 };

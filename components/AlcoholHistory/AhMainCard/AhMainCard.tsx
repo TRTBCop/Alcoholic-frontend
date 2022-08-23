@@ -7,11 +7,12 @@ interface AhMainCardProps {
   alcohol_intake: number;
   write_date: string;
   alcohol_image: string;
+  showDetailModal: () => void;
 }
 
 const AlcoholHistoryMainCard: React.FC<AhMainCardProps> = props => {
   return (
-    <li className={styles.ahMainCard}>
+    <li onClick={props.showDetailModal} className={styles.ahMainCard}>
       <div className={styles.ahMainCardTxt}>
         <h5>
           {props.alcohol_name} <span>{props.alcohol_type}</span>

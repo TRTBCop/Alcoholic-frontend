@@ -1,19 +1,31 @@
 import styles from './AhDetailModal.module.scss';
-import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import AhButton from '@components/AlcoholHistory/AhButton';
+import { useRouter } from 'next/router';
 
 interface AhDetailModalProps {
-  is_show: boolean;
+  isShow: boolean;
+  hideDetailModal: () => void;
 }
 
-const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = (
-  props = {
-    is_show: false,
-  },
+const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({
+    isShow,
+    hideDetailModal
+  }
 ) => {
+  const router = useRouter();
+
+  /** 일지 수정하기 페이지로 이동 */
+  const goModifiedPage = () => {
+    router.push({
+      pathname: `/alcoholhistory/write`,
+      // 파라미터로 글 id 같이 전송
+    })
+  }
+
   return (
-    <div className={`${styles.popupWrap} ${props.is_show && styles.on}`}>
+    <div className={`${styles.popupWrap} ${isShow && styles.on}`}>
       <div className={styles.ahDetailPopup}>
         <div className={styles.ahDetailPopupInner}>
           <h3 className={styles.ahDetailPopupTitle}>2022년 07월 22일</h3>
@@ -45,10 +57,10 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = (
               </div>
             </article>
             <article className={styles.ahDetailBtn}>
-              <button className={buttonStyles.btnType3}>닫기</button>
-              <button className={buttonStyles.btnType2}>수정</button>
+            <AhButton buttonType='btnType3' clickEvent={hideDetailModal}>닫기</AhButton>              
+            <AhButton buttonType='btnType2' clickEvent={goModifiedPage}>수정</AhButton>              
             </article>
-            <button className={styles.ahDetailPopupClose}>
+            <button onClick={hideDetailModal} className={styles.ahDetailPopupClose}>
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </section>

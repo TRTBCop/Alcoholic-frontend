@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import styles from './AhWriteForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import AhButton from '@components/AlcoholHistory/AhButton';
+import { useRouter } from 'next/router';
 
 const AlcoholHistoryWriteForm: React.FC = () => {
+  const router = useRouter();
+
   const [dateData, setDateData] = useState({
     years: [] as number[],
     months: Array.from({ length: 12 }, (v, i) => i + 1),
@@ -45,6 +47,13 @@ const AlcoholHistoryWriteForm: React.FC = () => {
       years: years.reverse(),
     });
   };
+
+    /** 히스토리 메인 페이지로 이동 */
+    const goMainPage = () => {
+      router.push({
+        pathname: `/alcoholhistory/`,
+      })
+    }
 
   return (
     <article className={styles.hsWriteForm}>
@@ -111,15 +120,9 @@ const AlcoholHistoryWriteForm: React.FC = () => {
         </div>
       </section>
       <section className={styles.hsWriteBtn}>
-        <button className={buttonStyles.btnType2}>작성완료</button>
-      </section>
-      <Link
-        href={{
-          pathname: '/alcoholhistory',
-        }}
-      >
-        <button className={buttonStyles.btnType3}>목록</button>
-      </Link>
+        <AhButton buttonType='btnType2'>작성완료</AhButton>        
+      </section>      
+      <AhButton buttonType='btnType3' clickEvent={goMainPage}>목록</AhButton>              
     </article>
   );
 };
