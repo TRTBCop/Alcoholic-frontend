@@ -1,5 +1,28 @@
-body{
-    li{
-        color: red;
-    }
-};  
+// Colors =============================
+$accent-color: #5bbb5f; // primary-color & border-color
+$point-color: #f0c912;
+$danger-color: #d44c47;
+$black: #000; // font-color
+$dark-gray: #70757a; // font-color(for placeholer)
+$white: #fff; // background-color
+
+// Font Size ==========================
+$font-size-xxs : 0.75rem; // 12px
+$font-size-xs : 0.875rem; // 14px
+$font-size-sm : 1rem; // 16px
+$font-size-md : 1.125rem; // 18px
+$font-size-lg : 1.25rem; // 20px
+$font-size-xl : 1.5rem; // 24px
+$font-size-xxl : 1.75rem; // 28px
+$font-size-xxxl : 2rem; // 32px
+
+// Font-Weight ========================
+$font-weight-bold: 700;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-thin: 100;
+
+// responsive ========================
+$breakpoint-sm: 768px;
+$breakpoint-lg: 1060px;

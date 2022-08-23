@@ -3,7 +3,10 @@ const path = require('path');
 module.exports = {
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [
+      path.join(__dirname, 'styles'),
+      path.join(__dirname, 'components')
+    ],
   },
   webpack(config) {
     config.resolve = {

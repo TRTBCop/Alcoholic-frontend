@@ -1,4 +1,4 @@
-import styles from './AlcoholCard.module.css';
+import styles from './AlcoholCard.module.scss';
 
 interface AlcoholCardTypeProps {
     name: string;
@@ -33,7 +33,7 @@ const AlcoholCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: Alc
                 <p className={styles.basic}>{info.degree}%</p>
                 <p className={styles.basic}>{info.minPrice && changeNumberToMoney(info.minPrice)} ~ {info.maxPrice && changeNumberToMoney(info.maxPrice)}</p>
                 <div className={styles.hashtagBox}>
-                    {info.hashtags && info.hashtags.map((v) => (<div className={styles.hashtag}># {v}</div>))}
+                    {info.hashtags && info.hashtags.map((v) => (<div key={v} className={styles.hashtag}># {v}</div>))}
                 </div>
             </div>
         </div>

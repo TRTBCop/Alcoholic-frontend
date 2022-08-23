@@ -1,9 +1,8 @@
-import Main from '@layouts/index';
 import AlcoholCard from '@components/AlocholType/AlcoholCard';
 import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
 import styles from '@styles/AlcoholType/Alcoholtype.module.css';
-import layoutStyles from '@layouts/Layout.module.css';
+import layoutStyles from '@layouts/Layout.module.scss';
 import SearchBar from '@components/AlocholType/SearchBar';
 import { useRouter } from 'next/router';
 
@@ -58,12 +57,13 @@ const alcoholCardTest = [
         '부드러워요',
       ]
     },
-  ];
+];
+  
 const AlcoholTypePage: NextPage = () => {
   const router = useRouter();
 
   return (
-    <div className={layoutStyles.basic}>
+    <div className={layoutStyles.md}>
       <SearchBar />
       <h3 className={styles.cardListTitle}>당신을 위한 추천! {'>'} </h3>
       <div className={styles.cardListMain}>
