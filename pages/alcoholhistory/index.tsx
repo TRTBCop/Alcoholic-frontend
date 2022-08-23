@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import layoutStyles from '@layouts/Layout.module.css';
+import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -34,16 +35,16 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
         {/* ############# 타이틀 ############# */}
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
-        <section className={styles.hsMainSection}>
+        <section>
           <div className={layoutStyles.basic}>
             {/* 필터 버튼 및 글작성 */}
-            <article className={styles.hsListBtnSection}>
+            <article className={styles.ahListBtnSection}>
               <Link
                 href={{
                   pathname: '/alcoholhistory/write',
                 }}
               >
-                <button className="btnType1">
+                <button className={buttonStyles.btnType1}>
                   일지쓰기 <FontAwesomeIcon icon={faPencil} />
                 </button>
               </Link>
@@ -51,7 +52,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
             {/* 일자별 술 일지 리스트 */}
             <article>
               {weekData.map((item, i) => (
-                <div className={styles.hsMainContent} key={i}>
+                <div className={styles.ahMainContent} key={i}>
                   <h4>{formatDate(item.write_date)}</h4>
                   <ul>
                     {item.alcohol_list.map((alcoholData: any, j) => (
@@ -62,7 +63,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
               ))}
             </article>
             {/* 더보기 버튼 */}
-            <article className={styles.hsListMore}>
+            <article className={styles.ahListMore}>
               <button>
                 더보기 <FontAwesomeIcon icon={faAngleDown} />
               </button>

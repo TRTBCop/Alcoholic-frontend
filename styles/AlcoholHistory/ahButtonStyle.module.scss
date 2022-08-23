@@ -1,0 +1,39 @@
+/* ########################## 공통 버튼 ########################## */
+@mixin noneBorderBtn($color, $hovercolor) {
+  color: $color;
+  transition: color 0.3s;
+  font-weight: bold;
+  font-size: 1rem;
+  &:hover {
+    color: $hovercolor;
+  }
+}
+
+@mixin borderBtn($backgroundColor, $hoverbackgroundColor) {
+  color: #FFF;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  transition: background 0.3s;
+  background-color: $backgroundColor;
+  &:hover {
+    background: $hoverbackgroundColor;
+  }
+}
+
+.btnType1 {
+  @include noneBorderBtn(#924dcb, #551b85)  
+}
+
+.btnType2 {
+  @include borderBtn(#924dcb, #551b85)  
+}
+
+.btnType3 {
+  @include borderBtn(#999, rgb(96, 96, 96))      
+}
+
+.btnType4 {
+  @include borderBtn(rgb(227, 107, 107), rgb(171, 70, 70))      
+}

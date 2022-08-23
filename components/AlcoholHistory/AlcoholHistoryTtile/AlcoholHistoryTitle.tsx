@@ -6,7 +6,7 @@ interface AlcoholHistoryTitleProps {
 
 const AlcoholHistoryTitle: React.FC<AlcoholHistoryTitleProps> = props => {
   return (
-    <section className={styles.hsTitleSection}>      
+    <section className={styles.ahTitleSection}>      
         <h2>{props.titleName}</h2>      
     </section>
   );

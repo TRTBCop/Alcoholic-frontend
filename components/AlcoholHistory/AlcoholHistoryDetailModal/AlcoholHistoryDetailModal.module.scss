@@ -15,7 +15,7 @@
 
 
 
-.hsDetailPopup {
+.ahDetailPopup {
   position: relative;
   width: 800px;
   height: 1000px;
@@ -26,19 +26,19 @@
   box-sizing: border-box;
 }
 
-.hsDetailPopupInner {
+.ahDetailPopupInner {
   width: 650px;
   margin: auto;
 }
 
-.hsDetailPopupTitle {
+.ahDetailPopupTitle {
   text-align: center;
   font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 3rem;
 }
 
-.hsDetailPopupContent {
+.ahDetailPopupContent {
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -49,7 +49,7 @@
   }
 }
 
-.hsDetailDrunkedContent {
+.ahDetailDrunkedContent {
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
@@ -58,7 +58,7 @@
   box-sizing: border-box;
 }
 
-.hsDetailDrunkedAddedItem {
+.ahDetailDrunkedAddedItem {
   width: 45%;
   margin-right: 10%;
   margin-bottom: 2rem;
@@ -71,7 +71,7 @@
   }
 }
 
-.hsDetailDrunkedAddedImg {
+.ahDetailDrunkedAddedImg {
   position: relative;
   width: 100%;
   height: 250px;
@@ -106,7 +106,7 @@
   
 }
 
-.hsDetailDrunkedAddedContent {
+.ahDetailDrunkedAddedContent {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -114,7 +114,7 @@
   color: #666;
 }
 
-.hsDetailMemoContent > textarea {
+.ahDetailMemoContent > textarea {
   width: 100%;
   height: 200px;
   overflow-y: scroll;
@@ -127,12 +127,12 @@
   box-sizing: border-box;
 }
 
-.hsDetailBtn {
+.ahDetailBtn {
   display: flex;
   gap: 1rem;
 }
 
-.hsDetailPopupClose {
+.ahDetailPopupClose {
   position: absolute;
   top: 1rem;
   right: 1rem;

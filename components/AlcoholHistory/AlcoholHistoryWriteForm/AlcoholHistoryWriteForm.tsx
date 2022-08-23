@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import buttonStyles from '@styles/AlcoholHistory/ahButtonStyle.module.scss';
 import styles from './AlcoholHistoryWriteForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -110,14 +111,14 @@ const AlcoholHistoryWriteForm: React.FC = () => {
         </div>
       </section>
       <section className={styles.hsWriteBtn}>
-        <button className="btnType2">작성완료</button>
+        <button className={buttonStyles.btnType2}>작성완료</button>
       </section>
       <Link
         href={{
           pathname: '/alcoholhistory',
         }}
       >
-        <button className="btnType3">목록</button>
+        <button className={buttonStyles.btnType3}>목록</button>
       </Link>
     </article>
   );
