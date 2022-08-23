@@ -10,6 +10,12 @@
         width: 1060px;
         margin: 2rem auto 3rem auto;
     }
+    
+    /* 알코올 히스토리 작성, 수정 페이지 */
+    .ahWriteContainer {
+        width: 650px;
+        margin: auto;
+    }
 }
 
 

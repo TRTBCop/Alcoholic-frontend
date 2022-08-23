@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
+import layoutStyles from '@layouts/Layout.module.css';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
 import AlcoholHistoryWriteForm from '@components/AlcoholHistory/AlcoholHistoryWriteForm';
 import { GetServerSideProps } from 'next';
@@ -13,7 +14,7 @@ const AlcoholHistoryPage: NextPage = (props: any) => {
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
         <section className={styles.hs_main_section}>
-          <div className={styles.hs_write_container}>
+          <div className={layoutStyles.ahWriteContainer}>
             <AlcoholHistoryWriteForm />
           </div>
         </section>

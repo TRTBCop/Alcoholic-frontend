@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
-import AlcoholHistoryLayout from '@layouts/Layout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
+import layoutStyles from '@layouts/Layout.module.css';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +35,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
         <section className={styles.hs_main_section}>
-          <div className="container">
+          <div className={layoutStyles.basic}>
             {/* 필터 버튼 및 글작성 */}
             <article className={styles.hs_list_btn_section}>
               <Link

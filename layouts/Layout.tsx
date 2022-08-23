@@ -1,4 +1,3 @@
-
 import styles from './Layout.module.css';
 
 const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
