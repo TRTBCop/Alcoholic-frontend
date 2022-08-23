@@ -34,24 +34,24 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
         {/* ############# 타이틀 ############# */}
         <AlcoholHistoryTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
-        <section className={styles.hs_main_section}>
+        <section className={styles.hsMainSection}>
           <div className={layoutStyles.basic}>
             {/* 필터 버튼 및 글작성 */}
-            <article className={styles.hs_list_btn_section}>
+            <article className={styles.hsListBtnSection}>
               <Link
                 href={{
                   pathname: '/alcoholhistory/write',
                 }}
               >
-                <button className="btn_type_1">
+                <button className="btnType1">
                   일지쓰기 <FontAwesomeIcon icon={faPencil} />
                 </button>
               </Link>
             </article>
             {/* 일자별 술 일지 리스트 */}
-            <article className={styles.hs_main_contents_section}>
+            <article>
               {weekData.map((item, i) => (
-                <div className={styles.hs_main_content} key={i}>
+                <div className={styles.hsMainContent} key={i}>
                   <h4>{formatDate(item.write_date)}</h4>
                   <ul>
                     {item.alcohol_list.map((alcoholData: any, j) => (
@@ -62,7 +62,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
               ))}
             </article>
             {/* 더보기 버튼 */}
-            <article className={styles.hs_list_more}>
+            <article className={styles.hsListMore}>
               <button>
                 더보기 <FontAwesomeIcon icon={faAngleDown} />
               </button>

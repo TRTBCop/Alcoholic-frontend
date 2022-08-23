@@ -1,4 +1,4 @@
-.hs_title_section {
+.hsTitleSection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   background: #efefef;
 }
 
-.hs_title_section h2 {
+.hsTitleSection h2 {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;

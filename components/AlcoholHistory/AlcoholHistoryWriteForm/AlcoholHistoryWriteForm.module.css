@@ -1,22 +1,22 @@
-.hs_write_form {
+.hsWriteForm {
   margin: 4rem 0;
 }
 
-.hs_write_form > section {
+.hsWriteForm > section {
   margin-bottom: 4rem;
 }
 
-.hs_write_form h3 {
+.hsWriteForm h3 {
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 
-.hs_write_date_content {
+.hsWriteDateContent {
   display: flex;
 }
 
-.hs_write_date_content > select {
+.hsWriteDateContent > select {
   border: 1px solid #dbdbdb;
   width: 33%;
   padding: 0.5rem;
@@ -26,41 +26,41 @@
   cursor: pointer;
 }
 
-.hs_write_date_content > select:last-child {
+.hsWriteDateContent > select:last-child {
   margin-right: 0;
 }
 
-.hs_write_drunked_content {
+.hsWriteDrunkedContent {
   display: flex;
   flex-wrap: wrap;
 }
 
-.hs_write_drunked_content > div {
+.hsWriteDrunkedContent > div {
   width: 42%;
   margin-right: 15%;
 }
 
-.hs_write_drunked_content > div:nth-child(2n) {
+.hsWriteDrunkedContent > div:nth-child(2n) {
   margin-right: 0;
 }
 
-.hs_write_drunked_added_item {
+.hsWriteDrunkedAddedItem {
   margin-bottom: 5%;
 }
 
-.hs_write_drunked_added_item:nth-last-child(2) {
+.hsWriteDrunkedAddedItem:nth-last-child(2) {
   margin-bottom: 0;
 }
 
-.hs_write_drunked_add_btn > button,
-.hs_write_drunked_added_img {
+.hsWriteDrunkedAddBtn > button,
+.hsWriteDrunkedAddedImg {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   border-radius: 10px;
   height: 240px;
 }
 
-.hs_write_drunked_add_btn > button {
+.hsWriteDrunkedAddBtn > button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,33 +69,33 @@
   color: #333;
 }
 
-.hs_write_drunked_add_btn > button > i {
+.hsWriteDrunkedAddBtn > button > i {
   transition: 0.3s;
 }
 
-.hs_write_drunked_add_btn > button:hover > i {
+.hsWriteDrunkedAddBtn > button:hover > i {
   transform: scale(1.4);
 }
 
-.hs_write_drunked_added_img {
+.hsWriteDrunkedAddedImg {
   position: relative;
   margin-bottom: 1rem;
   overflow: hidden;
   cursor: pointer;
 }
 
-.hs_write_drunked_added_img:hover img {
+.hsWriteDrunkedAddedImg:hover img {
   transform: scale(1.2);
 }
 
-.hs_write_drunked_added_img > img {
+.hsWriteDrunkedAddedImg > img {
   object-fit: contain;
   width: 100%;
   height: 100%;
   transition: 0.3s;
 }
 
-.hs_write_drunked_added_img > figcaption {
+.hsWriteDrunkedAddedImg > figcaption {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -105,34 +105,34 @@
   color: #fff;
 }
 
-.hs_write_drunked_added_img > figcaption > p {
+.hsWriteDrunkedAddedImg > figcaption > p {
   margin-bottom: 0.5rem;
 }
 
-.hs_write_drunked_added_img > figcaption > span {
+.hsWriteDrunkedAddedImg > figcaption > span {
   font-size: 0.8rem;
   font-weight: 300;
 }
 
-.hs_write_drunked_added_content > li {
+.hsWriteDrunkedAddedContent > li {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
   color: #333;
 }
 
-.hs_write_drunked_added_content > li > input {
+.hsWriteDrunkedAddedContent > li > input {
   margin: 0 0.5rem;
   width: 40%;
 }
 
-.hs_write_drunked_added_content > li > strong {
+.hsWriteDrunkedAddedContent > li > strong {
   font-weight: 500;
   margin: 0 0.5rem;
   color: #000;
 }
 
-.hs_write_memo_content > textarea {
+.hsWriteMemoContent > textarea {
   width: 100%;
   height: 300px;
   resize: none;
@@ -144,7 +144,7 @@
   box-sizing: border-box;
 }
 
-.hs_write_btn {
+.hsWriteBtn {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem !important;

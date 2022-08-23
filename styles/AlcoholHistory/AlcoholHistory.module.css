@@ -1,15 +1,15 @@
 /* ########################## 알코올 히스토리 메인 ########################## */
-.hs_list_btn_section {
+.hsListBtnSection {
   margin: 1.5rem 0;
   display: flex;
   justify-content: flex-end;
 }
 
-.hs_main_content {
+.hsMainContent {
   margin-bottom: 3rem;
 }
 
-.hs_main_content > h4 {
+.hsMainContent > h4 {
   border-bottom: 1px solid #999999;
   font-size: 1.3rem;
   font-weight: 500;
@@ -17,16 +17,16 @@
   margin-bottom: 1rem;
 }
 
-.hs_main_content > ul {
+.hsMainContent > ul {
   display: flex;
   flex-wrap: wrap;
 }
 
-.hs_list_more {
+.hsListMore {
   text-align: center;
 }
 
-.hs_list_more > button {
+.hsListMore > button {
   text-align: center;
   font-weight: 600;
   font-size: 1rem;
@@ -34,6 +34,6 @@
   transition: color 0.3s;
 }
 
-.hs_list_more > button:hover {
+.hsListMore > button:hover {
   color: #999;
 }
