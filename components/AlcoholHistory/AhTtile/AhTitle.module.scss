@@ -1,9 +1,11 @@
+@import '../../../styles/theme.scss';
+
 .ahTitleSection {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
-  background: #efefef;
+  background: rgba($color: $white, $alpha: 0.8);
   h2 {
     font-size: 1.5rem;
     font-weight: bold;

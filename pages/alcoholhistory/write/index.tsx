@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import AhTitle from '@components/AlcoholHistory/AhTtile';
-import layoutStyles from '@layouts/Layout.module.css';
+import layoutStyles from '@layouts/Layout.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import AhWriteForm from '@components/AlcoholHistory/AhWriteForm';
 import { GetServerSideProps } from 'next';
