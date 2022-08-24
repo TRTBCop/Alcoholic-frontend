@@ -2,7 +2,7 @@
     .wide{
         width: 100%;
     }
-    .basic{
+    .md{
         width: 1060px;
         margin: 2rem auto 3rem auto;
     }
@@ -20,14 +20,14 @@
 
 
 @media screen and (max-width: 1060px) and (min-width: 768px) {
-    .basic{
+    .md{
         width: 768px;
         margin: 2rem auto 3rem auto;
     }
 }
     
 @media screen and (max-width: 768px) {
-    .basic{
+    .md{
         width: 96%;
         margin: 2rem auto 3rem auto;
     }

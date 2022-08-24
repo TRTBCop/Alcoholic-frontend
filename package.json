@@ -20,7 +20,8 @@
     "node-sass": "^7.0.1",
     "npm": "^8.18.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.54.5"
   },
   "devDependencies": {
     "@types/node": "18.0.6",

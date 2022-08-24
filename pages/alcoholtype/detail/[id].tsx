@@ -1,10 +1,9 @@
 
-import Main from '@layouts/index';
 import AlcoholTypeInfo from '@components/AlocholType/AlcoholTypeInfo';
 import AlcoholTypeDetailInfo from '@components/AlocholType/AlcoholTypeDetailInfo';
 import AlcoholTypesimilarList from '@components/AlocholType/AlcoholTypesimilarList';
 import AlcoholTypeReview from '@components/AlocholType/AlcoholTypeReview';
-import layoutStyles from '@layouts/layout.module.css';
+import layoutStyles from '@layouts/layout.module.scss';
 
 const mock_AlcoholTypeInfo = {
     id: 2,
@@ -127,7 +126,7 @@ interface AlcoholTypeReviewProps{
 const AlcoholTypeDetailPage = () => {
     
     return (
-        <div className={layoutStyles.basic}>
+        <div className={layoutStyles.md}>
             <AlcoholTypeInfo {...mock_AlcoholTypeInfo} />
             <AlcoholTypeDetailInfo {...mock_AlcoholTypeDetailInfo} />
             <AlcoholTypesimilarList list = {mock_AlcoholTypeSimilarList} />
