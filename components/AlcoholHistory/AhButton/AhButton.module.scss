@@ -4,19 +4,19 @@
 @mixin noneBorderBtn($color) {
   color: $color;
   transition: color 0.3s;
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
   &:hover {
     color: rgba($color: $color, $alpha: 0.7);
   }
 }
 
 @mixin borderBtn($backgroundColor) {
-  color: #FFF;
+  color: #fff;
   width: 100%;
   border-radius: 10px;
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: $font-size-sm;
   transition: background 0.3s;
   background-color: $backgroundColor;
   &:hover {
@@ -25,17 +25,17 @@
 }
 
 .btnType1 {
-  @include noneBorderBtn($accent-color)  
+  @include noneBorderBtn($accent-color);
 }
 
 .btnType2 {
-  @include borderBtn($accent-color)  
+  @include borderBtn($accent-color);
 }
 
 .btnType3 {
-  @include borderBtn($dark-gray)      
+  @include borderBtn($dark-gray);
 }
 
 .btnType4 {
-  @include borderBtn($danger-color)      
+  @include borderBtn($danger-color);
 }
