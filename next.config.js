@@ -3,14 +3,12 @@ const path = require('path');
 module.exports = {
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [
-      path.join(__dirname, 'styles'),
-      path.join(__dirname, 'components')
-    ],
+    includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'components')],
   },
   webpack(config) {
     config.resolve = {
       alias: {
+        '@api': path.resolve(__dirname, './api'),
         '@layouts': path.resolve(__dirname, './layouts'),
         '@lib': path.resolve(__dirname, './lib'),
         '@hooks': path.resolve(__dirname, './hooks'),

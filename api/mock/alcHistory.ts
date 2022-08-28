@@ -1,4 +1,4 @@
-import { AlcHistoryDay } from 'api/model/alcHistory';
+import { AlcHistoryDay } from '@api/model/alcHistory';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { BaseApiResult } from '../model/baseModel';
