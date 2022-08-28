@@ -7,11 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AhMainCard from '@components/AlcoholHistory/AhMainCard';
 import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
-import { getAlcHistory } from 'api/alcHistory';
-import { AlcHistoryDay } from 'api/model/alcHistory';
+import { getAlcHistory } from '@api/alcHistory';
+import { AlcHistoryDay } from '@api/model/alcHistory';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-
 
 interface AlcoholHistoryPageProps {
   weekData: AlcHistoryDay[];
@@ -37,55 +36,64 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   const goWritePage = () => {
     router.push({
       pathname: `/alcoholhistory/write`,
-    })
-  }
+    });
+  };
 
   /** 상세 모달 오픈 */
-  const showDetailModal = () => {  
+  const showDetailModal = (itemData: AlcHistoryDay) => {
+    seDetailModalItemDatal(itemData);
     setIsShowDetailModal(true);
-  }
-
+  };
 
   /** 상세 모달을 숨김 */
-  const hideDetailModal = () => {  
+  const hideDetailModal = () => {
+    seDetailModalItemDatal(null);
     setIsShowDetailModal(false);
-  }
+  };
 
+  /** 모달 창의 show 여부 */
   const [isShowDetailModal, setIsShowDetailModal] = useState<boolean>(false);
+
+  /** 상세 모달에서 보여질 정보 */
+  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDay | null>(null);
 
   return (
     <>
-        {/* ############# 타이틀 ############# */}
-        <AhTitle titleName="당신의 술 일지" />
-        {/* ############# 메인 ############# */}
-        <section>
-          <div className={layoutStyles.md}>
-            {/* 필터 버튼 및 글작성 */}
-            <article className={styles.ahListBtnSection}>
-                <AhButton buttonType='btnType1' clickEvent={goWritePage}>일지쓰기 <FontAwesomeIcon icon={faPencil} /></AhButton>
-            </article>
-            {/* 일자별 술 일지 리스트 */}
-            <article>
-              {weekData.map((item, i) => (
-                <div className={styles.ahMainContent} key={i}>
-                  <h4>{formatDate(item.write_date)}</h4>
-                  <ul>
-                    {item.alcohol_list.map((alcoholData: any, j) => (
-                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} showDetailModal={showDetailModal} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </article>
-            {/* 더보기 버튼 */}
-            <article className={styles.ahListMore}>
-              <button>
-                더보기 <FontAwesomeIcon icon={faAngleDown} />
-              </button>
-            </article>
-          </div>
-        </section>
-      <AhDetailModal isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />
+      {/* ############# 타이틀 ############# */}
+      <AhTitle titleName="당신의 술 일지" />
+      {/* ############# 메인 ############# */}
+      <section>
+        <div className={layoutStyles.md}>
+          {/* 필터 버튼 및 글작성 */}
+          <article className={styles.ahListBtnSection}>
+            <AhButton buttonType="btnType1" clickEvent={goWritePage}>
+              일지쓰기 <FontAwesomeIcon icon={faPencil} />
+            </AhButton>
+          </article>
+          {/* 일자별 술 일지 리스트 */}
+          <article>
+            {weekData.map((item, i) => (
+              <div className={styles.ahMainContent} key={i}>
+                <h4>{formatDate(item.write_date)}</h4>
+                <ul>
+                  {item.alcohol_list.map((alcoholData, j) => (
+                    <li onClick={() => showDetailModal(item)}>
+                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </article>
+          {/* 더보기 버튼 */}
+          <article className={styles.ahListMore}>
+            <button>
+              더보기 <FontAwesomeIcon icon={faAngleDown} />
+            </button>
+          </article>
+        </div>
+      </section>
+      <AhDetailModal itemData={detailModalItemData} isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />
     </>
   );
 };
