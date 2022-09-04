@@ -71,6 +71,15 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
   /** 모달 창의 show 여부 */
   const [isShowDetailModal, setIsShowDetailModal] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (isShowDetailModal) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.removeAttribute('style');
+    };
+  }, [isShowDetailModal]);
+
   /** 상세 모달에서 보여질 정보 */
   const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDaysDrink | null>(null);
 
