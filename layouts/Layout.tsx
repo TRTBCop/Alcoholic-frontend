@@ -1,5 +1,5 @@
 
-import styles from './Layout.module.css';
+import styles from './Layout.module.scss';
 
 const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     return (
