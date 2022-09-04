@@ -1,7 +1,7 @@
 
 import styles from './Layout.module.scss';
 
-const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }>= ({ children }) => {
+const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     return (
         <>
             <header className={styles.header}>

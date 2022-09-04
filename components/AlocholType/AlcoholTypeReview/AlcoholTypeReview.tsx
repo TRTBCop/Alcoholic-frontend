@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './ATReview.module.scss';
+import styles from './AlcoholeTypeReview.module.css';
 
 interface ReviewProps {
     id: number;

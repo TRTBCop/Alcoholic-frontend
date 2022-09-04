@@ -1,8 +1,8 @@
 
-import AlcoholTypeInfo from '@components/AlocholType/ATInfo';
-import AlcoholTypeDetailInfo from '@components/AlocholType/ATInfoDetail';
-import AlcoholTypesimilarList from '@components/AlocholType/ATSimilarList';
-import AlcoholTypeReview from '@components/AlocholType/ATReview';
+import AlcoholTypeInfo from '@components/AlocholType/AlcoholTypeInfo';
+import AlcoholTypeDetailInfo from '@components/AlocholType/AlcoholTypeDetailInfo';
+import AlcoholTypesimilarList from '@components/AlocholType/AlcoholTypesimilarList';
+import AlcoholTypeReview from '@components/AlocholType/AlcoholTypeReview';
 import layoutStyles from '@layouts/layout.module.scss';
 
 const mock_AlcoholTypeInfo = {

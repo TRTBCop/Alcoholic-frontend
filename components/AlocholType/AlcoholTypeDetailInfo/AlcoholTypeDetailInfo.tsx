@@ -1,4 +1,4 @@
-import styles from './ATInfoDetail.module.scss';
+import styles from './AlcoholTypeDetailInfo.module.css';
 
 interface AlcoholTypeDetailInfoProps {
     origin: string,

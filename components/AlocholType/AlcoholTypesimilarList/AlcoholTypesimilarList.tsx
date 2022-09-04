@@ -1,4 +1,4 @@
-import styles from './ATSimilarList.module.scss';
+import styles from './AlcoholTypesimilarList.module.css';
 
 
 interface AlcoholTypeInfoProps {
@@ -12,7 +12,7 @@ interface AlcoholTypeInfoProps {
     hashtags?: string[];
 }
 
-const ATSimilarList: React.FC<{ list: AlcoholTypeInfoProps[] }> = ({ list }) => {
+const AlcoholTypesimilarList: React.FC<{ list: AlcoholTypeInfoProps[] }> = ({ list }) => {
 
     return (
         <section className={styles.container}>
@@ -37,4 +37,4 @@ const ATSimilarList: React.FC<{ list: AlcoholTypeInfoProps[] }> = ({ list }) => 
 
 };
 
-export default ATSimilarList;
+export default AlcoholTypesimilarList;

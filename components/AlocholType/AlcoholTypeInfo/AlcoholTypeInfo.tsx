@@ -1,4 +1,4 @@
-import styles from './ATInfo.module.scss';
+import styles from './AlcoholTypeInfo.module.css';
 
 interface AlcoholCardTypeProps {
     name: string;
@@ -18,7 +18,9 @@ const AlcoholTypeInfo: React.FC<AlcoholCardTypeProps> = ({ ...info }: AlcoholCar
 
     return (
         <section className={styles.container}>
-            <img className={styles.alcoholImage} src={info.image} />
+            <div className={styles.alcoholImageBox} >
+                <img className={styles.alcoholImage} src={info.image}></img>
+            </div>
             <div className={styles.alcoholInfoBox} >
                 <p className={styles.title}>{info.name}</p>
                 <p className={styles.basic}>{info.category}</p>
