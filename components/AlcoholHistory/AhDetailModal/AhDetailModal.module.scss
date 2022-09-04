@@ -1,0 +1,139 @@
+@import '../../../styles/theme.scss';
+
+.popupWrap {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: $black, $alpha: 0.6);
+  &.on {
+    display: flex;
+  }
+}
+
+.ahDetailPopup {
+  position: relative;
+  width: 800px;
+  height: 1000px;
+  max-height: 95vh;
+  overflow-y: scroll;
+  background: $white;
+  padding: 3rem 0;
+  box-sizing: border-box;
+}
+
+.ahDetailPopupInner {
+  width: 650px;
+  margin: auto;
+}
+
+.ahDetailPopupTitle {
+  text-align: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  margin-bottom: 3rem;
+}
+
+.ahDetailPopupContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.ahDetailDrunkedContent {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: 40vh;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.ahDetailDrunkedAddedItem {
+  width: 45%;
+  margin-right: 10%;
+  margin-bottom: 2rem;
+  &:nth-child(2n) {
+    margin-right: 0;
+  }
+  &:nth-last-child(1),
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
+}
+
+.ahDetailDrunkedAddedImg {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 5px 10px rgba($color: $black, $alpha: 0.3);
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  & > figcaption {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    background: rgba($color: $black, $alpha: 0.6);
+    padding: 1rem 0;
+    color: $white;
+  }
+
+  & > figcaption > p {
+    margin-bottom: 0.5rem;
+  }
+
+  & > figcaption > span {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-light;
+  }
+}
+
+.ahDetailDrunkedAddedContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  color: $dark-gray;
+}
+
+.ahDetailMemoContent > textarea {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  resize: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #bababa;
+  box-shadow: 0px 5px 10px rgba($color: $black, $alpha: 0.3);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.ahDetailBtn {
+  display: flex;
+  gap: 1rem;
+}
+
+.ahDetailPopupClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: $font-size-xl;
+}
