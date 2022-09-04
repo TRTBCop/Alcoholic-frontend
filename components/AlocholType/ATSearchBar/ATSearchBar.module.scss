@@ -30,6 +30,7 @@
   height: 50px;
   border-radius: 20px;
   text-align: center;
+  box-sizing: none; // border-box가 기본값인데 그 떈 height 50이 고정된 상태로 유지
 }
 .searchBar {
   display: flex;
@@ -73,6 +74,8 @@
   align-items: center;
   text-align: left;
 
+  position: relative;
+
   background-color: $white;
   li {
     width: 80%;
@@ -81,7 +84,7 @@
     border-radius: 10px;
 
     &:hover {
-      background-color: rgba($color: $gray11, $alpha: 0.3);
+      background-color: $gray11-alpha33-fill;
     }
   }
 }

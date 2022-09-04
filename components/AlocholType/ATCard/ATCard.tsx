@@ -33,7 +33,7 @@ const ATCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: AlcoholC
                 <p className={styles.basic}>{info.degree}%</p>
                 <p className={styles.basic}>{info.minPrice && changeNumberToMoney(info.minPrice)} ~ {info.maxPrice && changeNumberToMoney(info.maxPrice)}</p>
                 <div className={styles.hashtagBox}>
-                    {info.hashtags && info.hashtags.map((v) => (<div key={v} className={styles.hashtag}># {v}</div>))}
+                    {info.hashtags && info.hashtags.map((v,i) => (<div key={i} className={styles.hashtag}># {v}</div>))}
                 </div>
             </div>
         </div>
