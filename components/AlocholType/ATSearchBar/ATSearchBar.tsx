@@ -2,6 +2,7 @@ import styles from './ATSearchBar.module.scss';
 import data from './ListData.json';
 import { ChangeEvent, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchData {
     id: number;
@@ -35,7 +36,8 @@ const SearchBar: React.FC = () => {
         <div className={styles.searchBarBox}>
             <div className={styles.searchBar}>
                 <input type="text" placeholder="Search" className={styles.searchInput} onChange={inputChanged} />
-                <button className={styles.searchButton} > 검색
+                <button className={styles.searchButton} > 
+                    <FontAwesomeIcon icon={ faSearch }/>
                     </button>
             </div>
             <ResultList data={data} props={inputText} />

@@ -51,10 +51,6 @@
   font-weight: regular;
   text-align: left;
   padding-left: 1.3rem;
-  background-color: rgba($color: $gray11, $alpha: 0.04);
-  &:focus {
-    background-color: rgba($color: $gray11, $alpha: 0.15);
-  }
 }
 .searchButton {
   width: 10%;
@@ -62,13 +58,14 @@
   border-radius: 0 20px 20px 0;
   border: 0 1px 2px 0 solid $gray11;
 
-  background: rgba($accent-color, 0.5);
+  color: rgba($accent-color, 0.5);
 }
 
 .searchList {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -77,13 +74,14 @@
   text-align: left;
 
   background-color: $white;
-}
-.searchList > li {
-  width: 80%;
-  background-color: $white;
-  padding: 10px 0 10px 1.3rem;
-  border-radius: 10px;
-}
-.searchList > li:hover {
-  background-color: rgba($color: $gray11, $alpha: 0.3);
+  li {
+    width: 80%;
+    background-color: $white;
+    padding: 10px 0 10px 1.3rem;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: rgba($color: $gray11, $alpha: 0.3);
+    }
+  }
 }
