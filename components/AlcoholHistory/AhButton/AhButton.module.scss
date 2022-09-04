@@ -5,7 +5,6 @@
   color: $color;
   transition: color 0.3s;
   font-weight: $font-weight-bold;
-  font-size: $font-size-sm;
   &:hover {
     color: rgba($color: $color, $alpha: 0.7);
   }
@@ -16,7 +15,6 @@
   width: 100%;
   border-radius: 10px;
   padding: 0.5rem;
-  font-size: $font-size-sm;
   transition: background 0.3s;
   background-color: $backgroundColor;
   &:hover {

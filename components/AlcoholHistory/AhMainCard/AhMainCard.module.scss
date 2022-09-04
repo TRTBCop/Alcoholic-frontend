@@ -46,3 +46,26 @@
     transition: 0.3s;
   }
 }
+
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .ahMainCardTxt {
+    padding: 1.5rem;
+    & > h5 {
+      font-size: $font-size-sm;
+    }
+
+    & > h5 > span {
+      font-size: $font-size-xs;
+      margin-top: 0.5rem;
+    }
+
+    & > p {
+      font-size: $font-size-xs;
+      margin: 1rem 0;
+      line-height: 2;
+    }
+  }
+}

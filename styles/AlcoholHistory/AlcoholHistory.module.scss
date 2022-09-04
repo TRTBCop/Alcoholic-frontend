@@ -5,6 +5,7 @@
   margin: 1.5rem 0;
   display: flex;
   justify-content: flex-end;
+  font-size: $font-size-sm;
 }
 
 .ahMainContent {
@@ -45,5 +46,40 @@
     &:hover {
       color: rgba($color: $black, $alpha: 0.6);
     }
+  }
+}
+
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+  .ahMainContent {
+    & > ul {
+      li {
+        width: 48%;
+        margin-right: 2%;
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .ahMainContent {
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+    & > ul {
+      li {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+  }
+  .ahListMore {
+    & > button {
+      font-size: $font-size-xs;
+    }
+  }
+  .ahListBtnSection {
+    font-size: $font-size-xs;
   }
 }
