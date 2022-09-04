@@ -1,0 +1,21 @@
+.orderBox{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ height: auto;
+ margin:0 auto;
+}
+
+.ordertext{
+    font-weight: bold;
+}
+
+.writetext{
+    cursor:pointer; 
+    font-weight: bold;
+}
+
+.m {
+    size: 2px;
+    background: #ccc;
+  }

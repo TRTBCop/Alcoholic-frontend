@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 10vh;
+    margin:0 auto;
+}
+
+.inputBox{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+}
+
+.reviewInput{
+    width: 60%;
+}
+
+.reviewButton{
+    width: 20%;
+
+}
