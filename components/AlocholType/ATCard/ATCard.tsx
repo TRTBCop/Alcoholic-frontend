@@ -24,9 +24,9 @@ const ATCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: AlcoholC
 
     return (
         <div className={styles.card} onClick={onClick}>
-            <div className={styles.alcoholImageBox} >
-                <img className={styles.alcoholImage} src={info.image}></img>
-            </div>
+            {/* <div className={styles.alcoholImageBox} > */}
+            <img className={styles.alcoholImage} src={info.image} />
+            {/* </div> */}
             <div className={styles.alcoholInfoBox} >
                 <p className={styles.title}>{info.name}</p>
                 <p className={styles.basic}>{info.category}</p>

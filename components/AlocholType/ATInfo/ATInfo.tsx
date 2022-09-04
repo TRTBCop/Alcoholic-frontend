@@ -18,9 +18,7 @@ const AlcoholTypeInfo: React.FC<AlcoholCardTypeProps> = ({ ...info }: AlcoholCar
 
     return (
         <section className={styles.container}>
-            <div className={styles.alcoholImageBox} >
-                <img className={styles.alcoholImage} src={info.image}></img>
-            </div>
+            <img className={styles.alcoholImage} src={info.image} />
             <div className={styles.alcoholInfoBox} >
                 <p className={styles.title}>{info.name}</p>
                 <p className={styles.basic}>{info.category}</p>

@@ -1,98 +1,99 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    width: 100%;
-    height: auto;
-    margin: 1.5rem 0 2rem 0;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0 2rem 0;
 }
-.title{
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 1rem;
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1rem;
 }
-.hashtagList{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 10px;
-    margin: 1rem 0;
-    width: auto;
-    height: auto;
+.hashtagList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 1rem 0;
+  width: auto;
+  height: auto;
 }
-.hashtag{
-    color: black;
-    background-color: #D9D9D9;
-    border-radius: 22px;
-    padding: 0.8rem 1.5rem;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: bold;
+.hashtag {
+  color: black;
+  background-color: #d9d9d9;
+  border-radius: 22px;
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
-.reviewListBox{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    margin: 1rem 0;
-    width: 100%;
-    height: fit-content;
+.reviewListBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin: 1rem 0;
+  width: 100%;
+  height: fit-content;
 }
-.likesReviewBox, .hatesReviewBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 1rem 0;
-    width: auto;
-    height: auto;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000;
+.likesReviewBox,
+.hatesReviewBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0;
+  width: auto;
+  height: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
 }
-.reviewCategoryTitle{
-    margin: 10px 0 15px 0;
+.reviewCategoryTitle {
+  margin: 10px 0 15px 0;
 }
-.review{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 0.5rem;
-    height: 8rem;
-    overflow: hidden;
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 0.5rem;
+  height: 8rem;
+  overflow: hidden;
 }
-.reviewUsername{
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #000;
+.reviewUsername {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
 }
-.reviewContent{
-    margin: 0;
-    font-size: 1rem;
-    font-weight: lighter;
-    color: #000;
-    height: 3rem;
+.reviewContent {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: lighter;
+  color: #000;
+  height: 3rem;
 }
-.reviewCreatedAt{
-    margin: 0;
-    font-size: 1rem;
-    font-weight: lighter;
-    color: #000;
-    margin-bottom: 1rem;
-    text-align: right;
+.reviewCreatedAt {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: lighter;
+  color: #000;
+  margin-bottom: 1rem;
+  text-align: right;
 }
-.likesColor{
-    color: #F0C912;
+.likesColor {
+  color: #f0c912;
 }
-.hatesColor{
-    color: #023279;
+.hatesColor {
+  color: #023279;
 }

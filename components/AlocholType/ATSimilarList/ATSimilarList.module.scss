@@ -1,62 +1,73 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    width: 100%;
-    height: auto;
-    margin: 1.5rem 0 2rem 0;
+@import '@styles/theme.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: auto;
+  margin: 1.5rem 0 2rem 0;
 }
-.title{
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 1rem;
+.title {
+  margin: 0;
+  font-size: $font-size-xxl;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  @include ellipsisText(1, $font-size-xxl);
 }
-.cardList{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 10px;
-    padding: 0.5rem;
-    width: auto;
-    height: auto;
+.basic {
+  margin: 0;
+  font-size: $font-size-sm;
 }
-.card{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5%;
-    padding: 0.5rem;
-    width: 30%;
-    border-radius: 20px;
+.cardList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 0.5rem;
+  width: auto;
+  height: auto;
 }
-.card:hover{
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5%;
+  padding: 0.5rem;
+  width: 30%;
+  border-radius: 20px;
+  border-bottom: 1px solid $gray11;
+  &:hover {
+    background-color: rgba($color: $gray11, $alpha: 0.1);
+    box-shadow: 1px 1px 4px rgba($black, 0.1);
+  }
 }
-.leftBox{
-    width: 100px;
-    aspect-ratio: 1;
-    height: fit-content;
-    border-radius: 10px;
+
+.leftBox {
+  width: 100px;
+  aspect-ratio: 1;
+  height: fit-content;
+  border-radius: 10px;
 }
-.image{
-    width: 100%;
-    object-fit: cover;
-    aspect-ratio: 1;
-    border-radius: 10px;
+.rightBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.4rem;
 }
-.name{
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 1rem;
+.image {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  border-radius: 10px;
 }
-.basic{
-    margin: 0;
-    font-size: 1rem;
+.name {
+  margin: 0;
+  font-size: $font-size-xl;
+  font-weight: bold;
+  color: $black;
+  margin-bottom: 1rem;
 }
