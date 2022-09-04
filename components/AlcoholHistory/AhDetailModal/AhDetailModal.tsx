@@ -54,8 +54,8 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({ itemData, isS
                 <article className={styles.ahDetailDrunkedType}>
                   <h3>마신 술</h3>
                   <div className={styles.ahDetailDrunkedContent}>
-                    {itemData.alcohol_list.map(data => (
-                      <div className={styles.ahDetailDrunkedAddedItem}>
+                    {itemData.alcohol_list.map((data, i) => (
+                      <div className={styles.ahDetailDrunkedAddedItem} key={i}>
                         <figure className={styles.ahDetailDrunkedAddedImg}>
                           <img src={data.alcohol_image} />
                           <figcaption>

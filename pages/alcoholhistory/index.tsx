@@ -10,15 +10,32 @@ import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
 import { getAlcHistory } from '@api/alcHistory';
 import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface AlcoholHistoryPageProps {
   daysDrinkData: AlcHistoryDaysDrink[];
 }
 
-const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
-  const { daysDrinkData } = props;
+const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }) => {
   const router = useRouter();
+
+  const [ahListData, setAhListData] = useState<AlcHistoryDaysDrink[]>([...daysDrinkData]);
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useEffect(() => {
+    if (currentPage === 1) return;
+    getAlcHistoryList(currentPage);
+  }, [currentPage]);
+
+  const getAlcHistoryList = async (page = 1) => {
+    try {
+      const { data } = await getAlcHistory(page);
+      setAhListData(currentVal => [...currentVal, ...data.data]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   /** "yyyy년 mm월 dd일 x요일" 형식으로 날짜를 포맷 시킴 */
   const formatDate = (data: string) => {
@@ -72,7 +89,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
           </article>
           {/* 일자별 술 일지 리스트 */}
           <article>
-            {daysDrinkData.map((item, i) => (
+            {ahListData.map((item, i) => (
               <div className={styles.ahMainContent} key={i}>
                 <h4>{formatDate(item.write_date)}</h4>
                 <ul>
@@ -87,7 +104,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
           </article>
           {/* 더보기 버튼 */}
           <article className={styles.ahListMore}>
-            <button>
+            <button onClick={() => setCurrentPage(value => value + 1)}>
               더보기 <FontAwesomeIcon icon={faAngleDown} />
             </button>
           </article>
