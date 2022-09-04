@@ -1,16 +1,16 @@
-import AlcoholCard from '@components/AlocholType/AlcoholCard';
+import AlcoholCard from '@components/AlocholType/ATCard';
 import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
-import styles from '@styles/AlcoholType/Alcoholtype.module.css';
+import styles from '@styles/AlcoholType/ATPageStyle.module.scss';
 import layoutStyles from '@layouts/Layout.module.scss';
-import SearchBar from '@components/AlocholType/SearchBar';
+import SearchBar from '@components/AlocholType/ATSearchBar';
 import { useRouter } from 'next/router';
 
 // TEST CASE
 const alcoholCardTest = [
   {
       id: 1,
-      name: 'Hendrick\'s Gin',
+      name: 'Hendrick\'s Gin 어디까지 글자가 늘어나는 거예요??? 어디까지 늘어날까요?? 어디까지 늘어나는지 아시나요?? 어디까지 가능한가요?',
       category: '진',
       degree: 44,
       drinkSize: 700,
@@ -18,6 +18,18 @@ const alcoholCardTest = [
       minPrice: 43490,
       maxPrice: 60000,
       hashtags: [
+        '시원한 오이향' ,
+        '깔끔함',
+        '부드러워요',
+        '시원한 오이향' ,
+        '깔끔함',
+        '부드러워요',
+        '시원한 오이향' ,
+        '깔끔함',
+        '부드러워요',
+        '시원한 오이향' ,
+        '깔끔함',
+        '부드러워요',
         '시원한 오이향' ,
         '깔끔함',
         '부드러워요',

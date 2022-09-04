@@ -1,4 +1,4 @@
-import styles from './AlcoholCard.module.scss';
+import styles from './ATCard.module.scss';
 
 interface AlcoholCardTypeProps {
     name: string;
@@ -17,16 +17,16 @@ interface AlcoholCardProps extends AlcoholCardTypeProps{
 }
 
 
-const AlcoholCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: AlcoholCardProps) => {
+const ATCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: AlcoholCardProps) => {
     function changeNumberToMoney (num: number) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
     return (
         <div className={styles.card} onClick={onClick}>
-            <div className={styles.alcoholImageBox} >
-                <img className={styles.alcoholImage} src={info.image}></img>
-            </div>
+            {/* <div className={styles.alcoholImageBox} > */}
+            <img className={styles.alcoholImage} src={info.image} />
+            {/* </div> */}
             <div className={styles.alcoholInfoBox} >
                 <p className={styles.title}>{info.name}</p>
                 <p className={styles.basic}>{info.category}</p>
@@ -41,4 +41,4 @@ const AlcoholCard: React.FC<AlcoholCardProps> = ({ type, onClick, ...info }: Alc
 
 };
 
-export default AlcoholCard;
+export default ATCard;
