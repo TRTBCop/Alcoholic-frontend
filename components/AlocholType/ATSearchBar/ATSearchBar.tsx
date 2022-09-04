@@ -1,5 +1,5 @@
-import ResultList from '../ResultList';
-import styles from './SearchBar.module.css';
+import ResultList from '../ATResultList';
+import styles from './ATSearchBar.module.scss';
 import data from './ListData.json';
 import { ChangeEvent, useState } from 'react';
 

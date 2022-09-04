@@ -1,9 +1,9 @@
-import AlcoholCard from '@components/AlocholType/AlcoholCard';
+import AlcoholCard from '@components/AlocholType/ATCard';
 import { NextPage } from 'next';
 import { AlcoholTypeEntity } from 'types/entity';
-import styles from '@styles/AlcoholType/Alcoholtype.module.css';
+import styles from '@styles/AlcoholType/Alcoholtype.module.scss';
 import layoutStyles from '@layouts/Layout.module.scss';
-import SearchBar from '@components/AlocholType/SearchBar';
+import SearchBar from '@components/AlocholType/ATSearchBar';
 import { useRouter } from 'next/router';
 
 // TEST CASE

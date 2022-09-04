@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import AlcoholHistoryLayout from '@layouts/Layout';
+import AlcoholHistoryLayout from 'layouts/Layout';
 import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

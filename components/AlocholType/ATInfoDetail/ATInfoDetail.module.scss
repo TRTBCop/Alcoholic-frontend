@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: auto;
+  margin: 1.5rem 0 2rem 0;
+}
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1rem;
+}
+.basic {
+  margin: 0;
+  font-size: 1rem;
+}

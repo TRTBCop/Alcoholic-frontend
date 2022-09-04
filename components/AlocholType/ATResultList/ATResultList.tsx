@@ -1,4 +1,4 @@
-import styles from './ResultList.module.css';
+import styles from './ATResultList.module.scss';
 
 interface SearchData {
     id: number;
