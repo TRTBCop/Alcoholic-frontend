@@ -18,6 +18,11 @@ const Home: NextPage = () => {
       })}>
         alcoholHistory 보기
       </a>
+      <a onClick={() => router.push({
+        pathname: '/alcoholrecipe',
+      })}>
+        alcoholrecipe 보기
+      </a>
     </div>
   );
   
