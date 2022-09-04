@@ -3,7 +3,7 @@ import styles from './ATSearchBar.module.scss';
 import data from './ListData.json';
 import { ChangeEvent, useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
     const [inputText, setInputText] = useState("");
     function inputChanged(e: ChangeEvent<HTMLInputElement>): void {
         let lowerCase = e.target.value.toLowerCase();

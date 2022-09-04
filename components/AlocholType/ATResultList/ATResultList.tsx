@@ -4,7 +4,7 @@ interface SearchData {
     id: number;
     text: string;
 }
-const ResultList = ({ data, props }: { data: SearchData[], props: any}) => {
+const ResultList: React.FC<{ data: SearchData[], props: any}> = ({ data, props }) => {
         //create a new array by filtering the original array
         const filteredData = data.filter((el) => {
             //if no input the return the original
