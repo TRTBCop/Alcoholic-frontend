@@ -1,0 +1,71 @@
+@import '../../../styles/theme.scss';
+
+.ahMainCardTxt {
+  background: rgba($color: $black, $alpha: 0.7);
+  padding: 2rem;
+  color: rgba($color: $white, $alpha: 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  & > h5 {
+    font-size: $font-size-lg;
+    text-align: center;
+    font-weight: $font-weight-bold;
+  }
+
+  & > h5 > span {
+    font-size: $font-size-sm;
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: $font-weight-medium;
+  }
+
+  & > p {
+    margin: 1.5rem 0;
+    line-height: 2;
+  }
+
+  &:hover ~ .ahMainCardImg > img {
+    transform: scale(1.2);
+  }
+}
+
+.ahMainCardImg {
+  width: 100%;
+  height: 100%;
+  & > img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: contain;
+    transition: 0.3s;
+  }
+}
+
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .ahMainCardTxt {
+    padding: 1.5rem;
+    & > h5 {
+      font-size: $font-size-sm;
+    }
+
+    & > h5 > span {
+      font-size: $font-size-xs;
+      margin-top: 0.5rem;
+    }
+
+    & > p {
+      font-size: $font-size-xs;
+      margin: 1rem 0;
+      line-height: 2;
+    }
+  }
+}
