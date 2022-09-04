@@ -1,4 +1,4 @@
-import styles from './AlcoholHistoryTitle.module.css';
+import styles from './AhTitle.module.scss';
 
 interface AlcoholHistoryTitleProps {
   titleName: string;
@@ -6,10 +6,8 @@ interface AlcoholHistoryTitleProps {
 
 const AlcoholHistoryTitle: React.FC<AlcoholHistoryTitleProps> = props => {
   return (
-    <section className={styles.hs_title_section}>
-      <div className="container">
-        <h2>{props.titleName}</h2>
-      </div>
+    <section className={styles.ahTitleSection}>      
+        <h2>{props.titleName}</h2>      
     </section>
   );
 };

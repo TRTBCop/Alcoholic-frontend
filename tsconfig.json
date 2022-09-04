@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@api/*": ["./api/*"],
       "@layouts/*": ["./layouts/*"],
       "@lib/*": ["./lib/*"],
       "@hooks/*": ["./hooks/*"],

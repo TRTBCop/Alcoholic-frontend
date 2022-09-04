@@ -1,21 +1,41 @@
 import { GetServerSideProps, NextPage } from 'next';
-import AlcoholHistoryLayout from '@layouts/Layout';
-import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
-import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
+import AhTitle from '@components/AlcoholHistory/AhTtile';
+import AhButton from '@components/AlcoholHistory/AhButton';
+import layoutStyles from '@layouts/Layout.module.scss';
+import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import AlcoholHistoryMainCard from '@components/AlcoholHistory/AlcoholHistoryMainCard';
-import AlcoholHistoryDetailModal from '@components/AlcoholHistory/AlcoholHistoryDetailModal';
-import Link from 'next/link';
-import { getAlcHistory } from 'api/alcHistory';
-import { AlcHistoryDay } from 'api/model/alcHistory';
+import AhMainCard from '@components/AlcoholHistory/AhMainCard';
+import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
+import { getAlcHistory } from '@api/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 interface AlcoholHistoryPageProps {
-  weekData: AlcHistoryDay[];
+  daysDrinkData: AlcHistoryDaysDrink[];
 }
 
-const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
-  const { weekData } = props;
+const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }) => {
+  const router = useRouter();
+
+  const [ahListData, setAhListData] = useState<AlcHistoryDaysDrink[]>([...daysDrinkData]);
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useEffect(() => {
+    if (currentPage === 1) return;
+    getAlcHistoryList(currentPage);
+  }, [currentPage]);
+
+  const getAlcHistoryList = async (page = 1) => {
+    try {
+      const { data } = await getAlcHistory(page);
+      setAhListData(currentVal => [...currentVal, ...data.data]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   /** "yyyy년 mm월 dd일 x요일" 형식으로 날짜를 포맷 시킴 */
   const formatDate = (data: string) => {
@@ -29,47 +49,77 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
     return `${year}년 ${month <= 9 ? '0' + month : month}월 ${day <= 9 ? '0' + day : day}일 ${week}`;
   };
 
+  /** 일지 작성하기 페이지로 이동 */
+  const goWritePage = () => {
+    router.push({
+      pathname: `/alcoholhistory/write`,
+    });
+  };
+
+  /** 상세 모달 오픈 */
+  const showDetailModal = (itemData: AlcHistoryDaysDrink) => {
+    seDetailModalItemDatal(itemData);
+    setIsShowDetailModal(true);
+  };
+
+  /** 상세 모달을 숨김 */
+  const hideDetailModal = () => {
+    seDetailModalItemDatal(null);
+    setIsShowDetailModal(false);
+  };
+
+  /** 모달 창의 show 여부 */
+  const [isShowDetailModal, setIsShowDetailModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isShowDetailModal) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.removeAttribute('style');
+    };
+  }, [isShowDetailModal]);
+
+  /** 상세 모달에서 보여질 정보 */
+  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDaysDrink | null>(null);
+
   return (
     <>
-        {/* ############# 타이틀 ############# */}
-        <AlcoholHistoryTitle titleName="당신의 술 일지" />
-        {/* ############# 메인 ############# */}
-        <section className={styles.hs_main_section}>
-          <div className="container">
-            {/* 필터 버튼 및 글작성 */}
-            <article className={styles.hs_list_btn_section}>
-              <Link
-                href={{
-                  pathname: '/alcoholhistory/write',
-                }}
-              >
-                <button className="btn_type_1">
-                  일지쓰기 <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
-            </article>
-            {/* 일자별 술 일지 리스트 */}
-            <article className={styles.hs_main_contents_section}>
-              {weekData.map((item, i) => (
-                <div className={styles.hs_main_content} key={i}>
-                  <h4>{formatDate(item.write_date)}</h4>
-                  <ul>
-                    {item.alcohol_list.map((alcoholData: any, j) => (
-                      <AlcoholHistoryMainCard {...alcoholData} write_date={item.write_date} key={j} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </article>
-            {/* 더보기 버튼 */}
-            <article className={styles.hs_list_more}>
-              <button>
-                더보기 <FontAwesomeIcon icon={faAngleDown} />
-              </button>
-            </article>
-          </div>
-        </section>
-      <AlcoholHistoryDetailModal is_show={false} />
+      {/* ############# 타이틀 ############# */}
+      <AhTitle titleName="당신의 술 일지" />
+      {/* ############# 메인 ############# */}
+      <section>
+        <div className={layoutStyles.md}>
+          {/* 필터 버튼 및 글작성 */}
+          <article className={styles.ahListBtnSection}>
+            <AhButton buttonType="btnType1" clickEvent={goWritePage}>
+              일지쓰기 <FontAwesomeIcon icon={faPencil} />
+            </AhButton>
+          </article>
+          {/* 일자별 술 일지 리스트 */}
+          <article>
+            {ahListData.map((item, i) => (
+              <div className={styles.ahMainContent} key={i}>
+                <h4>{formatDate(item.write_date)}</h4>
+                <ul>
+                  {item.alcohol_list.map((alcoholData, j) => (
+                    <li onClick={() => showDetailModal(item)} key={j}>
+                      <AhMainCard {...alcoholData} write_date={item.write_date} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </article>
+          {/* 더보기 버튼 */}
+          <article className={styles.ahListMore}>
+            <button onClick={() => setCurrentPage(value => value + 1)}>
+              더보기 <FontAwesomeIcon icon={faAngleDown} />
+            </button>
+          </article>
+        </div>
+      </section>
+      <AhDetailModal itemData={detailModalItemData} isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />
     </>
   );
 };
@@ -79,7 +129,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      weekData: data.data,
+      daysDrinkData: data.data,
     },
   };
 };

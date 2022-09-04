@@ -1,0 +1,39 @@
+@import '../../../styles/theme.scss';
+
+/* ########################## 공통 버튼 ########################## */
+@mixin noneBorderBtn($color) {
+  color: $color;
+  transition: color 0.3s;
+  font-weight: $font-weight-bold;
+  &:hover {
+    color: rgba($color: $color, $alpha: 0.7);
+  }
+}
+
+@mixin borderBtn($backgroundColor) {
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5rem;
+  transition: background 0.3s;
+  background-color: $backgroundColor;
+  &:hover {
+    background: rgba($color: $backgroundColor, $alpha: 0.8);
+  }
+}
+
+.btnType1 {
+  @include noneBorderBtn($accent-color);
+}
+
+.btnType2 {
+  @include borderBtn($accent-color);
+}
+
+.btnType3 {
+  @include borderBtn($dark-gray);
+}
+
+.btnType4 {
+  @include borderBtn($danger-color);
+}

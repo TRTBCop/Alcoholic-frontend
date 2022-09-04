@@ -1,20 +1,26 @@
 import { NextPage } from 'next';
-import AlcoholHistoryTitle from '@components/AlcoholHistory/AlcoholHistoryTtile';
-import styles from '@styles/AlcoholHistory/AlcoholHistory.module.css';
-import AlcoholHistoryWriteForm from '@components/AlcoholHistory/AlcoholHistoryWriteForm';
+import AhTitle from '@components/AlcoholHistory/AhTtile';
+import layoutStyles from '@layouts/Layout.module.scss';
+import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
+import AhWriteForm from '@components/AlcoholHistory/AhWriteForm';
 import { GetServerSideProps } from 'next';
+import { getAlcHistoryDetail } from '@api/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 
-const AlcoholHistoryPage: NextPage = (props: any) => {
-  console.log(props.test);
+interface AlcoholHistoryWritePageProps {
+  itemData: AlcHistoryDaysDrink | null;
+}
+
+const AlcoholHistoryWritePage: NextPage<AlcoholHistoryWritePageProps> = ({ itemData }) => {
   return (
     <>
       <main className="main">
         {/* ############# 타이틀 ############# */}
-        <AlcoholHistoryTitle titleName="당신의 술 일지" />
+        <AhTitle titleName="당신의 술 일지" />
         {/* ############# 메인 ############# */}
         <section className={styles.hs_main_section}>
-          <div className={styles.hs_write_container}>
-            <AlcoholHistoryWriteForm />
+          <div className={layoutStyles.ahWriteContainer}>
+            <AhWriteForm itemData={itemData} />
           </div>
         </section>
       </main>
@@ -23,11 +29,20 @@ const AlcoholHistoryPage: NextPage = (props: any) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  return {
-    props: {
-      test: context.query,
-    },
-  };
+  if (context.query.id) {
+    const { data } = await getAlcHistoryDetail(context.query.id as string);
+    return {
+      props: {
+        itemData: data.data,
+      },
+    };
+  } else {
+    return {
+      props: {
+        itemData: null,
+      },
+    };
+  }
 };
 
-export default AlcoholHistoryPage;
+export default AlcoholHistoryWritePage;

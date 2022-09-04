@@ -1,4 +1,4 @@
-import { AlcHistoryDay } from 'api/model/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { BaseApiResult } from '../model/baseModel';
@@ -6,7 +6,7 @@ import { BaseApiResult } from '../model/baseModel';
 const mock = new MockAdapter(axios);
 
 // TEST CASE
-const data: AlcHistoryDay[] = [
+const data: AlcHistoryDaysDrink[] = [
   {
     id: 'A005D',
     write_date: '2022-07-31',
@@ -20,7 +20,7 @@ const data: AlcHistoryDay[] = [
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
       },
     ],
-    memo: '간단한 메모입니둥',
+    memo: '간단한 메모입니둥1',
   },
   {
     id: 'A005D',
@@ -34,8 +34,40 @@ const data: AlcHistoryDay[] = [
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
       },
+      {
+        alcohol_name: '핸드릭스 진',
+        alcohol_type: '진',
+        drunked: 464,
+        alcohol_intake: 35.34,
+        alcohol_image:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+      },
+      {
+        alcohol_name: '핸드릭스 진',
+        alcohol_type: '진',
+        drunked: 464,
+        alcohol_intake: 35.34,
+        alcohol_image:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+      },
+      {
+        alcohol_name: '핸드릭스 진',
+        alcohol_type: '진',
+        drunked: 464,
+        alcohol_intake: 35.34,
+        alcohol_image:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+      },
+      {
+        alcohol_name: '핸드릭스 진',
+        alcohol_type: '진',
+        drunked: 464,
+        alcohol_intake: 35.34,
+        alcohol_image:
+          'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+      },
     ],
-    memo: '간단한 메모입니둥',
+    memo: '간단한 메모입니둥2',
   },
   {
     id: 'A005D',
@@ -50,13 +82,20 @@ const data: AlcHistoryDay[] = [
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
       },
     ],
-    memo: '간단한 메모입니둥',
+    memo: '간단한 메모입니둥3',
   },
 ];
 
-mock.onGet('/api/alc-history').reply<BaseApiResult<AlcHistoryDay[]>>(200, {
+mock.onGet('/api/alc-history').reply<BaseApiResult<AlcHistoryDaysDrink[]>>(200, {
   code: 200,
   success: true,
-  message: '학생 정보 mock',
+  message: '술 기록 리스트 mock',
   data,
+});
+
+mock.onGet(/\/api\/alc-history\//).reply<BaseApiResult<AlcHistoryDaysDrink>>(200, {
+  code: 200,
+  success: true,
+  message: '술 기록 상세 mock',
+  data: data[0],
 });
