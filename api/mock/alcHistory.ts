@@ -1,4 +1,4 @@
-import { AlcHistoryDay } from '@api/model/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { BaseApiResult } from '../model/baseModel';
@@ -6,7 +6,7 @@ import { BaseApiResult } from '../model/baseModel';
 const mock = new MockAdapter(axios);
 
 // TEST CASE
-const data: AlcHistoryDay[] = [
+const data: AlcHistoryDaysDrink[] = [
   {
     id: 'A005D',
     write_date: '2022-07-31',
@@ -86,9 +86,16 @@ const data: AlcHistoryDay[] = [
   },
 ];
 
-mock.onGet('/api/alc-history').reply<BaseApiResult<AlcHistoryDay[]>>(200, {
+mock.onGet('/api/alc-history').reply<BaseApiResult<AlcHistoryDaysDrink[]>>(200, {
   code: 200,
   success: true,
-  message: '학생 정보 mock',
+  message: '술 기록 리스트 mock',
   data,
+});
+
+mock.onGet(/\/api\/alc-history\//).reply<BaseApiResult<AlcHistoryDaysDrink>>(200, {
+  code: 200,
+  success: true,
+  message: '술 기록 상세 mock',
+  data: data[0],
 });

@@ -4,9 +4,14 @@ import layoutStyles from '@layouts/Layout.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import AhWriteForm from '@components/AlcoholHistory/AhWriteForm';
 import { GetServerSideProps } from 'next';
+import { getAlcHistoryDetail } from '@api/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 
-const AlcoholHistoryPage: NextPage = (props: any) => {
-  console.log(props.test);
+interface AlcoholHistoryWritePageProps {
+  itemData: AlcHistoryDaysDrink | null;
+}
+
+const AlcoholHistoryWritePage: NextPage<AlcoholHistoryWritePageProps> = ({ itemData }) => {
   return (
     <>
       <main className="main">
@@ -15,7 +20,7 @@ const AlcoholHistoryPage: NextPage = (props: any) => {
         {/* ############# 메인 ############# */}
         <section className={styles.hs_main_section}>
           <div className={layoutStyles.ahWriteContainer}>
-            <AhWriteForm />
+            <AhWriteForm itemData={itemData} />
           </div>
         </section>
       </main>
@@ -24,11 +29,20 @@ const AlcoholHistoryPage: NextPage = (props: any) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  return {
-    props: {
-      test: context.query,
-    },
-  };
+  if (context.query.id) {
+    const { data } = await getAlcHistoryDetail(context.query.id as string);
+    return {
+      props: {
+        itemData: data.data,
+      },
+    };
+  } else {
+    return {
+      props: {
+        itemData: null,
+      },
+    };
+  }
 };
 
-export default AlcoholHistoryPage;
+export default AlcoholHistoryWritePage;

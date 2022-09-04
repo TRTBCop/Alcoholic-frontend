@@ -8,16 +8,16 @@ import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AhMainCard from '@components/AlcoholHistory/AhMainCard';
 import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
 import { getAlcHistory } from '@api/alcHistory';
-import { AlcHistoryDay } from '@api/model/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 interface AlcoholHistoryPageProps {
-  weekData: AlcHistoryDay[];
+  daysDrinkData: AlcHistoryDaysDrink[];
 }
 
 const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
-  const { weekData } = props;
+  const { daysDrinkData } = props;
   const router = useRouter();
 
   /** "yyyy년 mm월 dd일 x요일" 형식으로 날짜를 포맷 시킴 */
@@ -40,7 +40,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   };
 
   /** 상세 모달 오픈 */
-  const showDetailModal = (itemData: AlcHistoryDay) => {
+  const showDetailModal = (itemData: AlcHistoryDaysDrink) => {
     seDetailModalItemDatal(itemData);
     setIsShowDetailModal(true);
   };
@@ -55,7 +55,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
   const [isShowDetailModal, setIsShowDetailModal] = useState<boolean>(false);
 
   /** 상세 모달에서 보여질 정보 */
-  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDay | null>(null);
+  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDaysDrink | null>(null);
 
   return (
     <>
@@ -72,13 +72,13 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = props => {
           </article>
           {/* 일자별 술 일지 리스트 */}
           <article>
-            {weekData.map((item, i) => (
+            {daysDrinkData.map((item, i) => (
               <div className={styles.ahMainContent} key={i}>
                 <h4>{formatDate(item.write_date)}</h4>
                 <ul>
                   {item.alcohol_list.map((alcoholData, j) => (
-                    <li onClick={() => showDetailModal(item)}>
-                      <AhMainCard {...alcoholData} write_date={item.write_date} key={j} />
+                    <li onClick={() => showDetailModal(item)} key={j}>
+                      <AhMainCard {...alcoholData} write_date={item.write_date} />
                     </li>
                   ))}
                 </ul>
@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      weekData: data.data,
+      daysDrinkData: data.data,
     },
   };
 };

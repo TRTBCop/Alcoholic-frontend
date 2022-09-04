@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AhButton from '@components/AlcoholHistory/AhButton';
 import { useRouter } from 'next/router';
-import { AlcHistoryDay } from '@api/model/alcHistory';
+import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 
 interface AhDetailModalProps {
-  itemData: AlcHistoryDay | null;
+  itemData: AlcHistoryDaysDrink | null;
   isShow: boolean;
   hideDetailModal: () => void;
 }
@@ -15,10 +15,12 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({ itemData, isS
   const router = useRouter();
 
   /** 일지 수정하기 페이지로 이동 */
-  const goModifiedPage = () => {
+  const goModifiedPage = (id: string) => {
     router.push({
       pathname: `/alcoholhistory/write`,
-      // 파라미터로 글 id 같이 전송
+      query: {
+        id,
+      },
     });
   };
 
@@ -83,7 +85,7 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({ itemData, isS
                   <AhButton buttonType="btnType3" clickEvent={hideDetailModal}>
                     닫기
                   </AhButton>
-                  <AhButton buttonType="btnType2" clickEvent={goModifiedPage}>
+                  <AhButton buttonType="btnType2" clickEvent={() => goModifiedPage(itemData.id)}>
                     수정
                   </AhButton>
                 </article>

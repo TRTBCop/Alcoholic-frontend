@@ -1,5 +1,5 @@
 /** 하루 동안 마신 술의 내용 */
-export interface AlcHistoryDay {
+export interface AlcHistoryDaysDrink {
   id: string;
   write_date: string;
   alcohol_list: AlcHistoryDrunked[];
