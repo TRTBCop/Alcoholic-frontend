@@ -1,36 +1,22 @@
+import { AlcoholTypeReview, AlcoholTypeReviewsProps } from '@api/model/alcType';
 import { useEffect, useState } from 'react';
 import styles from './ATReview.module.scss';
 
-interface ReviewProps {
-    id: number;
-    username: string;
-    content: string;
-    createdAt: string;
-    liked: boolean;
-}
-
-interface AlcoholTypeReviewProps{
-    likesCount: number;
-    hatesCount: number;
-    hashtags: string[];
-    reviews: ReviewProps[];
-
-}
-
-const AlcoholeTypeReview: React.FC<AlcoholTypeReviewProps> = ({ likesCount, hatesCount, hashtags, reviews }) => {
-    const [likesReviews, setLikesReviews] = useState<ReviewProps[]>();
-    const [hatesReviews, setHatesReviews] = useState<ReviewProps[]>();
+const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps> = ({ likesCount, hatesCount, hashtags, reviews }) => {
+    const [likesReviews, setLikesReviews] = useState<AlcoholTypeReview[]>();
+    const [hatesReviews, setHatesReviews] = useState<AlcoholTypeReview[]>();
     useEffect(() => {
-        const likes = reviews.filter(review => review.liked);
-        const hates = reviews.filter(review => !review.liked);
+        const likes = reviews?.filter(review => review.liked);
+        const hates = reviews?.filter(review => !review.liked);
         setLikesReviews(likes);
         setHatesReviews(hates);
     }, []);
+    console.log(`hashtags : ${hashtags}`);
     return (
         <section className={styles.container}>
             <div className={styles.title}>술 리뷰</div>
             <div className={styles.hashtagList}> 
-                {hashtags.map((v) => (
+                {hashtags?.map((v) => (
                     <div className={styles.hashtag}># {v.replaceAll(' ', '_')}</div>
                 ))}
             </div>
