@@ -82,4 +82,10 @@
   .ahListBtnSection {
     font-size: $font-size-xs;
   }
+  .ahMainContent {
+    margin-bottom: 1rem;
+    & > h4 {
+      font-size: $font-size-md;
+    }
+  }
 }

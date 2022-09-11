@@ -23,11 +23,19 @@
     width: 768px;
     margin: 2rem auto 3rem auto;
   }
+  .ahWriteContainer {
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .md {
     width: 96%;
+    margin: 2rem auto 3rem auto;
+  }
+  .ahWriteContainer {
+    width: 94%;
     margin: 2rem auto 3rem auto;
   }
 }
