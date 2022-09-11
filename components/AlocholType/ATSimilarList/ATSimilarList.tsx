@@ -6,6 +6,7 @@ const ATSimilarList: React.FC<{ similarList: AlcoholTypeProps[] }> = ({similarLi
     return (
         <section className={styles.container}>
             <div className={styles.title}>이 술과 비슷한 술</div>
+            <p className={styles.comment}>비슷한 술을 찾고 계신가요? 사용자들이 지금 보고 있는 술과 함께 본 술이예요</p>
             <div className={styles.cardList}>
                 {similarList?.map((info) => (
                     <div className={styles.card}>

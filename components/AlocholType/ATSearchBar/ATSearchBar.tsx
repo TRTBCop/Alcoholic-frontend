@@ -3,6 +3,7 @@ import data from './ListData.json';
 import { ChangeEvent, useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from 'next/router';
 
 interface SearchData {
     id: number;
@@ -11,6 +12,7 @@ interface SearchData {
 
 
 const SearchBar: React.FC = () => {
+    const router = useRouter();
     /** search Input Ref */
     const inputuseRef = useRef<HTMLInputElement>(null);
 
@@ -30,11 +32,23 @@ const SearchBar: React.FC = () => {
         }));
     }, [inputText]);
 
+    function searchButtonClicked(): void {
+        if (inputText === '') return;
+        router.push({
+            pathname: `/alcoholtype/result`,
+            query: { word: inputText },
+        });
+    }
+
     return (
         <div className={styles.searchBarBox}>
             <div className={styles.searchBar}>
-                <input ref={inputuseRef} type="text" placeholder="Search" className={filteredData.length > 1 ? styles.searchInputActive : styles.searchInput} onChange={inputChanged} />
-                <button className={styles.searchButton} > 
+                <input ref={inputuseRef} type="text" placeholder="Search" className={filteredData.length > 1 ? styles.searchInputActive : styles.searchInput} onChange={inputChanged} onKeyDown={(e) => {
+                    if (e.key === 'Enter') searchButtonClicked();
+                }} />
+                <button className={styles.searchButton} onClick={(e) => {
+                    searchButtonClicked();
+                }}> 
                     <FontAwesomeIcon icon={ faSearch }/>
                     </button>
             </div>
@@ -44,6 +58,7 @@ const SearchBar: React.FC = () => {
                         <li key={item.id} onClick={() => {
                             inputuseRef.current!.value = item.text;
                             setInputText(item.text);
+                            inputuseRef.current?.focus();
                         }}>{item.text}</li>
                     ))}
                 </ul>

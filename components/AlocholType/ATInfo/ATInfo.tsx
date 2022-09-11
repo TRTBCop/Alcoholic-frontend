@@ -1,17 +1,7 @@
+import { AlcoholTypeProps } from '@api/model/alcType';
 import styles from './ATInfo.module.scss';
 
-interface AlcoholCardTypeProps {
-    name: string;
-    category: string;
-    degree: number;
-    drinkSize: number;
-    image: string;
-    minPrice?: number;
-    maxPrice?: number;
-    hashtags?: string[];
-}
-
-const AlcoholTypeInfo: React.FC<AlcoholCardTypeProps> = ({ ...info }: AlcoholCardTypeProps) => {
+const AlcoholTypeInfo: React.FC<AlcoholTypeProps> = ({ ...info }: AlcoholTypeProps) => {
     function changeNumberToMoney (num: number) {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
@@ -28,9 +18,6 @@ const AlcoholTypeInfo: React.FC<AlcoholCardTypeProps> = ({ ...info }: AlcoholCar
                         {info.minPrice && changeNumberToMoney(info.minPrice)}₩~ {info.maxPrice && changeNumberToMoney(info.maxPrice)}₩
                     </span>)
                 </p>
-                <div className={styles.hashtagBox}>
-                    {info.hashtags && info.hashtags.map((v) => (<div className={styles.hashtag}># {v}</div>))}
-                </div>
             </div>
         </section>
     )

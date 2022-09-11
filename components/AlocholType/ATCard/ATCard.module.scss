@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: row;
   gap: 5%;
+
+  border: 1px solid rgba($accent-color, 0.12);
   @media screen and (min-width: $breakpoint-lg) {
     // desktop
     width: 100%;
@@ -25,91 +27,105 @@
     flex-direction: column;
   }
   &:hover,
-  :focus {
-    background-color: rgba($gray11, 0.2);
+  &:focus {
     transition: all 0.4s ease-in-out;
+    background-color: rgba($accent-color, 0.08);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    .alcoholInfoBox {
+      .hashtagBox {
+        .hashtag {
+          background-color: $accent-color;
+        }
+      }
+    }
   }
-}
-.card:hover {
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-}
-.alcoholImage {
-  width: 200px;
-  aspect-ratio: 1.618;
-  object-fit: cover;
-  border-radius: 10px;
-  @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
-    width: 30%;
-    min-width: calc(100% / 3);
-  }
-  @media screen and (max-width: $breakpoint-sm) {
-    width: 100%;
-    min-width: 30px;
+  .alcoholImage {
+    width: 200px;
     aspect-ratio: 1.618;
-    object-fit: scale-down;
+    object-fit: cover;
+    border-radius: 10px;
+    @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+      width: 30%;
+      min-width: calc(100% / 3);
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      width: 100%;
+      min-width: 30px;
+      aspect-ratio: 1.618;
+      object-fit: scale-down;
+    }
   }
-}
-.alcoholInfoBox {
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: left;
-  gap: 0.5rem;
-  overflow-x: hidden;
-  @media screen and (max-width: $breakpoint-sm) {
-    gap: 0.7rem;
+  .alcoholInfoBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    gap: 0.5rem;
+    overflow-x: hidden;
+    @media screen and (max-width: $breakpoint-sm) {
+      gap: 0.7rem;
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .basic {
+        margin: 0;
+
+        font-size: $font-size-sm;
+        font-weight: lighter;
+        @include ellipsisText(1, $font-size-md);
+
+        @media screen and (max-width: $breakpoint-sm) {
+          font-size: $font-size-sm;
+          @include ellipsisText(1, $font-size-sm);
+        }
+      }
+      .hashtagBox {
+        min-width: 100%;
+        max-height: calc((2 * $font-size-xxs) + 0.7rem);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        padding-top: 0.2rem;
+
+        font-size: $font-size-xxs;
+        overflow: hidden;
+        .hashtag {
+          max-width: fit-content;
+
+          color: $white;
+          background-color: $gray11;
+          border-radius: 22px;
+          padding: 0.4rem 0.5rem;
+        }
+      }
+    }
   }
-}
 
-.title {
-  max-width: 100%;
-  margin: 0;
+  .title {
+    max-width: 100%;
+    margin: 0;
+    margin-bottom: $font-size-xxl;
 
-  font-size: $font-size-xl;
-  font-weight: bold;
-
-  @include ellipsisText(2, $font-size-xl);
-
-  @media screen and (max-width: $breakpoint-sm) {
-    margin-top: 0.7rem;
     font-size: $font-size-xl;
-    @include ellipsisText(1, $font-size-xl);
-  }
-}
-.basic {
-  margin: 0;
+    font-weight: normal;
+    line-height: $font-size-xxl;
 
-  font-size: $font-size-sm;
-  @include ellipsisText(1, $font-size-md);
+    @include ellipsisText(2, $font-size-xl);
 
-  @media screen and (max-width: $breakpoint-sm) {
-    font-size: $font-size-sm;
-    @include ellipsisText(1, $font-size-sm);
-  }
-}
-.hashtagBox {
-  max-height: calc((2 * $font-size-xxs) + 30px);
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-
-  padding-top: 0.2rem;
-
-  font-size: $font-size-xxs;
-  overflow: hidden;
-}
-.hashtag {
-  color: $white;
-  background-color: $gray11;
-  border-radius: 22px;
-  padding: 0.2rem 0.5rem;
-  &:hover {
-    background-color: $accent-color;
-    transition: all 0.2s ease-in-out;
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-top: 0.7rem;
+      font-size: $font-size-xl;
+      @include ellipsisText(1, $font-size-xl);
+    }
   }
 }

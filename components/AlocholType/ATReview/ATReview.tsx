@@ -15,15 +15,16 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps> = ({ likesCount, hat
     return (
         <section className={styles.container}>
             <div className={styles.title}>술 리뷰</div>
+            <p className={styles.comment}>먼저 맛을 봐 본 사람들의 후기를 봐볼까요?</p>
             <div className={styles.hashtagList}> 
                 {hashtags?.map((v) => (
                     <div className={styles.hashtag}># {v.replaceAll(' ', '_')}</div>
                 ))}
             </div>
             <div className={styles.reviewListBox}>
-                <div className={styles.likesReviewBox}>
-                    <div className={styles.reviewCategoryTitle}>이 술이 <span className={styles.likesColor}>좋았던 사람</span>은 {likesCount}명이예요</div>
-                    <div className={styles.reviewBox}>
+                <div className={[styles.reviewBox, styles.likesReviewBox].join(" ")}>
+                    <div className={styles.reviewCategoryTitle}>이 술이 <span>좋았던 사람</span>은 <span>{likesCount}</span>명이예요 😍</div>
+                    <div>
                         {likesReviews?.map((v) => (
                             <div className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
@@ -32,10 +33,13 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps> = ({ likesCount, hat
                             </div>
                         ))}
                     </div>
+                    <div>
+                        <button className={styles.reviewMoreButton}>더보기</button>
+                    </div>
                 </div>
-                <div className={styles.hatesReviewBox}>
-                    <div className={styles.reviewCategoryTitle}>이 술이 <span className={styles.hatesColor}>별로였던 사람</span>은 {hatesCount}명이예요</div>
-                    <div className={styles.reviewBox}>
+                <div className={[styles.reviewBox, styles.hatesReviewBox].join(" ")}>
+                    <div className={styles.reviewCategoryTitle}>이 술이 <span>별로였던 사람</span>은 <span>{hatesCount}</span>명이예요 😓</div>
+                    <div>
                         {hatesReviews?.map((v) => (
                             <div className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
@@ -43,6 +47,9 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps> = ({ likesCount, hat
                                 <div className={styles.reviewCreatedAt}>{v.createdAt}</div>
                             </div>
                         ))}
+                    </div>
+                    <div>
+                        <button className={styles.reviewMoreButton}>더보기</button>
                     </div>
                 </div>
             </div>
