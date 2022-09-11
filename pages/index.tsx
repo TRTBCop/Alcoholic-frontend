@@ -27,6 +27,9 @@ const Home: NextPage = () => {
             작은 습관
           </h3>
           <div className={styles.mainBtnWrap}>
+            <button className={styles.mainBtn} onClick={() => goPage('/alcoholtype')}>
+              술 목록
+            </button>
             <button className={styles.mainBtn} onClick={() => goPage('/alcoholhistory')}>
               일지 쓰기
             </button>

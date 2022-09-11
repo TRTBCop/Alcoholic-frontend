@@ -93,6 +93,8 @@
       line-height: 1.5;
     }
     .mainBtnWrap {
+      flex-wrap: wrap;
+      justify-content: center;
       button {
         font-size: $font-size-sm !important;
         padding: 0.5rem 0.8rem !important;
