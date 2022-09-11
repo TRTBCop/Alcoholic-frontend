@@ -16,7 +16,7 @@
   }
   @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
     // tablet
-    height: 25vh;
+    height: auto;
   }
   @media screen and (max-width: $breakpoint-sm) {
     //mobile

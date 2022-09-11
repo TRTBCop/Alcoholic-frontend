@@ -24,7 +24,8 @@
     height: auto;
     flex-direction: column;
   }
-  &:hover {
+  &:hover,
+  :focus {
     background-color: rgba($gray11, 0.2);
     transition: all 0.4s ease-in-out;
   }
@@ -37,9 +38,14 @@
   aspect-ratio: 1.618;
   object-fit: cover;
   border-radius: 10px;
+  @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+    width: 30%;
+    min-width: calc(100% / 3);
+  }
   @media screen and (max-width: $breakpoint-sm) {
     width: 100%;
-    aspect-ratio: 2.618;
+    min-width: 30px;
+    aspect-ratio: 1.618;
     object-fit: scale-down;
   }
 }
