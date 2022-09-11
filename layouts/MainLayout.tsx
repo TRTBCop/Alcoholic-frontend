@@ -15,7 +15,7 @@ const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children 
     <>
       <header className={styles.header}>
         <div className={styles.container}>
-          <div className={styles.mainLogo}>
+          <div className={styles.mainLogo} onClick={() => goPage('/')}>
             <img src={mainLogo.src} alt="" />
           </div>
           <nav>
