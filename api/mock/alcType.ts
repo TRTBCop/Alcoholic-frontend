@@ -141,7 +141,6 @@ mockInstance.onGet('/api/alc-type').reply<BaseApiResult<AlcoholTypeProps>>(200, 
 }
 );
 
-
 /** AlcoholType Detail을 반환 */
 mockInstance.onGet(/\/api\/alc-type-detail\//).reply<BaseApiResult<AlcoholDetailInfoProps>>(200, {
   code: 200,
@@ -163,6 +162,15 @@ mockInstance.onGet(/\/api\/alc-type-relevant\//).reply<BaseApiResult<AlcoholType
   code: 200,
   success: true,
   message: 'alctype relevant mock',
+  data: [...alcoholData, ...alcoholData],
+}
+);
+
+/** 검색결과로 AlcoholType List를 반환 */
+mockInstance.onGet('/api/alc-types-search').reply<BaseApiResult<AlcoholTypeProps[]>>(200, {
+  code: 200,
+  success: true,
+  message: 'alctype search mock',
   data: alcoholData,
 }
 );
