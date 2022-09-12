@@ -1,5 +1,7 @@
 @import '@styles/theme.scss';
 
+$shareItemSize: 30px;
+
 .container {
   width: auto;
   border-radius: 10px;
@@ -36,43 +38,65 @@
       object-fit: contain;
     }
   }
-  .alcoholInfoBox {
-    width: auto;
+  .rightBox {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
-    gap: 0.5rem;
-    overflow-x: hidden;
-    @media screen and (max-width: $breakpoint-sm) {
-      gap: 0.7rem;
-    }
-    .title {
-      max-width: 100%;
-      margin: 0;
-      margin-bottom: $font-size-xl;
+    justify-content: space-between;
 
-      font-size: $font-size-xl;
-      font-weight: bold;
-
-      @include ellipsisText(2, $font-size-xl);
-
+    .alcoholInfoBox {
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: left;
+      gap: 0.5rem;
+      overflow-x: hidden;
       @media screen and (max-width: $breakpoint-sm) {
-        margin-top: 0.7rem;
+        gap: 0.7rem;
+      }
+      .title {
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: $font-size-xl;
+
         font-size: $font-size-xl;
-        @include ellipsisText(1, $font-size-xl);
+        font-weight: bold;
+        @include ellipsisText(2, $font-size-xl * 1.3);
+        letter-spacing: 0.7px;
+
+        @media screen and (max-width: $breakpoint-sm) {
+          margin-top: 0.7rem;
+          font-size: $font-size-xl;
+          @include ellipsisText(1, $font-size-xl);
+        }
+      }
+      .basic {
+        margin: 0;
+
+        font-size: $font-size-sm;
+        font-weight: lighter;
+        @include ellipsisText(1, $font-size-md);
+
+        @media screen and (max-width: $breakpoint-sm) {
+          font-size: $font-size-sm;
+          @include ellipsisText(1, $font-size-sm);
+        }
       }
     }
-    .basic {
-      margin: 0;
-
-      font-size: $font-size-sm;
-      font-weight: lighter;
-      @include ellipsisText(1, $font-size-md);
-
-      @media screen and (max-width: $breakpoint-sm) {
-        font-size: $font-size-sm;
-        @include ellipsisText(1, $font-size-sm);
+    .shareLinkBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: flex-end;
+      font-size: $shareItemSize;
+      color: $dark-gray;
+      .logo {
+        width: $shareItemSize;
+        height: $shareItemSize;
+        margin-right: 0.5rem;
+        border-radius: 8px;
       }
     }
   }

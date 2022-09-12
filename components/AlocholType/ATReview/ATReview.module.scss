@@ -47,17 +47,41 @@
     }
   }
 }
+
+.addReviewBtn {
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  color: white;
+  font-size: $font-size-sm;
+  font-weight: bold;
+
+  background-color: rgba($accent-color, 0.8);
+}
+.reviewMoreBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  .reviewMoreButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+
+    font-size: $font-size-sm;
+    font-weight: bold;
+  }
+}
 .reviewListBox {
   @media screen and (max-width: $breakpoint-sm) {
     display: flex;
     flex-direction: column;
   }
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
   width: 100%;
   height: fit-content;
   .reviewBox {
@@ -87,9 +111,9 @@
       justify-content: space-between;
       gap: 10px;
       margin-top: 0.5rem;
-      height: 8rem;
       overflow: hidden;
       padding: 1rem;
+      padding-bottom: 0.5rem;
     }
   }
   .likesReviewBox {
@@ -126,7 +150,7 @@
   margin: 0;
   font-size: $font-size-sm;
   font-weight: lighter;
-  height: 3rem;
+  height: fit-content;
   letter-spacing: 0.3px;
   line-height: $font-size-lg;
 }
