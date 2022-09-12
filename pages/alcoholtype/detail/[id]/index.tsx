@@ -12,7 +12,7 @@ interface AlcoholTypeDetailInfoProps {
     data: AlcoholTypeProps;
     detailData: AlcoholDetailInfoProps,
     similarList: AlcoholTypeProps[],
-    reviewList: AlcoholTypeReviewsProps,
+    reviewList: AlcoholTypeReviewsProps & { id:string, infinite?: boolean } ,
 }
 
 const AlcoholTypeDetailPage: NextPage<AlcoholTypeDetailInfoProps> = ({ data, detailData, reviewList, similarList }) => {
@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 data: data.data,
                 detailData: details.data,
                 similarList: similarList.data,
-                reviewList: reviewList.data,
+                reviewList: {id:context.query.id as string, ...reviewList.data},
             },
         }
     } else 

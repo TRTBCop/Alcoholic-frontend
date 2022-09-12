@@ -34,9 +34,19 @@ export const getAlcTypeDetail = (id: string) => {
   return instance.get<BaseApiResult<AlcoholDetailInfoProps>>(`/api/alc-type-detail/${id}`);
 };
 
-/** Alc Type Review들을 읽어오는 함수 */
+/** Alc Type Review들을 읽어오는 함수 (좋아요 2개, 싫어요 2개만 보내줄 것)*/
 export const getAlcTypeReviews = (id: string) => {
   return instance.get<BaseApiResult<AlcoholTypeReviewsProps>>(`/api/alc-type-reviews/${id}`);
+}
+
+/** Alc Type Review들을 모두 읽어오는 함수 (무한 스크롤) */
+export const getAlcTypeAllReviews = (page=1, id: string) => {
+  return instance.get<BaseApiResult<AlcoholTypeReviewsProps>>(`/api/alc-type-reviews-all/${id}`, {
+    params: {
+      page,
+      id,
+    },
+  });
 }
 
 /** Alc Type Similar List를 반환하는 함수(최대 3개만 보내줄 것) */
