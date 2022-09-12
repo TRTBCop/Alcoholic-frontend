@@ -1,0 +1,108 @@
+@import '~styles/theme.scss';
+
+.header {
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 1rem 0;
+  }
+  .mainLogo {
+    cursor: pointer;
+    img {
+      width: 6rem;
+    }
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      color: $black;
+      font-size: $font-size-md;
+      li {
+        position: relative;
+        padding: 0.2rem;
+        a {
+          cursor: pointer;
+          transition: color 0.3s;
+          &:hover {
+            color: rgba($color: $black, $alpha: 0.5);
+          }
+        }
+      }
+    }
+    .loginWrap {
+      display: flex;
+      gap: 1rem;
+      button {
+        font-size: $font-size-xs;
+        color: $black;
+        padding: 0;
+        outline: none;
+      }
+    }
+  }
+
+  &.main {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    nav {
+      ul {
+        color: $white;
+        li {
+          a {
+            &:hover {
+              color: $white;
+            }
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.2rem;
+            width: 0%;
+            height: 0.1rem;
+            background-color: $white;
+            transition: 0.5s;
+          }
+          &:hover {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .loginWrap {
+      button {
+        color: $white;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+  .header {
+    nav {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .header {
+    .mainLogo {
+      img {
+        width: 6rem;
+      }
+    }
+    nav {
+      display: none;
+    }
+  }
+}

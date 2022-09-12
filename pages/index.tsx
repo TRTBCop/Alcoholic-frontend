@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import styles from '@styles/MainPage/MainPage.module.scss';
-import layoutStyles from '@layouts/MainLayout.module.scss';
+import layoutStyles from '@layouts/Layout.module.scss';
 import { FullPage, Slide } from 'react-full-page';
 import mainLogo from '../public/assets/img/testLogo.png';
 import { useRouter } from 'next/router';
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   return (
     <FullPage>
       <Slide className={styles.mainSlideItem}>
-        <div className={`${styles.mainSlideInner} ${layoutStyles.container}`}>
+        <div className={`${styles.mainSlideInner} ${layoutStyles.mainContainer}`}>
           <div className={styles.mainLogo}>
             <img src={mainLogo.src} alt="" />
           </div>
