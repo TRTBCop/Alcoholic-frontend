@@ -1,31 +1,50 @@
-import type { NextPage } from 'next'
-import {useRouter} from 'next/router'
+import type { NextPage } from 'next';
+import styles from '@styles/MainPage/MainPage.module.scss';
+import layoutStyles from '@layouts/Layout.module.scss';
+import { FullPage, Slide } from 'react-full-page';
+import mainLogo from '../public/assets/img/testLogo.png';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
   const router = useRouter();
-  
 
-    // 임시 페이지라서 대충 끄적여만 둡니다.
+  const goPage = (pathname: string) => {
+    router.push({
+      pathname,
+    });
+  };
+
   return (
-    <div style={{display: 'flex', flexDirection: 'column', gap: '30px', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <a onClick={() => router.push({
-        pathname: '/alcoholtype',
-      })}>
-        alcoholType 보기
-      </a>
-      <a onClick={() => router.push({
-        pathname: '/alcoholhistory',
-      })}>
-        alcoholHistory 보기
-      </a>
-      <a onClick={() => router.push({
-        pathname: '/alcoholrecipe',
-      })}>
-        alcoholrecipe 보기
-      </a>
-    </div>
+    <FullPage>
+      <Slide className={styles.mainSlideItem}>
+        <div className={`${styles.mainSlideInner} ${layoutStyles.mainContainer}`}>
+          <div className={styles.mainLogo}>
+            <img src={mainLogo.src} alt="" />
+          </div>
+          <h3 className={styles.mainText}>
+            건강한 음주를 위한
+            <br />
+            작은 습관
+          </h3>
+          <div className={styles.mainBtnWrap}>
+            <button className={styles.mainBtn} onClick={() => goPage('/alcoholtype')}>
+              술 목록
+            </button>
+            <button className={styles.mainBtn} onClick={() => goPage('/alcoholhistory')}>
+              일지 쓰기
+            </button>
+            <button className={styles.mainBtn} onClick={() => goPage('/alcoholrecipe')}>
+              레시피 보기
+            </button>
+          </div>
+        </div>
+      </Slide>
+      <Slide className={styles.mainSlideItem}></Slide>
+      <Slide className={styles.mainSlideItem}></Slide>
+    </FullPage>
   );
-  
-}
+};
 
-export default Home
+Home.displayName = 'Main';
+
+export default Home;

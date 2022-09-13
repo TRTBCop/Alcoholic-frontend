@@ -11,6 +11,12 @@
     margin: 2rem auto 3rem auto;
   }
 
+  /* 메인 페이지 */
+  .mainContainer {
+    width: 1060px;
+    margin: 2rem auto 3rem auto;
+  }
+
   /* 알코올 히스토리 작성, 수정 페이지 */
   .ahWriteContainer {
     width: 650px;
@@ -23,11 +29,29 @@
     width: 768px;
     margin: 2rem auto 3rem auto;
   }
+  .mainContainer {
+    width: 100%;
+    margin: 2rem auto 3rem auto;
+    padding: 0 2rem;
+  }
+  .ahWriteContainer {
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .md {
     width: 96%;
+    margin: 2rem auto 3rem auto;
+  }
+  .mainContainer {
+    width: 100%;
+    margin: 2rem auto 3rem auto;
+    padding: 0 2rem;
+  }
+  .ahWriteContainer {
+    width: 94%;
     margin: 2rem auto 3rem auto;
   }
 }
