@@ -1,43 +1,55 @@
+import { AlcoholTypeReview, AlcoholTypeReviewsProps } from '@api/model/alcType';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from './ATReview.module.scss';
 
-interface ReviewProps {
-    id: number;
-    username: string;
-    content: string;
-    createdAt: string;
-    liked: boolean;
-}
-
-interface AlcoholTypeReviewProps{
-    likesCount: number;
-    hatesCount: number;
-    hashtags: string[];
-    reviews: ReviewProps[];
-
-}
-
-const AlcoholeTypeReview: React.FC<AlcoholTypeReviewProps> = ({ likesCount, hatesCount, hashtags, reviews }) => {
-    const [likesReviews, setLikesReviews] = useState<ReviewProps[]>();
-    const [hatesReviews, setHatesReviews] = useState<ReviewProps[]>();
+const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infinite?: boolean }> = ({ id, likesCount, hatesCount, hashtags, reviews, infinite = false }) => {
+    const router = useRouter();
+    /** Initialize likes & hates */
+    const [likesReviews, setLikesReviews] = useState<AlcoholTypeReview[]>();
+    const [hatesReviews, setHatesReviews] = useState<AlcoholTypeReview[]>();
     useEffect(() => {
-        const likes = reviews.filter(review => review.liked);
-        const hates = reviews.filter(review => !review.liked);
+        const likes = reviews?.filter(review => review.liked);
+        const hates = reviews?.filter(review => !review.liked);
         setLikesReviews(likes);
         setHatesReviews(hates);
     }, []);
+
+    /** 리뷰 추가하는 함수 */
+    function addReview() {
+        alert('리뷰 추가');
+        
+    }
     return (
         <section className={styles.container}>
             <div className={styles.title}>술 리뷰</div>
+            <p className={styles.comment}>먼저 맛을 봐 본 사람들의 후기를 봐볼까요?</p>
             <div className={styles.hashtagList}> 
-                {hashtags.map((v) => (
+                {hashtags?.map((v) => (
                     <div className={styles.hashtag}># {v.replaceAll(' ', '_')}</div>
                 ))}
             </div>
+            <div className={styles.reviewMoreBox}>
+                {infinite ? (
+                    <a className={styles.reviewMoreButton} onClick={(e) => {
+                        e.preventDefault();
+                        addReview();
+                    }}>✏️ 리뷰쓰기</a>
+                    ):(
+                        <a className={styles.reviewMoreButton} onClick={(e) => {
+                            e.preventDefault();
+                            router.push({
+                                pathname: `/alcoholtype/detail/${id}/reviews`,
+                            })
+                        }}>🗨️ 리뷰 더보기</a>
+                )}
+            </div>
             <div className={styles.reviewListBox}>
-                <div className={styles.likesReviewBox}>
-                    <div className={styles.reviewCategoryTitle}>이 술이 <span className={styles.likesColor}>좋았던 사람</span>은 {likesCount}명이예요</div>
-                    <div className={styles.reviewBox}>
+                <div className={[styles.reviewBox, styles.likesReviewBox].join(" ")}>
+                    <div className={styles.reviewCategoryTitle}>이 술이 <span>좋았던 사람</span>은 <span>{likesCount}</span>명이예요 😍</div>
+                    <div>
                         {likesReviews?.map((v) => (
                             <div className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
@@ -47,9 +59,9 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewProps> = ({ likesCount, hate
                         ))}
                     </div>
                 </div>
-                <div className={styles.hatesReviewBox}>
-                    <div className={styles.reviewCategoryTitle}>이 술이 <span className={styles.hatesColor}>별로였던 사람</span>은 {hatesCount}명이예요</div>
-                    <div className={styles.reviewBox}>
+                <div className={[styles.reviewBox, styles.hatesReviewBox].join(" ")}>
+                    <div className={styles.reviewCategoryTitle}>이 술이 <span>별로였던 사람</span>은 <span>{hatesCount}</span>명이예요 😓</div>
+                    <div>
                         {hatesReviews?.map((v) => (
                             <div className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
@@ -60,6 +72,11 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewProps> = ({ likesCount, hate
                     </div>
                 </div>
             </div>
+            {!infinite && (
+                <button className={styles.addReviewBtn} onClick={addReview}>
+                    나도 리뷰쓰기 <FontAwesomeIcon icon={faPencil} />
+                </button>
+            )}
         </section>
     )
 };

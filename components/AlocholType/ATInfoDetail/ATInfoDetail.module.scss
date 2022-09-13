@@ -10,7 +10,7 @@
 }
 .title {
   margin: 0;
-  font-size: $font-size-xxl;
+  font-size: $font-size-xl;
   font-weight: bold;
   margin-bottom: 1rem;
   @include ellipsisText(1, $font-size-xxl);
@@ -18,4 +18,12 @@
 .basic {
   margin: 0;
   font-size: $font-size-sm;
+  font-weight: lighter;
+  @include ellipsisText(1, $font-size-xl);
+  span {
+    &:hover {
+      cursor: pointer;
+      color: $accent-color;
+    }
+  }
 }
