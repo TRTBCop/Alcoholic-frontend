@@ -1,0 +1,35 @@
+@import '~styles/theme.scss';
+
+.ReviewBox{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    gap :0.5rem;
+}
+
+.ReviewHeaderBox{
+
+}
+
+.ReviewUserName{
+    font-weight: bold;
+    font-size: $font-size-md;
+}
+
+.ReivewButton{
+    float: right;
+}
+
+.ReviewContentsbox{
+
+}
+
+.ReviewContents{
+
+}
+
+.ReviewCreateAt{
+    color: $dark-gray;
+    text-align: right;
+}
