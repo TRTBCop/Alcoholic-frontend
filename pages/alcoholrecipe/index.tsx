@@ -10,11 +10,11 @@ import { getAlcRecipe } from 'api/alcRecipe';
 import ARSearchBar from '@components/AlcoholRecipe/ARSearchBar/ARSearchBar';
 import AROrderBar from '@components/AlcoholRecipe/AROrderBar';
 
-interface AlcoholHistoryPageProps {
+interface AlcoholRecipePageProps {
   Data: AlcRecipe[];
 }
 
-const AlcoholRecipePage: NextPage<AlcoholHistoryPageProps> = (props) => {
+const AlcoholRecipePage: NextPage<AlcoholRecipePageProps> = (props) => {
     const router = useRouter();
     const { Data } = props;
     return(
@@ -32,10 +32,11 @@ const AlcoholRecipePage: NextPage<AlcoholHistoryPageProps> = (props) => {
               <ARCard 
                 key={i}
                 onClick={() =>
-                  router.push({
-                    pathname: `/alcolrecipe/detail`,
-                    query: { id: i }
-                  })}
+                  router.push({ 
+                    pathname:'/alcoholrecipe/detail/[id]',
+                    query: {id:i},
+                  })
+                }
                 {...recipeData}  />
             ))}  
           </div>
