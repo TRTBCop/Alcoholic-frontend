@@ -1,9 +1,11 @@
+@import '~styles/theme.scss';
+
 .container{
     display: flex;
     flex-direction: column;
-    width: 90%;
-    height: 10vh;
-    margin:0 auto;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
 }
 
 .inputBox{
@@ -11,13 +13,36 @@
     flex-direction: row;
     width: 100%;
     height: 10vh;
+    gap :1rem;
 }
 
 .reviewInput{
-    width: 60%;
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border-color: lightgray;
+    border-width: 2px;
+    resize: none;
+    overflow-y: hidden;
 }
 
 .reviewButton{
     width: 20%;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
 
+.reviewButton > span{
+    font-weight: bold;
+    color: white;
+    font-weight: bold;
+    font-size:$font-size-md;
+}
+
+.reviewInfo{
+    font-weight: bold;
+    font-size:$font-size-md;
+}
+.reviewInfo > span {
+    color: $accent-color;
 }
