@@ -1,11 +1,12 @@
-@import "@styles/theme.scss";
+@import '~styles/theme.scss';
 
 .searchBarBox{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 200px;
+    height: 30vh;
     padding: 5rem 0;
 
 }
@@ -19,7 +20,7 @@
 
 .searchBarInput{
     width: 80%;
-    height: 8vh;
+    height: 7vh;
     background-color: aliceblue;
     border:4px solid #4ea0d8;
     border-radius:25px;
@@ -28,3 +29,7 @@
     font-size: $font-size-md ;
 }
 
+
+.searchIcon{
+    font-size: xx-large;
+}
