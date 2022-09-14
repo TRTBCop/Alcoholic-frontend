@@ -36,7 +36,7 @@ const AlcoholTypeInfo: React.FC<AlcoholTypeProps> = ({ ...info }: AlcoholTypePro
                     </p>
                 </div>
                 <div className={styles.shareLinkBox}>
-                    <img className={styles.logo}src={'/assets/logo/kakaoTalkLogo.png'} />
+                    <img className={styles.logo}src={'/assets/logo/outside/kakaoTalkLogo.png'} />
                     <FontAwesomeIcon icon={faArrowUpRightFromSquare} onClick={copyLink} />
                 </div>
             </div>

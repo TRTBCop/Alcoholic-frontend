@@ -1,6 +1,10 @@
 import styles from './AppHeader.module.scss';
 import layoutStyles from '@layouts/Layout.module.scss';
-import mainLogo from '../../../public/assets/img/testLogo1.png';
+/** 배경 색, 상태에 따라 골라쓰면 됩니당*/
+import mainLogo from '../../../public/assets/logo/Alcoholic/AlcoholicLogo.png';
+import whiteMainLogo from '../../../public/assets/logo/Alcoholic/AlcoholicLogo_white.png';
+import OnlyWhiteMainLogo from '../../../public/assets/logo/Alcoholic/AlcoholicLogo_onlyWhite.png';
+import OnlyBlackMainLogo from '../../../public/assets/logo/Alcoholic/AlcoholicLogo_onlyBlack.png';
 import { useRouter } from 'next/router';
 
 type HeaderType = 'default' | 'main';
@@ -22,7 +26,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ headerType }) => {
     <header className={`${styles.header} ${headerType === 'main' && styles.main}`}>
       <div className={layoutStyles.mainContainer}>
         <div className={styles.mainLogo} onClick={() => goPage('/')}>
-          <img src={mainLogo.src} alt="MainLogo" />
+          {headerType === 'main' ? (<img src={whiteMainLogo.src} alt="whiteMainLogo" />) : (<img src={mainLogo.src} alt="mainLogo" />)}
         </div>
         <nav>
           <ul>
