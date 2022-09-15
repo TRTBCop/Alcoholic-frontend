@@ -20,7 +20,7 @@ const AlcoholRecipeDetailPage: NextPage<AlcoholRecipeDetailPageProps> = (props) 
         <ARDetailContents
           {...Data}>
         </ARDetailContents>
-        <ARReviewInput></ARReviewInput>
+        <ARReviewInput/>
         <div className={styles.reviewBox}>
           {Data.reviews?.map((reviewData : AlcRecipeDetailReviews, i) =>(
           <ARReview key={i}{...reviewData}></ARReview>
