@@ -3,29 +3,18 @@ export interface AlcRecipe {
     recipeName : string;
     createAt: string;
     recipeImg: string;
-    hashTags?: TagsName[];
+    hashTags?: string[];
 }
-
-export interface AlcRecipeTag{
-    recipeId: number;
-    tagNameId?: number;
-}
-
-export interface TagsName{
-    id: number;
-    tagName : string;
-}
-
 export interface AlcRecipeDetail {
     id: number;
-    writer: UserInfo,
-    likes: number,
-    views: number,
-    title: string,
-    image: string,
-    content: string,
-    createAt: string,
-    hashTags?: TagsName[]
+    writer: UserInfo;
+    likes: number;
+    views: number;
+    title: string;
+    image: string;
+    content: string;
+    createAt: string;
+    hashTags?: string[];
     reviews?:AlcRecipeDetailReviews[]
 }
 
