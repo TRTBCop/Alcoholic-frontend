@@ -1,0 +1,99 @@
+@import '~styles/theme.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+}
+
+.postInfoView{
+    width: 100%;
+    height: auto;
+    color: $dark-gray;
+}
+
+.postInfoView > span{
+    float: left;
+}
+
+.postInfoView :last-child {
+    float: right;
+}
+
+//이미지 수정 필요
+.imgBox{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+}
+
+.imgBox > Img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+//이미지 수정 필요
+
+.titleBox{
+    margin: 0 auto;   
+}
+.titleBox >  h1{
+    font-size: $font-size-xxxl;
+    font-weight: bolder;
+}
+
+.hashtagBox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 0.2rem;
+    font-size: $font-size-sm ;
+}
+
+.hashtag{
+    color: white;
+    background-color: #B7B7B7;
+    border-radius: 22px;
+    padding: 0.2rem 0.5rem;
+  }
+
+.content{
+    text-align: center;
+    font-size:  $font-size-md;
+    min-height: 200px;
+}
+
+.postEditBox{
+    color:  $dark-gray;
+}
+
+.postEditBtn {
+    text-align: right;
+}
+
+.postEditBtn > span {
+    cursor: pointer;
+    margin-left: 1%;
+} 
+
+.writerInfoBox{
+    width: 100%;
+    height: auto;
+}
+
+.writerInfoBox > img{
+    border-radius: 50%;
+    width: 5%;
+}
+
+.writerInfoBox > span{
+    font-size: $font-size-md;
+    vertical-align: middle;
+}

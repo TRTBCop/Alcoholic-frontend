@@ -1,3 +1,5 @@
+@import '~styles/theme.scss';
+
 .orderBox{
  display: flex;
  flex-direction: column;
@@ -12,6 +14,7 @@
 
 .writetext{
     cursor:pointer; 
+    float: right;
     font-weight: bold;
 }
 

@@ -10,13 +10,13 @@ import { getAlcRecipe } from 'api/alcRecipe';
 import ARSearchBar from '@components/AlcoholRecipe/ARSearchBar/ARSearchBar';
 import AROrderBar from '@components/AlcoholRecipe/AROrderBar';
 
-interface AlcoholHistoryPageProps {
-  Data: AlcRecipe[];
+interface AlcoholRecipePageProps {
+  ARListData: AlcRecipe[];
 }
 
-const AlcoholRecipePage: NextPage<AlcoholHistoryPageProps> = (props) => {
+const AlcoholRecipePage: NextPage<AlcoholRecipePageProps> = (props) => {
     const router = useRouter();
-    const { Data } = props;
+    const { ARListData } = props;
     return(
       <>
         <h1>ARCardMain</h1>
@@ -28,14 +28,14 @@ const AlcoholRecipePage: NextPage<AlcoholHistoryPageProps> = (props) => {
             <p className={styles.recipeCount}>전체(<span>4</span>)</p>
           </div>
           <div className={styles.recipeCardBox}>
-            {Data.map((recipeData: any, i) => (
+            {ARListData.map((recipeData: any, i) => (
               <ARCard 
-                key={i}
+                key={recipeData.id}
                 onClick={() =>
-                  router.push({
-                    pathname: `/alcolrecipe/detail`,
-                    query: { id: i }
-                  })}
+                  router.push({ 
+                    pathname:`/alcoholrecipe/detail/${recipeData.id}`
+                  })
+                }
                 {...recipeData}  />
             ))}  
           </div>
@@ -43,7 +43,7 @@ const AlcoholRecipePage: NextPage<AlcoholHistoryPageProps> = (props) => {
       </>
     )
 }
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async() => {
   const { data } = await getAlcRecipe();
   return {
       props: {
