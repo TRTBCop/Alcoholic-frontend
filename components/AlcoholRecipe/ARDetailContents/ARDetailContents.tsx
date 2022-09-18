@@ -1,7 +1,7 @@
-import { TagsName } from '@api/model/alcRecipe';
 import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlcRecipeDetailReviews, UserInfo } from 'api/model/alcRecipe';
+import Router, { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from './ARDetailContents.module.scss'
 
@@ -14,23 +14,29 @@ interface ARDetailInfoProps {
     image: string,
     content: string,
     createAt: string,
-    hashTags?: TagsName[],
+    hashTags?: string[],
     reviews?:AlcRecipeDetailReviews[]
 }
 
 
 
 const ARDetailContext: React.FC<ARDetailInfoProps>  = ({...detailInfo}: ARDetailInfoProps) => {
+    const router = useRouter();
+
     useEffect(() => {
         console.log('user 값이 설정됨');
         return () => {
           console.log('user 가 바뀌기 전..');
         };
       }, [detailInfo]);
+    
+      
+    const goEditPage = (id: number) => {
+        router.push({
+          pathname: `/alcoholhistory/write/${id}`
+        });
+    };
 
-    const editPage = {
-
-    }
     return(
         <div className={styles.container}>
             <div className={styles.imgBox}>
@@ -49,7 +55,7 @@ const ARDetailContext: React.FC<ARDetailInfoProps>  = ({...detailInfo}: ARDetail
             </div>
             <div className={styles.hashtagBox}>
                  {detailInfo.hashTags && detailInfo.hashTags.map((item) => (
-                    <div key={item.id} className={styles.hashtag}># {item.tagName}</div>
+                    <div key={item} className={styles.hashtag}># {item}</div>
                  ))}
             </div>
             <div className={styles.content}>
@@ -57,7 +63,7 @@ const ARDetailContext: React.FC<ARDetailInfoProps>  = ({...detailInfo}: ARDetail
             </div>
             <div className={styles.postEditBox}>
                 <div className={styles.postEditBtn}>
-                    <span >수정</span>
+                    <span onClick={()=>goEditPage(detailInfo.id)}>수정</span>
                     <span>|</span>
                     <span>삭제</span>
                 </div>
