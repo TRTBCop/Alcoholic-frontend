@@ -14,4 +14,29 @@ const getAlcHistoryDetail = (id: string) => {
   return instance.get<BaseApiResult<AlcHistoryDaysDrink>>(`/api/alc-history/${id}`);
 };
 
-export { getAlcHistory, getAlcHistoryDetail };
+const updateAlcHistory = (id: string, data: AlcHistoryDaysDrink) => {
+  return instance.put<BaseApiResult<null>>('/api/alc-history', {
+    params: {
+      id,
+      data,
+    },
+  });
+};
+
+const addAlcHistory = (data: AlcHistoryDaysDrink) => {
+  return instance.post<BaseApiResult<null>>('/api/alc-history', {
+    params: {
+      data,
+    },
+  });
+};
+
+const deleteAlcHistory = (id: string) => {
+  return instance.delete<BaseApiResult<null>>('/api/alc-history', {
+    params: {
+      id,
+    },
+  });
+};
+
+export { getAlcHistory, getAlcHistoryDetail, updateAlcHistory, addAlcHistory, deleteAlcHistory };

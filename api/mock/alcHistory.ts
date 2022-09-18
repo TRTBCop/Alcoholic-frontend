@@ -96,3 +96,24 @@ mockInstance.onGet(/\/api\/alc-history\//).reply<BaseApiResult<AlcHistoryDaysDri
   message: '술 기록 상세 mock',
   data: data[0],
 });
+
+mockInstance.onPut('/api/alc-history').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '술 기록 수정 mock',
+  data: null,
+});
+
+mockInstance.onPost('/api/alc-history').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '술 기록 생성 mock',
+  data: null,
+});
+
+mockInstance.onDelete('/api/alc-history').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '술 기록 삭제 mock',
+  data: null,
+});
