@@ -1,0 +1,29 @@
+@import '~styles/theme.scss';
+
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    background-color: $dark-gray;
+    padding: 3rem;
+    padding-left: 10rem;
+    gap :5rem;
+}
+
+.mainLogoBox{
+    height: auto;
+    cursor: pointer;
+    img {
+        margin-left : auto;
+        margin-right : auto;
+        object-fit: contain;
+        width: 10rem;
+    }
+}
+
+.infoBox > p{
+    color: azure;
+}
+
+
