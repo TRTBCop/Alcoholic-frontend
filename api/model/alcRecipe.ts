@@ -5,6 +5,8 @@ export interface AlcRecipe {
     recipeImg: string;
     hashTags?: string[];
 }
+
+
 export interface AlcRecipeDetail {
     id: number;
     writer: UserInfo;
@@ -14,20 +16,20 @@ export interface AlcRecipeDetail {
     image: string;
     content: string;
     createAt: string;
-    hashTags?: string[];
-    reviews?:AlcRecipeDetailReviews[]
+    hashTags?: string[]
+    reviews?:AlcRecipeDetailReviews[];
 }
 
 export interface AlcRecipeDetailReviews{
     id: number;
-    user:UserInfo;
+    user: string;
     reviewContents: string;
     createAt: string;
 }
 
 export interface UserInfo{
     id: number;
-    email?:string;
+    email?: string;
     userName: string;
     userProfileImg: string;
     nickName?: string;

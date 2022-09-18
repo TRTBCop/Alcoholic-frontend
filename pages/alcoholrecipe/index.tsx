@@ -1,7 +1,6 @@
 import styles from '@styles/AlcoholRecipe/AlcoholRecipe.module.scss';
 import AlcoholRecipeLayout from '@layouts/Layout';
 import ARCard from "@components/AlcoholRecipe/ARCard";
-import Link from 'next/link';
 
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
@@ -17,18 +16,17 @@ interface AlcoholRecipePageProps {
 const AlcoholRecipePage: NextPage<AlcoholRecipePageProps> = (props) => {
     const router = useRouter();
     const { ARListData } = props;
+    
     return(
       <>
-        <h1>ARCardMain</h1>
-
         <div className={styles.container}>
           <div className={styles.recipeHeader}>
             <ARSearchBar/>
             <AROrderBar/>
-            <p className={styles.recipeCount}>전체(<span>4</span>)</p>
+            <p className={styles.recipeCount}>전체(<span>{ARListData.length}</span>)</p>
           </div>
           <div className={styles.recipeCardBox}>
-            {ARListData.map((recipeData: any, i) => (
+            {ARListData.map((recipeData:AlcRecipe) => (
               <ARCard 
                 key={recipeData.id}
                 onClick={() =>
@@ -36,18 +34,19 @@ const AlcoholRecipePage: NextPage<AlcoholRecipePageProps> = (props) => {
                     pathname:`/alcoholrecipe/detail/${recipeData.id}`
                   })
                 }
-                {...recipeData}  />
+                {...recipeData}/>
             ))}  
           </div>
         </div>
       </>
     )
 }
+
 export const getServerSideProps: GetServerSideProps = async() => {
   const { data } = await getAlcRecipe();
   return {
       props: {
-        Data: data.data,
+        ARListData: data.data,
       },
     };
   };

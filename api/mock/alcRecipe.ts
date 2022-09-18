@@ -4,7 +4,7 @@ import { AlcRecipe, AlcRecipeDetail, UserInfo } from 'api/model/alcRecipe';
 
 const alcRecipeData: AlcRecipe[] = [
   {
-    id: 1,
+    id: 0,
     recipeName: '갓파더',
     createAt: '2022-09-01',
     recipeImg:'https://mblogthumb-phinf.pstatic.net/20140509_94/ss6042404_1399608811485geC9m_JPEG/Godfather.jpg?type=w2',
@@ -12,12 +12,12 @@ const alcRecipeData: AlcRecipe[] = [
       '계피',
       '클래식',
       '묵직함',
-       '계피',
+      '커피',
       ]
   },
 
   {
-    id: 2,
+    id: 1,
     recipeName: '잭콕',
     createAt: '2022-09-01',
     recipeImg:'https://t1.daumcdn.net/cfile/blog/234259345179E1BA0E',
@@ -25,11 +25,11 @@ const alcRecipeData: AlcRecipe[] = [
       '계피',
       '클래식',
       '묵직함',
-       '계피',
+      '커피',
     ]
   },
   {
-    id: 3,
+    id: 2,
     recipeName: '네그로니',
     createAt: '2022-09-01',
     recipeImg:
@@ -38,12 +38,12 @@ const alcRecipeData: AlcRecipe[] = [
         '계피',
         '클래식',
         '묵직함',
-         '계피',
+        '커피',
     ]
   },
   {
-    id: 4,
-    recipeName: '갓파더',
+    id: 3,
+    recipeName: '갓파더222',
     createAt: '2022-09-01',
     recipeImg:
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
@@ -51,7 +51,20 @@ const alcRecipeData: AlcRecipe[] = [
         '계피',
         '클래식',
         '묵직함',
-         '계피',
+        '커피',
+    ]
+  },
+  {
+    id: 4,
+    recipeName: '갓파더333',
+    createAt: '2022-09-01',
+    recipeImg:
+      'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+    hashTags: [
+        '계피',
+        '클래식',
+        '묵직함',
+        '커피',
     ]
   },
 ];
@@ -87,7 +100,7 @@ const user : UserInfo[] = [
 const alcRecipeDetailData: AlcRecipeDetail[] = [
   {
       id: 0,
-      writer: user[1] ,
+      writer: user[0],
       likes: 1011,
       views: 992,
       title: "갓파더",
@@ -98,62 +111,64 @@ const alcRecipeDetailData: AlcRecipeDetail[] = [
         '계피',
         '클래식',
         '묵직함',
-         '계피',
+        '커피',
       ],
-       reviews:[
-          {
-              id: 0,
-              user: user[2],
-              reviewContents: "갓파더 맛있어요1111.",
-              createAt:"2022-03-14"
-          },
-          {
-              id: 1,
-              user: user[3],
-              reviewContents: "갓파더 맛있어요2222.",
-              createAt:"2022-03-14"
-          },      {
-              id: 2,
-              user: user[4],
-              reviewContents: "갓파더 맛있어요3333.",
-              createAt:"2022-03-14"
-          }
-       ]
+      reviews:[
+        {
+          id: 0,
+          user: "알콜중독0",
+          reviewContents: "갓파더 맛있어요1111.",
+          createAt:"2022-03-14"
+        },
+        {
+          id: 1,
+          user: "알콜중독0",
+
+          reviewContents: "갓파더 맛있어요2222.",
+          createAt:"2022-03-14"
+        },      
+        {
+          id: 2,
+          user: "알콜중독0",
+          reviewContents: "갓파더 맛있어요3333.",
+          createAt:"2022-03-14"
+        }
+      ]
   },
   {
-      id: 1,
-      writer: user[3],
-      likes: 1,
-      views: 1000,
-      title: "갓마더",
-      image: 'https://w.namu.la/s/6a76f4d37ce9de0015a56dd7a2b15e703767ecc327417a44f8b0db9fe6ec9ce08ae740ff67c2e30bfe966b24be4392f69b0a9169e09cef9eb9587fc890b0a605f144c75f67b100e50a7cde2831eb9aee0074105ad6ec9de6817f4f8eab32fac1',
-      content: "안녕하세요 갓마더 래시피 정보입니다. ",
-      createAt:"2022-05-16",
-      hashTags: [
-        '계피',
-        '클래식',
-        '묵직함',
-         '계피',
-      ],
-       reviews:[
-          {
-              id: 0,
-              user: user[3],
-              reviewContents: "갓파더 맛있어요.",
-              createAt:"2022-03-14"
-          },
-          {
-              id: 1,
-              user: user[4],
-              reviewContents: "갓파더 맛있어요2222.",
-              createAt:"2022-03-14"
-          },      {
-              id: 2,
-              user: user[2],
-              reviewContents: "갓파더 맛있어요3333.",
-              createAt:"2022-03-14"
-          }
-       ]
+    id: 1,
+    writer: user[0],
+    likes: 1,
+    views: 1000,
+    title: alcRecipeData[1].recipeName,
+    image: 'https://w.namu.la/s/6a76f4d37ce9de0015a56dd7a2b15e703767ecc327417a44f8b0db9fe6ec9ce08ae740ff67c2e30bfe966b24be4392f69b0a9169e09cef9eb9587fc890b0a605f144c75f67b100e50a7cde2831eb9aee0074105ad6ec9de6817f4f8eab32fac1',
+    content: "안녕하세요 갓마더 래시피 정보입니다. ",
+    createAt:"2022-05-16",
+    hashTags: [
+      '계피',
+      '클래식',
+      '묵직함',
+      '커피',
+    ],
+    reviews:[
+        {
+            id: 0,
+            user: "알콜중독0",
+            reviewContents: "갓파더 맛있어요.",
+            createAt:"2022-03-14"
+        },
+        {
+            id: 1,
+            user: "알콜중독0",
+            reviewContents: "갓파더 맛있어요2222.",
+            createAt:"2022-03-14"
+        },      {
+            id: 2,
+             user: "알콜중독0",
+            reviewContents: "갓파더 맛있어요3333.",
+            createAt:"2022-03-14"
+        }
+    ]
   },
 ]
 
@@ -165,8 +180,7 @@ mockInstance.onGet('/api/alc-recipe').reply<BaseApiResult<AlcRecipe[]>>(200, {
   data: alcRecipeData,
 });
 
-
-mockInstance.onGet('/\/api/\alc-recipe-detail/').reply<BaseApiResult<AlcRecipeDetail>>(200, {
+mockInstance.onGet(/api\/alc-recipe\/detail\//).reply<BaseApiResult<AlcRecipeDetail>>(200, {
   code: 200,
   success: true,
   message: '칵테일 레시피 리스트 mock',

@@ -8,6 +8,7 @@
     width: 100%;
     height: 30vh;
     padding: 5rem 0;
+    max-height: 50px;
 
 }
 
@@ -21,15 +22,16 @@
 .searchBarInput{
     width: 80%;
     height: 7vh;
-    background-color: aliceblue;
-    border:4px solid #4ea0d8;
-    border-radius:25px;
+    background-color: #f4fff4;
+    border:2px solid $accent-color;
+    border-radius:25rem;
     text-align: left;
-    padding-left: 5rem;
+    padding-left: 1rem;
     font-size: $font-size-md ;
+    box-shadow: 8px 5px 5px rgba($accent-color ,0.2); ;
 }
 
 
-.searchIcon{
+.Icon{
     font-size: xx-large;
 }

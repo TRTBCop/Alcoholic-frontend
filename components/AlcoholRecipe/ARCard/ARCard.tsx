@@ -1,4 +1,3 @@
-import { AlcRecipeTags } from 'api/model/alcRecipe';
 import styles from './ARCard.module.scss';
 
 interface ARCardTypeProps {
@@ -6,7 +5,7 @@ interface ARCardTypeProps {
   recipeName : string;
   createAt: string;
   recipeImg: string;
-  hashTags?: AlcRecipeTags[];
+  hashTags?: string[];
 }
 
 
@@ -14,6 +13,7 @@ interface ARCardTypeProps {
 interface ARCardProps extends ARCardTypeProps{
   onClick: ()=>void;
 }
+
 
 const ARCard: React.FC<ARCardProps> = ({onClick, ...props }) => {
     return (
@@ -29,7 +29,7 @@ const ARCard: React.FC<ARCardProps> = ({onClick, ...props }) => {
         </div>
         <div className={styles.hashtagBox}>
           {props.hashTags && props.hashTags.map((item) => (
-            <div key={item.id} className={styles.hashtag}># {item.tagName}</div>
+            <div key={item} className={styles.hashtag}># {item}</div>
           ))}
         </div>
       </div>

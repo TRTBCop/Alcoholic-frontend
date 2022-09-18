@@ -18,9 +18,13 @@ const ARSearchBar = () => {
     return(
         <div className={styles.searchBarBox}>
             <div className={styles.searchBar}>
+                <button onClick={onSearch}>                
+                    <FontAwesomeIcon className={styles.Icon} icon={faSearch} onClick={onSearch}/>
+                </button>
                 <input className={styles.searchBarInput} type="text" placeholder="Search" onKeyDown={onSearch} />
-                <FontAwesomeIcon icon={faSearch} onClick={onSearch}/>
-                <FontAwesomeIcon icon={faXmark} onClick={onReset}/>
+                <button onClick={onSearch}>                
+                    <FontAwesomeIcon className={styles.Icon} icon={faXmark} onClick={onReset} />
+                </button>
             </div>
         </div>
     )

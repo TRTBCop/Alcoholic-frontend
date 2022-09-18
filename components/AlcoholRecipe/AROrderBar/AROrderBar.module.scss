@@ -16,9 +16,15 @@
     cursor:pointer; 
     float: right;
     font-weight: bold;
+    color: $accent-color;
+
 }
 
 .m {
     size: 2px;
     background: #ccc;
   }
+
+.pointColor{
+    color: $accent-color;
+}
