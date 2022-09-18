@@ -45,9 +45,9 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({ itemData, isS
               {/* ########### 팝업 타이틀 ########### */}
               <h3 className={styles.ahDetailPopupTitle}>
                 {formatDate(itemData.write_date)}
-                <button onClick={hideDetailModal} className={styles.ahDetailPopupClose}>
+                {/* <button onClick={hideDetailModal} className={styles.ahDetailPopupClose}>
                   <FontAwesomeIcon icon={faXmark} />
-                </button>
+                </button> */}
               </h3>
               <section className={styles.ahDetailPopupContent}>
                 {/* ########### 마신 술 리스트 ########### */}
