@@ -4,18 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import AhButton from '@components/AlcoholHistory/AhButton';
 import { useRouter } from 'next/router';
-import { AlcHistoryDaysDrink, AlcHistoryDrunked } from '@api/model/alcHistory';
+import { AlcHistoryDaysDrink, AlcHistoryFormData } from '@api/model/alcHistory';
+import { updateAlcHistory, addAlcHistory, deleteAlcHistory } from '@api/alcHistory';
 
 interface AlcoholHistoryWriteFormProps {
   itemData: AlcHistoryDaysDrink | null;
-}
-
-interface FormData {
-  writeDateYear: number;
-  writeDateMonth: number;
-  writeDateDay: number;
-  alcoholList: AlcHistoryDrunked[];
-  memo: string;
 }
 
 const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemData }) => {
@@ -28,7 +21,7 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
     days: Array.from({ length: 31 }, (v, i) => i + 1),
   });
 
-  const [formData, setFormdata] = useState<FormData>({
+  const [formData, setFormdata] = useState<AlcHistoryFormData>({
     writeDateYear: 0,
     writeDateMonth: 0,
     writeDateDay: 0,
@@ -78,7 +71,6 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
     });
   };
 
-  /** 폼 데이터 세팅 */
   const initFormData = () => {
     if (!itemData) return;
 
@@ -91,6 +83,81 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
       alcoholList: itemData.alcohol_list,
       memo: itemData.memo,
     });
+  };
+
+  const deleteAHitem = async () => {
+    try {
+      if (confirm('정말 삭제 하시나요?')) {
+        if (!itemData?.id) return;
+        const { data } = await deleteAlcHistory(itemData.id);
+        if (data.code === 200) {
+          alert('삭제되었어요');
+          router.push('/alcoholhistory');
+        } else {
+          alert(`삭제가 정상적으로 진행되지 않았어요 에러코드: ${data.code}`);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateAHitem = async () => {
+    try {
+      if (formValidation()) {
+        if (!itemData?.id) return;
+
+        const { data } = await updateAlcHistory(itemData.id, formData);
+        if (data.code === 200) {
+          alert('일지를 수정 했어요');
+          router.push('/alcoholhistory');
+        } else {
+          alert(`일지 수정이 정상적으로 진행되지 않았어요 에러코드: ${data.code}`);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addAHitem = async () => {
+    try {
+      if (formValidation()) {
+        const { data } = await addAlcHistory(formData);
+
+        if (data.code === 200) {
+          alert('일지를 등록 했어요');
+          router.push('/alcoholhistory');
+        } else {
+          alert(`일지 작성이 정상적으로 진행되지 않았어요 에러코드: ${data.code}`);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const formValidation = () => {
+    if (!formData.writeDateDay || !formData.writeDateMonth || !formData.writeDateYear) {
+      alert('날짜를 모두 입력하세요');
+      return false;
+    }
+
+    if (formData.alcoholList.length <= 0) {
+      alert('마신 술은 한 가지 이상 등록해 주세요');
+      return false;
+    }
+
+    let checkTemp = false;
+    formData.alcoholList.forEach(data => {
+      if (data.drunked <= 0 || !data.drunked) checkTemp = true;
+    });
+    if (checkTemp) {
+      alert('마신 술의 양을 기입해 주세요');
+      return false;
+    }
+
+    return true;
   };
 
   /** 히스토리 메인 페이지로 이동 */
@@ -175,7 +242,20 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
         </div>
       </section>
       <section className={styles.hsWriteBtn}>
-        <AhButton buttonType="btnType2">작성완료</AhButton>
+        {itemData ? (
+          <>
+            <AhButton buttonType="btnType2" clickEvent={updateAHitem}>
+              수정
+            </AhButton>
+            <AhButton buttonType="btnType4" clickEvent={deleteAHitem}>
+              삭제
+            </AhButton>
+          </>
+        ) : (
+          <AhButton buttonType="btnType2" clickEvent={addAHitem}>
+            작성완료
+          </AhButton>
+        )}
       </section>
       <AhButton buttonType="btnType3" clickEvent={goMainPage}>
         목록

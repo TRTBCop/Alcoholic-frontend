@@ -1,6 +1,6 @@
 import { instance } from './index';
 import { BaseApiResult } from './model/baseModel';
-import { AlcHistoryDaysDrink } from './model/alcHistory';
+import { AlcHistoryDaysDrink, AlcHistoryFormData } from './model/alcHistory';
 
 const getAlcHistory = (page = 1) => {
   return instance.get<BaseApiResult<AlcHistoryDaysDrink[]>>('/api/alc-history', {
@@ -14,7 +14,7 @@ const getAlcHistoryDetail = (id: string) => {
   return instance.get<BaseApiResult<AlcHistoryDaysDrink>>(`/api/alc-history/${id}`);
 };
 
-const updateAlcHistory = (id: string, data: AlcHistoryDaysDrink) => {
+const updateAlcHistory = (id: string, data: AlcHistoryFormData) => {
   return instance.put<BaseApiResult<null>>('/api/alc-history', {
     params: {
       id,
@@ -23,7 +23,7 @@ const updateAlcHistory = (id: string, data: AlcHistoryDaysDrink) => {
   });
 };
 
-const addAlcHistory = (data: AlcHistoryDaysDrink) => {
+const addAlcHistory = (data: AlcHistoryFormData) => {
   return instance.post<BaseApiResult<null>>('/api/alc-history', {
     params: {
       data,
