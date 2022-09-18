@@ -17,13 +17,11 @@ const AlcoholRecipeDetailPage: NextPage<AlcoholRecipeDetailPageProps> = (props) 
     return(
       <div className={styles.container}>
         <h1>디테일 페이지</h1>
-        <ARDetailContents
-          {...Data}>
-        </ARDetailContents>
+        <ARDetailContents {...Data}/>
         <ARReviewInput/>
         <div className={styles.reviewBox}>
-          {Data.reviews?.map((reviewData : AlcRecipeDetailReviews, i) =>(
-          <ARReview key={i}{...reviewData}></ARReview>
+          {Data.reviews?.map((reviewData : AlcRecipeDetailReviews) =>(
+          <ARReview key={reviewData.id}{...reviewData}></ARReview>
           ))}
         </div>
       </div>
@@ -32,11 +30,11 @@ const AlcoholRecipeDetailPage: NextPage<AlcoholRecipeDetailPageProps> = (props) 
 
 export default AlcoholRecipeDetailPage;
 
-export const getServerSideProps: GetServerSideProps = async context => {
-    const { data } = await getAlcRecipeDetail(parseInt(context.query.id as string));
+export const getServerSideProps: GetServerSideProps = async (context)=> {
+    const { data } = await getAlcRecipeDetail(context.query.id as string);
     return {
       props: {
         Data: data.data,
-      },
+      }
     };
   };
