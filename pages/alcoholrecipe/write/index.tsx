@@ -1,4 +1,4 @@
-import styles from '@styles/AlcoholRecipe/Al.module.scss';
+import styles from '@styles/AlcoholRecipe/AlcoholRecipe.module.scss';
 import { AlcRecipe } from "api/model/alcRecipe";
 import { NextPage } from "next/types";
 
