@@ -1,111 +1,57 @@
 import AlcoholCard from '@components/AlocholType/ATCard';
-import { NextPage } from 'next';
-import { AlcoholTypeEntity } from 'types/entity';
+import { GetServerSideProps, NextPage } from 'next';
+import { AlcoholTypeProps } from '@api/model/alcType';
 import styles from '@styles/AlcoholType/ATPageStyle.module.scss';
 import layoutStyles from '@layouts/Layout.module.scss';
 import SearchBar from '@components/AlocholType/ATSearchBar';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { getAlcTypes } from './../../api/alcType';
 
-// TEST CASE
-const alcoholCardTest = [
-  {
-      id: 1,
-      name: 'Hendrick\'s Gin 어디까지 글자가 늘어나는 거예요??? 어디까지 늘어날까요?? 어디까지 늘어나는지 아시나요?? 어디까지 가능한가요?',
-      category: '진',
-      degree: 44,
-      drinkSize: 700,
-      image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      minPrice: 43490,
-      maxPrice: 60000,
-      hashtags: [
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-      ]
-    },
-    {
-      id: 2,
-      name: 'Hendrick\'s Gin',
-      category: '진',
-      degree: 44,
-      drinkSize: 700,
-      image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      minPrice: 43490,
-      maxPrice: 60000,
-      hashtags: [
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-      ]
-    },
-    {
-      id: 3,
-      name: 'Hendrick\'s Gin',
-      category: '진',
-      degree: 44,
-      drinkSize: 700,
-      image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
-      minPrice: 43490,
-      maxPrice: 60000,
-      hashtags: [
-        '시원한 오이향' ,
-        '시원한 오이향' ,
-        '시원한 오이향' ,
-        '시원한 오이향' ,
-        '시원한 오이향' ,
-        '깔끔함',
-        '부드러워요',
-      ]
-    },
-];
-  
-const AlcoholTypePage: NextPage = () => {
+
+const AlcoholTypePage: NextPage<{ ATListData: AlcoholTypeProps[] }> = ({ATListData}) => {
   const router = useRouter();
 
   return (
     <div className={layoutStyles.md}>
       <SearchBar />
-      <h3 className={styles.cardListTitle}>당신을 위한 추천! {'>'} </h3>
+      <h3 className={styles.cardListTitle}>당신을 위한 추천! 😉</h3>
+      <p className={styles.comment}>당신에게 맞는 술을 추천해드려요</p>
       <div className={styles.cardListMain}>
-        {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
+        {ATListData?.map((alcoholCard: AlcoholTypeProps) => (
           <AlcoholCard 
             key={alcoholCard.id}
-            type={'md'} 
             onClick={() =>
               router.push({
                 pathname: `/alcoholtype/detail/${alcoholCard.id}`,
-                query: { id: alcoholCard.id }
               })}
             {...alcoholCard} />
             ))}
       </div>
-      <h3 className={styles.cardListTitle}>요즘 핫해요 {'>'} </h3>
+      <h3 className={styles.cardListTitle}>요즘 핫해요 🔥</h3>
+      <p className={styles.comment}>최근 들어 사람들이 많이 찾는 술이예요</p>
       <div className={styles.cardListMain}>
-      {alcoholCardTest.map((alcoholCard: AlcoholTypeEntity) => (
+      {ATListData?.map((alcoholCard: AlcoholTypeProps) => (
           <AlcoholCard
             key={alcoholCard.id}
-            type={'md'} 
             onClick={() =>
               router.push({
-                pathname: `/alcoholtype/detail`,
-                query: { id: alcoholCard.id }
+                pathname: `/alcoholtype/detail/${alcoholCard.id}`,
               })}
             {...alcoholCard} />
           ))}
       </div>
     </div>
-  )}
+  )
+}
+  
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await getAlcTypes();
+  return {
+    props: {
+      ATListData: data.data,
+    },
+  };
+};
 
 export default AlcoholTypePage;

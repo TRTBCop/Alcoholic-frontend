@@ -137,3 +137,48 @@
   right: 1rem;
   font-size: $font-size-xl;
 }
+
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+  .ahDetailPopup {
+    width: 98%;
+    height: 98%;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .ahDetailPopup {
+    width: 98%;
+    height: 98%;
+  }
+  .ahDetailPopupInner {
+    width: 95%;
+  }
+  .ahDetailPopupTitle {
+    font-size: $font-size-lg;
+    margin-bottom: 2rem;
+  }
+  .ahDetailPopupContent {
+    gap: 2rem;
+    h3 {
+      font-size: $font-size-md;
+      margin-bottom: 1rem;
+    }
+  }
+  .ahDetailDrunkedAddedImg {
+    position: relative;
+    height: 180px;
+    margin-bottom: 1rem;
+
+    & > figcaption {
+      padding: 0.5rem 0;
+      font-size: $font-size-xs;
+    }
+
+    & > figcaption > span {
+      font-size: $font-size-xxs;
+    }
+  }
+  .ahDetailDrunkedAddedContent {
+    font-size: $font-size-xxs;
+  }
+}
