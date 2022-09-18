@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: [ ubuntu-latest, windows-2019, macos-latest]
 
     strategy:
       matrix:
@@ -26,6 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
+    - name: npm ci
+      run: npm ci
+    - name: npm run build
+      run: npm run build    
     - run: npm test
