@@ -28,6 +28,7 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: |
+        npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"      
         if [ -e yarn.lock ]; then
         yarn install --frozen-lockfile
         elif [ -e package-lock.json ]; then
