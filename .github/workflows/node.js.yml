@@ -29,7 +29,7 @@ jobs:
     - name: Install Dependencies
       run: |
         npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"
-        npm ci
+        yarn install --frozen-lockfile    
     - name: npm run build
       run: npm run build    
     - run: npm test
