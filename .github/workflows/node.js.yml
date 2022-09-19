@@ -41,11 +41,12 @@ jobs:
           key: ${{ runner.os }}-Node-v${{ matrix.node-version }}-Next-js-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-Node-v${{ matrix.node-version }}-Next-js-${{ hashFiles('**/yarn.lock') }}-
+
       - name: Install dependencies
         if: |
           steps.yarn-cache.outputs.cache-hit != 'true'
         run: | 
-          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"
+          npm config set '//npm.fontawesome.com/:_authToken = "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"'
           yarn install
           
 
