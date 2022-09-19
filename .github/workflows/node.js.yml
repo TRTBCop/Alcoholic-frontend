@@ -43,6 +43,7 @@ jobs:
             ${{ runner.os }}-Node-v${{ matrix.node-version }}-Next-js-${{ hashFiles('**/yarn.lock') }}-
       - name: Install dependencies
         if: |
+          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"
           steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
