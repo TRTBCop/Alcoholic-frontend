@@ -14,3 +14,11 @@ export interface AlcHistoryDrunked {
   alcohol_intake: number;
   alcohol_image: string;
 }
+
+export interface AlcHistoryFormData {
+  writeDateYear: number;
+  writeDateMonth: number;
+  writeDateDay: number;
+  alcoholList: AlcHistoryDrunked[];
+  memo: string;
+}
