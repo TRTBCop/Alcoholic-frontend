@@ -1,4 +1,4 @@
-import AppHeader from '@components/common/AppHeader';
+import AppHeader from '@components/Common/AppHeader';
 
 const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children }) => {
   return (
