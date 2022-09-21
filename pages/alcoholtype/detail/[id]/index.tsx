@@ -3,7 +3,7 @@ import AlcoholTypeInfo from '@components/AlocholType/ATInfo';
 import AlcoholTypeDetailInfo from '@components/AlocholType/ATInfoDetail';
 import AlcoholTypesimilarList from '@components/AlocholType/ATSimilarList';
 import AlcoholTypeReview from '@components/AlocholType/ATReview';
-import layoutStyles from '@layouts/layout.module.scss';
+import layoutStyles from '@layouts/Layout.module.scss';
 import { GetServerSideProps, NextPage } from 'next';
 import { getAlcType, getAlcTypeDetail, getAlcTypeReviews, getAlcTypes, getAlcTypeSimilar } from '@api/alcType';
 import { AlcoholTypeProps, AlcoholTypeReviewsProps, AlcoholDetailInfoProps } from '@api/model/alcType';
