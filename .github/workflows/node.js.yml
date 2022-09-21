@@ -47,6 +47,7 @@ jobs:
         if: |
           steps.yarn-cache.outputs.cache-hit != 'true'
         run: | 
+          npm config set "@fortawesome:registry" https://npm.fontawesome.com/
           npm config set //npm.fontawesome.com/:_authToken=${FONTAWESOME_NPM_AUTH_TOKEN}
           yarn install
         env:
