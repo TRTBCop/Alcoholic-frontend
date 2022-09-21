@@ -1,6 +1,6 @@
-import AppFooter from '@components/Common/AppFooter';
+import AppFooter from '@components/common/AppFooter';
 import styles from './Layout.module.scss';
-import AppHeader from '@components/Common/AppHeader';
+import AppHeader from '@components/common/AppHeader';
 
 const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children }) => {
   return (

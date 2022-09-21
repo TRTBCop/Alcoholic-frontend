@@ -17,32 +17,31 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Get Yarn cache directory path
+      - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo '::set-output name=dir::$(yarn config get cacheFolder)'
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - name: Cache Yarn cache files
-        uses: actions/cache@v3
-        id: yarn-cache
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-Node-v${{ matrix.node-version }}-Yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-Node-v${{ matrix.node-version }}-Yarn-
+            ${{ runner.os }}-yarn-
 
-      - name: Cache Next.js cache files
-        uses: actions/cache@v3
-        id: next-js-cache
-        with:
-          path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-Node-v${{ matrix.node-version }}-Next-js-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-Node-v${{ matrix.node-version }}-Next-js-${{ hashFiles('**/yarn.lock') }}-
-            
+      uses: actions/cache@v2
+      with:
+        # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
+        path: |
+          ~/.npm
+          ${{ github.workspace }}/.next/cache
+        # Generate a new cache whenever packages or source files change.
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        # If source files changed but packages didn't, rebuild from a prior cache.
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+          
+      
       - name: Install dependencies
         if: |
           steps.yarn-cache.outputs.cache-hit != 'true'
