@@ -16,7 +16,6 @@ const alcRecipeData: AlcRecipe[] = [
       '묵직함',
       '커피',
       ],
-      deleteYN : 'N',
   },
 
   {
@@ -32,7 +31,6 @@ const alcRecipeData: AlcRecipe[] = [
       '묵직함',
       '커피',
     ],
-    deleteYN : 'N',
   },
   {
     id: 2,
@@ -48,14 +46,13 @@ const alcRecipeData: AlcRecipe[] = [
         '묵직함',
         '커피',
     ],
-    deleteYN : 'N',
   },
   {
     id: 3,
     likes: 1,
     views: 1000,
     recipeName: '갓파더222',
-    createAt: '2022-09-01',
+    createAt: '2022-09-30',
     recipeImg:
       'https://mblogthumb-phinf.pstatic.net/20140509_94/ss6042404_1399608811485geC9m_JPEG/Godfather.jpg?type=w2',
     hashTags: [
@@ -64,7 +61,6 @@ const alcRecipeData: AlcRecipe[] = [
         '묵직함',
         '커피',
     ],
-    deleteYN : 'N',
   },
   {
     id: 4,
@@ -80,7 +76,6 @@ const alcRecipeData: AlcRecipe[] = [
         '묵직함',
         '커피',
     ],
-    deleteYN : 'N',
   },
 ];
 
@@ -273,56 +268,78 @@ const alcRecipeDetailData: AlcRecipeDetail[] = [
   },
 ]
 
-
 mockInstance.onGet('/api/alc-recipe').reply<BaseApiResult<AlcRecipe[]>>(200, {
   code: 200,
   success: true,
-  message: '칵테일 레시피 리스트 mock',
+  message: '칵테일 레시피 리스트 조회 요청 mock',
   data: alcRecipeData,
 });
 
 mockInstance.onGet(/api\/alc-recipe\/detail\//).reply<BaseApiResult<AlcRecipeDetail>>(200, {
   code: 200,
   success: true,
-  message: '칵테일 레시피 리스트 mock',
+  message: '칵테일 레시피 디테일 조회 요청 mock',
   data: alcRecipeDetailData[0],
 });
 
-mockInstance.onGet('/api/alc-recipe-search').reply<BaseApiResult<AlcRecipeDetail>>(200, {
+//보류
+mockInstance.onGet(/api\/alc-recipe\/write\//).reply<BaseApiResult<AlcRecipeDetail>>(200, {
   code: 200,
   success: true,
-  message: '검색 칵테일 레시피 리스트 mock',
+  message: '칵테일 레시피 디테일 조회 요청 mock',
   data: alcRecipeDetailData[0],
 });
 
-
-mockInstance.onPut('/api/alc-history').reply<BaseApiResult<null>>(200, {
+mockInstance.onGet('/api/alc-recipe-search').reply<BaseApiResult<AlcRecipe[]>>(200, {
   code: 200,
   success: true,
-  message: '술 기록 수정 mock',
-  data: null,
+  message: '칵테일 레시피 검색 조회 요청 mock',
+  data: alcRecipeData,
 });
 
-mockInstance.onPost('/api/alc-history').reply<BaseApiResult<null>>(200, {
-  code: 200,
-  success: true,
-  message: '술 기록 생성 mock',
-  data: null,
-});
 
-mockInstance.onDelete('/api/alc-history').reply<BaseApiResult<null>>(200, {
+mockInstance.onPut(/api\/alc-recipe\/detail\//).reply<BaseApiResult<null>>(200, {
   code: 200,
   success: true,
-  message: '술 기록 삭제 mock',
+  message: '칵테일 레시피 정보 수정 요청 mock',
   data: null,
 });
 
 
+mockInstance.onPut('/api/alc-recipe-review').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '리뷰 정보 수정 요청 mock',
+  data: null,
+});
+
+mockInstance.onDelete(/api\/alc-recipe\/detail\//).reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '칵테일 레시피 정보 삭제 요청 mock',
+  data: null,
+});
 
 
-/*
-put update
-get select
-post create
-delete put 으로 대체
-*/
+mockInstance.onDelete('/api/alc-recipe-review').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '리뷰 정보 삭제 요청 mock',
+  data: null,
+});
+
+
+mockInstance.onPost('/api/alc-recipe/wirte').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '칵테일 레시피 생성 요청 mock',
+  data: null,
+});
+
+mockInstance.onPost('/api/alc-recipe-review').reply<BaseApiResult<null>>(200, {
+  code: 200,
+  success: true,
+  message: '리뷰 정보 생성 요청 mock',
+  data: null,
+});
+

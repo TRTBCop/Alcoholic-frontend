@@ -1,3 +1,4 @@
+
 export interface AlcRecipe {
     id: number;
     likes: number;
@@ -6,7 +7,6 @@ export interface AlcRecipe {
     createAt: string;
     recipeImg: string;
     hashTags?: string[];
-    deleteYN : string;
 }
 
 
