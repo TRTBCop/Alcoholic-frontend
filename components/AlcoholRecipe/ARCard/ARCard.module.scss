@@ -4,64 +4,136 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 10% 5%;
-  width: 280px;
-  height: auto;
+  gap: 10%;
+  width: auto;
+  min-height: 30vh;
+  max-height: 38vh;
   border-radius: 5px;
   box-shadow: 2px 2px 5px  rgba(0,0,0,0.1);
   background-color: #F5F5F5;
   cursor: pointer;
-}
 
-.titleBox{
-  text-align:center;
-}
+  &:hover,&:focus{
+    transition: all 0.3s ease-out;
+    transform: translateY(-5px);
+  }
+  
+  //768px ~ 1060px
+  @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+    min-height: 30vh;
+    width: 45%;
+  }
+  //~768px
+  @media screen and (max-width: $breakpoint-sm) {
+    width: 80%;
+    height: auto;
+    gap: 5vh 10%;
+    margin:0 auto;
+  }
 
-.labelBox{
-  width: 14%;
-  height: 1.2rem;
-  background-color: $accent-color ;
-  border-radius: 5px;
-}
+  .titleBox{
+    text-align: center;
+  }
 
-.label{ 
-  font-size: $font-size-xxs;
-  color: white;
-  font-weight: bold;
-}
+  .labelBox{
+    width: 14%;
+    height: 1.2rem;
+    background-color: $accent-color ;
+    border-radius: 5px;
+  }
 
-.title{
-  font-size: $font-size-md;
-  text-align: center;
-  font-weight: bold;
-}
+  .labelBoxEmpty{
+    width: 14%;
+    height: 1.2rem;
+  }
 
-.imageBox{
-  width:60%;
-  aspect-ratio: 7/8;
-  margin: 0 auto;
-  border-radius: 10px;
-}
+  .label{ 
+    font-size: $font-size-xxs;
+    color: white;
+    font-weight: bold;
 
-.imageBox > Img{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
+     //768px ~ 1060px
+     @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+      font-size: $font-size-xs;
+    }
 
-.hashtagBox{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding-top: 0.2rem;
-  font-size: 0.75rem;
-}
-.hashtag{
-  color: white;
-  background-color: #B7B7B7;
-  border-radius: 22px;
-  padding: 0.2rem 0.5rem;
+    //~768px
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  .title{
+    font-size: $font-size-md;
+    text-align: center;
+    font-weight: bold;
+ 
+    //~768px
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  .imageBox{
+    width: 160px;
+    aspect-ratio: 7/8;
+    margin: 0 auto;
+    border-radius: 10px;
+
+    @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+      width : 45%;
+      aspect-ratio: 7/8;
+      margin: 0 auto;
+    }
+  }
+
+  .imageBox > Img{
+    width: 100%;
+    min-width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+
+
+    @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+      object-fit: scale-down;
+
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+      object-fit: scale-down;
+
+      min-width: 100px;
+    }
+  }
+
+  .hashtagBox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 0.2rem;
+    font-size: 0.75rem;
+
+    @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+      font-size: 0.9rem;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+      font-size: calc(1.1rem + 0.4vw); 
+    }
+  }
+  .hashtag{
+    color: white;
+    background-color: #B7B7B7;
+    border-radius: 22px;
+    padding: 0.2rem 0.5rem;
+  }
+
+
 }
