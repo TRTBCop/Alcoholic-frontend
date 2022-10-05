@@ -22,6 +22,21 @@
     width: 650px;
     margin: auto;
   }
+
+  .arWide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 1060px;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 650px;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 @media screen and (max-width: 1060px) and (min-width: 768px) {
@@ -38,6 +53,21 @@
     width: 768px;
     margin: 2rem auto 3rem auto;
   }
+
+  .arWide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -54,6 +84,21 @@
     width: 94%;
     margin: 2rem auto 3rem auto;
   }
+
+  .arwide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 95%;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 90%;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 .header {
