@@ -5,33 +5,59 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-self: center;
     width: 100%;
     height: 30vh;
-    padding: 5rem 0;
+    padding: 10rem 0;
     max-height: 50px;
-
 }
 
 .searchBar{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    width: 80%;
+    position: relative;
+    z-index: 1;
+    
+    button{
+        position: absolute;
+        left : 0;
+    }
 }
 
 .searchBarInput{
-    width: 80%;
-    height: 7vh;
+    position: absolute;
+    width: 100%;
+    height: 6vh;
     background-color: #f4fff4;
-    border:2px solid $accent-color;
+    border :0.5px solid rgba($color: #ebebeb, $alpha: 0.5);
     border-radius:25rem;
-    text-align: left;
-    padding-left: 1rem;
+    padding-left: 4rem;
     font-size: $font-size-md ;
-    box-shadow: 8px 5px 5px rgba($accent-color ,0.2); ;
+    box-shadow: 8px 5px 5px rgba($accent-color ,0.2); 
+    z-index: -1;
+    
+    &:focus{
+        outline: none;
+    }
 }
 
 
 .Icon{
-    font-size: xx-large;
+    font-size: $font-size-md ;
+    color: rgba($color: #757575, $alpha: 1.0);
 }
+
+/**
+  transform: translateX(-24rem);
+    //768px ~ 1060px
+    @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+        transform: translateX(-17rem);
+    }
+    //~768px
+    @media screen and (max-width: $breakpoint-sm) {
+        transform: translateX(-3rem);
+    }
+}*/
