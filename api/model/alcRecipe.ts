@@ -1,5 +1,8 @@
+
 export interface AlcRecipe {
     id: number;
+    likes: number;
+    views: number;
     recipeName : string;
     createAt: string;
     recipeImg: string;

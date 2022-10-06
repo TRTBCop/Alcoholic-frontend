@@ -1,8 +1,9 @@
-import { getAlcRecipeDetail } from "@api/alcRecipe";
 import ARDetailContents from "@components/AlcoholRecipe/ARDetailContents";
 import ARReview from "@components/AlcoholRecipe/ARReview";
 import ARReviewInput from "@components/AlcoholRecipe/ARReviewInput";
 import styles from '@styles/AlcoholRecipe/AlcoholDetail.module.scss';
+import layoutStyles from '@layouts/Layout.module.scss';
+import { getAlcRecipeDetail } from "@api/alcRecipe";
 import { AlcRecipeDetail, AlcRecipeDetailReviews } from "api/model/alcRecipe";
 import { GetServerSideProps, NextPage } from "next";
 
@@ -15,7 +16,7 @@ const AlcoholRecipeDetailPage: NextPage<AlcoholRecipeDetailPageProps> = (props) 
     const { Data } = props;
   
     return(
-      <div className={styles.container}>
+      <div className={layoutStyles.arMd}>
         <h1>디테일 페이지</h1>
         <ARDetailContents {...Data}/>
         <ARReviewInput/>
