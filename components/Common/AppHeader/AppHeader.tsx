@@ -57,7 +57,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ headerType }) => {
             </li>
           </ul>
           <div className={styles.loginWrap}>
-            <button>로그인</button>
+            <button onClick={() => goPage('/login')}>로그인</button>
             <button>회원가입</button>
           </div>
         </nav>
@@ -74,6 +74,10 @@ const AppHeader: React.FC<AppHeaderProps> = ({ headerType }) => {
                 <FontAwesomeIcon icon={faXmark} />
               </button>
             </div>
+            <div className={styles.m_login_wrap}>
+              <button>로그인</button>
+              <button>회원가입</button>
+            </div>
             <ul className={styles.m_menu_body}>
               <li>
                 <a onClick={() => goPage('/alcoholtype')}>Alcohol Type</a>
@@ -85,10 +89,6 @@ const AppHeader: React.FC<AppHeaderProps> = ({ headerType }) => {
                 <a onClick={() => goPage('/alcoholrecipe')}>Alcohol Recipe</a>
               </li>
             </ul>
-            <div className={styles.m_login_wrap}>
-              <button>로그인</button>
-              <button>회원가입</button>
-            </div>
           </div>
         </div>
       </div>

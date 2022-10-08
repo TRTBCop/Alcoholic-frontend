@@ -40,6 +40,7 @@
       }
     }
     .loginWrap {
+      margin-left: 2rem;
       display: flex;
       gap: 1rem;
       button {
@@ -144,8 +145,7 @@
         }
       }
       .m_menu_body {
-        margin-top: 0.5rem;
-        padding: 1rem 2rem;
+        padding: 0rem 2rem;
         color: rgba($color: $black, $alpha: 0.7);
         font-size: $font-size-lg;
         li {
@@ -156,7 +156,7 @@
         display: flex;
         justify-content: space-between;
         gap: 1rem;
-        padding: 1rem 1.5rem;
+        padding: 1.5rem;
         button {
           width: 50%;
           border-radius: 3rem;
