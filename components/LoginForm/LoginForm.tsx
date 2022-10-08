@@ -1,7 +1,32 @@
 import styles from './LoginForm.module.scss';
 import mainLogo from '../../public/assets/logo/Alcoholic/AlcoholicLogo.png';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { authService } from '../../firebase/__init__';
+import { tokenLogin } from '@api/auth';
+import { useRouter } from 'next/router';
 
 const LoginForm: React.FC = () => {
+  const router = useRouter();
+
+  const googleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result: any = await signInWithPopup(authService, provider);
+
+      const token = result.user.accessToken;
+      if (token) {
+        const { data } = await tokenLogin(token);
+        if (data.code === 200) {
+          router.push('/');
+        } else {
+          alert('구글 로그인에 실패 하였습니다.');
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.login_form}>
       <h3>로그인</h3>
@@ -14,7 +39,9 @@ const LoginForm: React.FC = () => {
       </div>
       <div className={styles.button_wrap}>
         <button className={styles.kakao_login_btn}>카카오로 1초만에 시작하기</button>
-        <button className={styles.google_login_btn}>구글계정으로 시작하기</button>
+        <button className={styles.google_login_btn} onClick={googleLogin}>
+          구글계정으로 시작하기
+        </button>
       </div>
     </div>
   );

@@ -75,7 +75,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ headerType }) => {
               </button>
             </div>
             <div className={styles.m_login_wrap}>
-              <button>로그인</button>
+              <button onClick={() => goPage('/login')}>로그인</button>
               <button>회원가입</button>
             </div>
             <ul className={styles.m_menu_body}>
