@@ -11,6 +11,8 @@ import { getAlcHistory } from '@api/alcHistory';
 import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import cookies from 'next-cookies';
+import { setToken } from '@plugins/cookie';
 
 interface AlcoholHistoryPageProps {
   daysDrinkData: AlcHistoryDaysDrink[];
@@ -18,6 +20,14 @@ interface AlcoholHistoryPageProps {
 
 const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }) => {
   const router = useRouter();
+  // useEffect(() => {
+  //   if (!daysDrinkData) {
+  //     router.push('/');
+  //     alert('로그인이 되어있지 않습니다.');
+  //   } else {
+  //     setAhListData([...daysDrinkData]);
+  //   }
+  // });
 
   const [ahListData, setAhListData] = useState<AlcHistoryDaysDrink[]>([...daysDrinkData]);
 
@@ -124,14 +134,32 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await getAlcHistory();
-
-  return {
-    props: {
-      daysDrinkData: data.data,
-    },
-  };
+export const getServerSideProps: GetServerSideProps = async context => {
+  const allCookies = cookies(context);
+  if (allCookies.accessToken && allCookies.refreshToken) {
+    setToken(allCookies.accessToken, allCookies.refreshToken);
+    try {
+      const { data } = await getAlcHistory();
+      return {
+        props: {
+          daysDrinkData: data.data,
+        },
+      };
+    } catch (err) {
+      console.log(err);
+      return {
+        props: {
+          daysDrinkData: null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: {
+        daysDrinkData: null,
+      },
+    };
+  }
 };
 
 export default AlcoholHistoryPage;

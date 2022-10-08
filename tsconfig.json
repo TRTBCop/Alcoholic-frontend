@@ -22,7 +22,8 @@
       "@styles/*": ["./styles/*"],
       "types/*": ["./types/*"],
       "@components/*": ["./components/*"],
-      "@containers/*": ["./containers/*"]
+      "@containers/*": ["./containers/*"],
+      "@plugins/*": ["./plugins/*"]
     },
     "baseUrl": "."
   },

@@ -19,6 +19,7 @@ module.exports = {
         types: path.resolve(__dirname, './types'),
         '@components': path.resolve(__dirname, './components'),
         '@containers': path.resolve(__dirname, './containers'),
+        '@plugins': path.resolve(__dirname, './plugins'),
       },
       ...config.resolve,
     };

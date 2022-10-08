@@ -1,9 +1,10 @@
 import styles from './LoginForm.module.scss';
 import mainLogo from '../../public/assets/logo/Alcoholic/AlcoholicLogo.png';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { authService } from '../../firebase/__init__';
+import { authService } from '@plugins/firebase/__init__';
 import { tokenLogin } from '@api/auth';
 import { useRouter } from 'next/router';
+import { setToken } from '@plugins/cookie';
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -13,10 +14,14 @@ const LoginForm: React.FC = () => {
     try {
       const result: any = await signInWithPopup(authService, provider);
 
-      const token = result.user.accessToken;
-      if (token) {
-        const { data } = await tokenLogin(token);
-        if (data.code === 200) {
+      const accessToken = result.user.stsTokenManager.accessToken;
+      const refreshToken = result.user.stsTokenManager.refreshToken;
+      setToken(accessToken, refreshToken);
+
+      if (accessToken) {
+        const data = await tokenLogin();
+        console.log(data);
+        if (data.data.code === 200) {
           router.push('/');
         } else {
           alert('구글 로그인에 실패 하였습니다.');

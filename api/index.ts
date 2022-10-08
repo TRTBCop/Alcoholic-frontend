@@ -1,3 +1,4 @@
+import { getCookie } from '@plugins/cookie';
 import axios from 'axios';
 
 //axios mock 사용 안하려면 주석처리 하세요
@@ -15,8 +16,10 @@ instance.defaults.timeout = 2500;
 instance.interceptors.request.use(
   (config: any) => {
     // 요청을 보내기 전에 수행할 로직
-    const token = localStorage.getItem('token');
-    config.headers['access-token'] = token;
+    const accessToken = getCookie('accessToken');
+    if (accessToken) {
+      config.headers['access-token'] = accessToken;
+    }
 
     return config;
   },
