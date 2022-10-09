@@ -19,27 +19,27 @@ const AlcoholRecipePage: NextPage<AlcoholRecipePageProps> = (props) => {
     const { ARListData } = props;
     
     return(
-      <>
         <div className={layoutStyles.arMd}>
-          <ARSearchBar/>
-          <div className={styles.orderbarbox}>
-            <AROrderBar/>
-            <p className={styles.recipeCount}>전체 <span>{ARListData.length}</span></p>
-          </div>
-          <div className={styles.recipeCardBox}>
-              { ARListData.map((recipeData:AlcRecipe) => (
-                <ARCard 
-                  key={recipeData.id}
-                  onClick={() =>
-                    router.push({ 
-                      pathname:`/alcoholrecipe/detail/${recipeData.id}`
-                    })
-                  }
-                  {...recipeData}/>
-              ))}  
+          <div className={styles.container}>
+            <ARSearchBar/>
+            <div className={styles.orderbarbox}>
+              <AROrderBar/>
+              <p className={styles.recipeCount}>전체 <span>{ARListData.length}</span></p>
+            </div>
+            <div className={styles.recipeCardBox}>
+                { ARListData.map((recipeData:AlcRecipe) => (
+                  <ARCard 
+                    key={recipeData.id}
+                    onClick={() =>
+                      router.push({ 
+                        pathname:`/alcoholrecipe/detail/${recipeData.id}`
+                      })
+                    }
+                    {...recipeData}/>
+                ))}  
+            </div>
           </div>
         </div>
-      </>
     )
 }
 
