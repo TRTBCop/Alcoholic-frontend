@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import styles from './AppFooter.module.scss';
+import layoutStyles from '@layouts/Layout.module.scss';
 import mainLogo from '../../../public/assets/img/AlcoholicLogo_white.png'
 
 interface AppHeaderProps {
@@ -14,7 +15,7 @@ interface AppHeaderProps {
     }
 
     return (
-      <>
+      <div className={layoutStyles.arWd}>
         <div className={styles.container}>
             <div className={styles.mainLogoBox} onClick={ClickPage}>
                 <img src={mainLogo.src} alt="AlcoholicLogo"/>
@@ -27,8 +28,8 @@ interface AppHeaderProps {
                 <br/>
                 <p >COPYRIGHTⓒ 2022. TRTBCop. ALL RIGHTS RESERVED.</p>
             </div>
-        </div>
-      </>
+          </div>
+      </div>
     );
   };
   

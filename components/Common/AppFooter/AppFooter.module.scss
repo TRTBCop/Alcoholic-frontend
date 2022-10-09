@@ -39,4 +39,30 @@
     }
 }
 
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+    .container {
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1.5rem;
 
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
+
+    }
+  }
+  
+  @media screen and (max-width: $breakpoint-sm) {
+    .container {
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1rem;
+
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
+
+    }
+}
