@@ -7,9 +7,7 @@ const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children 
     <>
       <AppHeader headerType="default" />
       <main>{children}</main>
-      <footer className={styles.footer}>
-        <AppFooter/>
-      </footer>
+      <AppFooter/>
     </>
   );
 };
