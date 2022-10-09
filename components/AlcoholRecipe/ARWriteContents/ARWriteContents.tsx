@@ -1,6 +1,6 @@
 import { faArrowRotateBack, faCameraRetro, faTrashAlt, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { ChangeEvent, ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, useCallback, useRef, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import styles from './ARWriteContents.module.scss'
 
 
@@ -38,9 +38,9 @@ const ARWriteContents = () => {
         setRecipeTitle(e.target.value);
     }
 
+
     const hashtagInputChange = (e : ChangeEvent<HTMLInputElement>) => {
         setHashtag(e.target.value.trim());
-        console.log(hashtag)
     }
     
     const addHashTagKeyUp = useCallback((e :React.KeyboardEvent<HTMLInputElement>) =>{
@@ -51,14 +51,24 @@ const ARWriteContents = () => {
             }else{
                 alert("최대 4개 까지 작성 가능합니다.");
             }
-           
         }
         
     },[hashtag, hashArr])
     
-    const removeHashTag = (e:React.MouseEvent<HTMLButtonElement>) => {
-        setHashArr(hashArr.filter(hashtag => e.target !== hashtag));
+    const removeHashTag = (e:React.MouseEvent<HTMLButtonElement>):void => {
+        let deleteTag = e.currentTarget.firstElementChild?.innerHTML;
+        console.log(deleteTag);
+        setHashArr(hashArr.filter(hashtag => hashtag  !== deleteTag));
     }
+
+    const recipeContentOnChange = (e : ChangeEvent<HTMLTextAreaElement>) => {
+        setRecipeContent(e.target.value);
+    }
+
+    const cocktailConentOnChange = (e : ChangeEvent<HTMLTextAreaElement>) => {
+        setcocktailConent(e.target.value);
+    }
+
 
     return(
         <div className={styles.writeContainer}>
@@ -106,6 +116,7 @@ const ARWriteContents = () => {
                     type="text"
                     placeholder="칵테일 이름 작성해주세요."
                     onChange={recipeNameOnChange}
+                    value={cocktailTitle}
                 />
             </div>
             <div className={styles.titleBox}>
@@ -132,6 +143,8 @@ const ARWriteContents = () => {
                 <textarea
                     name="cocktailMemo"
                     placeholder="술 설명"
+                    value={recipeContent}
+                    onChange={recipeContentOnChange} 
                 />
             </div>
             <div className={styles.editorbox}>
@@ -139,6 +152,8 @@ const ARWriteContents = () => {
                 <textarea
                     name="RecipeMemo"
                     placeholder="레시피 설명"
+                    value={cocktailConent}
+                    onChange={cocktailConentOnChange}
                 />
             </div>
         </div>
