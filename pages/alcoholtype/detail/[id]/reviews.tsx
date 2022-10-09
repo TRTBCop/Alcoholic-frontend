@@ -7,15 +7,31 @@ import layoutStyles from '@layouts/Layout.module.scss';
 import { GetServerSideProps, NextPage } from 'next';
 import { getAlcType, getAlcTypeAllReviews, getAlcTypeDetail, getAlcTypeReviews, getAlcTypes, getAlcTypeSimilar } from '@api/alcType';
 import { AlcoholTypeProps, AlcoholTypeReviewsProps, AlcoholDetailInfoProps } from '@api/model/alcType';
+import { useState } from 'react';
+import AddReview from '@components/AlocholType/AddReview';
 
 interface AlcoholTypeDetailInfoProps {
     reviewList: AlcoholTypeReviewsProps,
 }
 
-const AlcoholTypeDetailPage: NextPage<AlcoholTypeDetailInfoProps & { id:string, infinite?: boolean }> = ({ id, infinite=true, reviewList }) => {
+const AlcoholTypeDetailPage: NextPage<AlcoholTypeDetailInfoProps & { id: string, infinite?: boolean}> = ({ id, infinite = true, reviewList }) => {
+    const layoutStyle = [layoutStyles.md];
+    const [openWriteReview, setOpenWriteReview] = useState(false);
+
+    function openAddReview() {
+        setOpenWriteReview(true);
+        layoutStyle.push(layoutStyles.noScroll);
+    }
+    function closeAddReview() {
+        setOpenWriteReview(false);
+        layoutStyle.splice(1,1,layoutStyles.noScroll);
+
+    }
+
     return (
-        <div className={layoutStyles.md}>
-            <AlcoholTypeReview id={id} infinite={infinite} {...reviewList} />
+        <div className={ layoutStyle.join(" ") }>
+            <AlcoholTypeReview id={id} infinite={infinite} moveToWrite={openAddReview}{...reviewList} />
+            {(openWriteReview) ? <AddReview id={id+""} handleReviewCancel={closeAddReview} /> : ""}
         </div>
     );
 }

@@ -310,7 +310,7 @@ mockInstance.onGet(/\/api\/alc-type-relevant\//).reply<BaseApiResult<AlcoholType
   code: 200,
   success: true,
   message: 'alctype relevant mock',
-  data: [...alcoholData, ...alcoholData],
+  data: [...alcoholData],
 }
 );
 
@@ -322,3 +322,10 @@ mockInstance.onGet('/api/alc-types-search').reply<BaseApiResult<AlcoholTypeProps
   data: alcoholData,
 }
 );
+
+mockInstance.onPost(/\/api\/alc-type-review\//).reply<BaseApiResult<boolean>>(200, {
+  code: 200,
+  success: true,
+  message: 'alctype add review mock',
+  data: true,
+});
