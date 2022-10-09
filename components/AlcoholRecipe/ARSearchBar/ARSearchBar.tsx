@@ -48,11 +48,12 @@ const ARSearchBar : React.FC  = () => {
                 </button>
                 <input 
                     className={styles.searchBarInput} 
-                    type="search" 
+                    type="text" 
                     placeholder="Search" 
                     onChange={inputChanged} 
                     onKeyDown={keyDownSearch}
                     maxLength={20}
+                    value={inputText}
                 />
             </div>
         </div>
