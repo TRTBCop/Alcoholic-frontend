@@ -4,7 +4,7 @@ import AhButton from '@components/AlcoholHistory/AhButton';
 import layoutStyles from '@layouts/Layout.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faAngleDown, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AhMainCard from '@components/AlcoholHistory/AhMainCard';
 import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
 import { getAlcHistory } from '@api/alcHistory';
@@ -20,14 +20,6 @@ interface AlcoholHistoryPageProps {
 
 const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }) => {
   const router = useRouter();
-  // useEffect(() => {
-  //   if (!daysDrinkData) {
-  //     router.push('/');
-  //     alert('로그인이 되어있지 않습니다.');
-  //   } else {
-  //     setAhListData([...daysDrinkData]);
-  //   }
-  // });
 
   const [ahListData, setAhListData] = useState<AlcHistoryDaysDrink[]>([...daysDrinkData]);
 
@@ -108,25 +100,34 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
           </article>
           {/* 일자별 술 일지 리스트 */}
           <article>
-            {ahListData.map((item, i) => (
-              <div className={styles.ahMainContent} key={i}>
-                <h4>{formatDate(item.write_date)}</h4>
-                <ul>
-                  {item.alcohol_list.map((alcoholData, j) => (
-                    <li onClick={() => showDetailModal(item)} key={j}>
-                      <AhMainCard {...alcoholData} write_date={item.write_date} />
-                    </li>
-                  ))}
-                </ul>
+            {ahListData.length > 0 ? (
+              ahListData.map((item, i) => (
+                <div className={styles.ahMainContent} key={i}>
+                  <h4>{formatDate(item.write_date)}</h4>
+                  <ul>
+                    {item.alcohol_list.map((alcoholData, j) => (
+                      <li onClick={() => showDetailModal(item)} key={j}>
+                        <AhMainCard {...alcoholData} write_date={item.write_date} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            ) : (
+              <div className={styles.noData}>
+                <FontAwesomeIcon icon={faNoteSticky} />
+                기록이 없습니다
               </div>
-            ))}
+            )}
           </article>
           {/* 더보기 버튼 */}
-          <article className={styles.ahListMore}>
-            <button onClick={() => setCurrentPage(value => value + 1)}>
-              더보기 <FontAwesomeIcon icon={faAngleDown} />
-            </button>
-          </article>
+          {ahListData.length > 0 && (
+            <article className={styles.ahListMore}>
+              <button onClick={() => setCurrentPage(value => value + 1)}>
+                더보기 <FontAwesomeIcon icon={faAngleDown} />
+              </button>
+            </article>
+          )}
         </div>
       </section>
       <AhDetailModal itemData={detailModalItemData} isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />

@@ -48,6 +48,16 @@
     }
   }
 }
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: $font-size-lg;
+  color: rgba($color: $black, $alpha: 0.5);
+  height: calc(100vh - 300px);
+}
 
 @media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
   .ahMainContent {

@@ -16,6 +16,7 @@ const LoginForm: React.FC = () => {
 
       const accessToken = result.user.stsTokenManager.accessToken;
       const refreshToken = result.user.stsTokenManager.refreshToken;
+      console.log(result, 123);
       setToken(accessToken, refreshToken);
 
       if (accessToken) {
