@@ -14,6 +14,10 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'components')],
   },
+  images: {
+    loader: 'imgix',
+    path: 'https://alcoholic-1004.web.app/', // 배포 경로
+  },
   webpack(config) {
     config.resolve = {
       alias: {

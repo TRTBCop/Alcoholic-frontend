@@ -5,6 +5,7 @@
   .md {
     width: 1060px;
     margin: 2rem auto 3rem auto;
+    scroll-behavior: smooth;
   }
   .narrow {
     width: 1060px;
@@ -22,12 +23,28 @@
     width: 650px;
     margin: auto;
   }
+
+  .arWide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 1060px;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 650px;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 @media screen and (max-width: 1060px) and (min-width: 768px) {
   .md {
     width: 768px;
     margin: 2rem auto 3rem auto;
+    scroll-behavior: smooth;
   }
   .mainContainer {
     width: 100%;
@@ -38,12 +55,28 @@
     width: 768px;
     margin: 2rem auto 3rem auto;
   }
+
+  .arWide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 768px;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
   .md {
     width: 96%;
     margin: 2rem auto 3rem auto;
+    scroll-behavior: smooth;
   }
   .mainContainer {
     width: 100%;
@@ -54,6 +87,21 @@
     width: 94%;
     margin: 2rem auto 3rem auto;
   }
+
+  .arwide{
+    width: 100%;
+  }
+  
+  .arMd{
+    width: 95%;
+    margin: 2rem auto 3rem auto;
+  }
+
+  .arSmall{
+    width: 90%;
+    margin: 2rem auto 3rem auto;
+  }
+
 }
 
 .header {
@@ -74,4 +122,9 @@
   background: #f0f0f0;
   height: 130px;
   box-sizing: border-box;
+}
+
+.noScroll {
+  overflow: hidden;
+  height: 100%;
 }

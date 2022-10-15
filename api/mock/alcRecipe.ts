@@ -5,6 +5,8 @@ import { AlcRecipe, AlcRecipeDetail, UserInfo } from 'api/model/alcRecipe';
 const alcRecipeData: AlcRecipe[] = [
   {
     id: 0,
+    likes: 1,
+    views: 1000,
     recipeName: '갓파더',
     createAt: '2022-09-01',
     recipeImg: 'https://mblogthumb-phinf.pstatic.net/20140509_94/ss6042404_1399608811485geC9m_JPEG/Godfather.jpg?type=w2',
@@ -13,6 +15,8 @@ const alcRecipeData: AlcRecipe[] = [
 
   {
     id: 1,
+    likes: 1,
+    views: 1000,
     recipeName: '잭콕',
     createAt: '2022-09-01',
     recipeImg: 'https://t1.daumcdn.net/cfile/blog/234259345179E1BA0E',
@@ -20,6 +24,8 @@ const alcRecipeData: AlcRecipe[] = [
   },
   {
     id: 2,
+    likes: 1,
+    views: 1000,
     recipeName: '네그로니',
     createAt: '2022-09-01',
     recipeImg:
@@ -28,14 +34,18 @@ const alcRecipeData: AlcRecipe[] = [
   },
   {
     id: 3,
+    likes: 1,
+    views: 1000,
     recipeName: '갓파더222',
-    createAt: '2022-09-01',
+    createAt: '2022-09-30',
     recipeImg:
       'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
     hashTags: ['계피', '클래식', '묵직함', '커피'],
   },
   {
     id: 4,
+    likes: 1,
+    views: 1000,
     recipeName: '갓파더333',
     createAt: '2022-09-01',
     recipeImg:
@@ -109,7 +119,11 @@ const alcRecipeDetailData: AlcRecipeDetail[] = [
   },
   {
     id: 1,
-    writer: user[0],
+    writer:  {
+      id: 0,
+      userName: "AlcWriter01",
+      userProfileImg:"https://cdn.icon-icons.com/icons2/1993/PNG/512/account_avatar_face_man_people_profile_user_icon_123197.png"
+    },
     likes: 1,
     views: 1000,
     title: alcRecipeData[1].recipeName,

@@ -6,14 +6,15 @@
     width: 100%;
     height: auto;
     background-color: $dark-gray;
-    padding: 3rem;
+    padding: 2rem;
     padding-left: 10rem;
-    gap :5rem;
+    gap :3rem;
 }
 
 .mainLogoBox{
     height: auto;
     cursor: pointer;
+    vertical-align : middle;
     img {
         margin-left : auto;
         margin-right : auto;
@@ -22,8 +23,46 @@
     }
 }
 
-.infoBox > p{
-    color: azure;
+.line{
+    border-left: 2px solid rgb(255, 255, 255);
+    border-radius: 1px;
 }
 
+.infoBox {
+    height: auto;
+    & > p{
+        color: azure;
+        margin: 0.5rem;
+    }
+    & > br{
+        line-height:50%;
+    }
+}
 
+@media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+    .container {
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1.5rem;
+
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
+
+    }
+  }
+  
+  @media screen and (max-width: $breakpoint-sm) {
+    .container {
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1rem;
+
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
+
+    }
+}
