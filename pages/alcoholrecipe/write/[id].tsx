@@ -2,6 +2,10 @@ import { AlcRecipeDetail } from "@api/model/alcRecipe"
 import styles from '@styles/AlcoholRecipe/AlcoholDetail.module.scss';
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
+import layoutStyles from '@layouts/Layout.module.scss';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+
 
 interface AlcoholRecipeEditorProps{
     AREditorData: AlcRecipeDetail;
@@ -12,11 +16,17 @@ const AlcoholRecipeEditorPage : NextPage<AlcRecipeDetail> = (props) =>{
     const router = useRouter();
     
     return (
-        <div className={styles.container}>
+        <div className={layoutStyles.arMd}>
             <div className={styles.thumbnailImgBox}>
                 <p>대표 사진</p>
-                <img></img>
-                <button>이미지</button>
+                <div>
+                    <button className={styles.thumbnailImg}>
+                        <p>파일 올리기</p>
+                        <p><FontAwesomeIcon icon={faPlusCircle}/></p>
+                        <input className={styles.fileUpload} type="file" multiple={true}></input>
+                        <p></p>
+                    </button>
+                </div>
             </div>
             <div className={styles.titleBox}>
                 <p>칵테일 이름 *</p>

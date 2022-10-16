@@ -54,3 +54,12 @@ export const getAlcTypeSimilar = (id: string) => {
   const data = instance.get<BaseApiResult<AlcoholTypeProps[]>>(`/api/alc-type-relevant/${id}`);
   return data;
 };
+
+/** Alc Type Review를 생성하는 함수 */
+export const postAlcTypeReview = (data : { id: string, text: string, isLike: boolean|null }) => {
+  return instance.post<BaseApiResult<null>>(`/api/alc-type-review/${data.id}`, {
+    params: {
+      data,
+    }
+  });
+}

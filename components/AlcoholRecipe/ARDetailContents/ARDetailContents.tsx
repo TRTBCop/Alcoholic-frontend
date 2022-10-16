@@ -1,7 +1,7 @@
 import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlcRecipeDetailReviews, UserInfo } from 'api/model/alcRecipe';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from './ARDetailContents.module.scss'
 

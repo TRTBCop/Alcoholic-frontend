@@ -1,0 +1,130 @@
+@import '~styles/theme.scss';
+
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(black, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: -925px;
+}
+.container {
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  border: none;
+  @media screen and (max-width: $breakpoint-sm) {
+    width: 100%;
+    min-height: fit-content;
+    height: 50vh;
+    margin: 15px;
+  }
+  @media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-lg) {
+    width: 90%;
+    min-height: fit-content;
+    height: 50vh;
+    margin: 15px;
+  }
+  @media screen and (min-width: $breakpoint-lg) {
+    width: 800px;
+    min-height: fit-content;
+    height: 50vh;
+    margin: 15px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: bold;
+  line-height: $font-size-xl;
+}
+.count {
+  font-size: $font-size-md;
+  font-weight: normal;
+  line-height: $font-size-md;
+}
+.over {
+  color: red;
+}
+.textarea {
+  width: 100%;
+  font-size: $font-size-md;
+  min-height: calc(7 * $font-size-md);
+  border-radius: 10px;
+  border: none;
+  background-color: rgba($point-color, 0.05);
+  resize: none;
+  padding: 1rem;
+}
+.thumbs {
+  border-radius: 50%;
+  color: $dark-gray;
+  font-size: $font-size-lg;
+  margin: 0 10px;
+  &:hover {
+    transition: all 0.15s ease-in-out;
+  }
+}
+.up {
+  &:hover {
+    color: $point-color;
+  }
+}
+.upSelected {
+  color: $point-color;
+}
+.down {
+  &:hover {
+    color: $cassblue-color;
+  }
+}
+.downSelected {
+  color: $cassblue-color;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  font-size: $font-size-sm;
+  font-weight: bold;
+
+  background-color: rgba($accent-color, 0.8);
+}
+.uploadBtn {
+  background-color: $point-color;
+  width: 8rem;
+  &:hover {
+    background-color: rgba($point-color, 0.8);
+    transition: all 0.3s ease-in-out;
+  }
+}
+.cancelBtn {
+  background-color: $gray11-alpha33-fill;
+  width: 8rem;
+  &:hover {
+    background-color: rgba($dark-gray, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+}

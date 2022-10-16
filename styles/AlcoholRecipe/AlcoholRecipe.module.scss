@@ -1,26 +1,63 @@
+@import '../theme.scss';
+
 .container{
     display: flex;
     flex-direction: column;
-    width: 60%;
     margin:0 auto;
     gap: 2rem;
+    width: 100%;
 }
 
-.recipeHeader{
+
+.orderbarbox{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 
 .recipeCardBox{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     height: auto;
+    min-height: 80vh;
     margin:0 auto;
-    flex-wrap: wrap;
-    gap: 5vh 12%;
-    margin-bottom: 2rem;
+    gap: 6vh 10%;
+    margin-bottom: 1.5rem;
+    @media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
+        gap: 6vh 10%;
+        margin-bottom: 10vh;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        gap: 6vh 10%;
+        margin-bottom: 10vh;
+    }
 }
 
 .recipeCount{
-    width: 100%;
+    font-size: $font-size-md;
+    font-weight: bold;
+}
+
+.recipeCount > span{
+    color : $accent-color;
+}
+
+
+
+
+
+
+
+.fileUpload{
+    display: none;
+}
+.thumbnailImg{
+    cursor : pointer;
+    & > img{
+        
+    }
 }
