@@ -9,6 +9,7 @@ const instance = axios.create({
   baseURL: process.env.BASE_URL,
 });
 
+//axios mock 사용 하려면 주석처리 하세요
 // 👇 요청 타임아웃 설정
 instance.defaults.timeout = 2500;
 
