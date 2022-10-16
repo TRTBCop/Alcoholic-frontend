@@ -19,7 +19,7 @@ const AlcoholHistoryMainCard: React.FC<AhMainCardProps> = props => {
         <p>
           마신 양 : {props.drunked}ml
           <br />
-          알코올 섭취량 : {props.alcohol_intake}
+          알코올 섭취량 : {props.alcohol_intake.toFixed(2)}
         </p>
         <span>{props.write_date}</span>
       </div>

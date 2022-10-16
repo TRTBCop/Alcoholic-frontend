@@ -1,6 +1,4 @@
 import styles from './AhDetailModal.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AhButton from '@components/AlcoholHistory/AhButton';
 import { useRouter } from 'next/router';
 import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
@@ -66,7 +64,7 @@ const AlcoholHistoryDetailModal: React.FC<AhDetailModalProps> = ({ itemData, isS
                         <ul className={styles.ahDetailDrunkedAddedContent}>
                           <li>마신 양 : {data.drunked} ml</li>
                           <li>
-                            알코올 섭취량 : <strong>{data.alcohol_intake}</strong>
+                            알코올 섭취량 : <strong>{data.alcohol_intake.toFixed(2)}</strong>
                           </li>
                         </ul>
                       </div>
