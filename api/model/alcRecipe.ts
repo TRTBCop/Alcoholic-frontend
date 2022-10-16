@@ -17,7 +17,8 @@ export interface AlcRecipeDetail {
     views: number;
     title: string;
     image: string;
-    content: string;
+    alcohol_content: string;
+    recipe_content: string;
     createAt: string;
     hashTags?: string[]
     reviews?:AlcRecipeDetailReviews[];
@@ -36,4 +37,15 @@ export interface UserInfo{
     userName: string;
     userProfileImg: string;
     nickName?: string;
+}
+
+
+export interface AlcFormDataFormData {
+    file: string;
+    title: string;
+    image: string;
+    cocktail_content: string;
+    recipe_content: string;
+    createAt: string;
+    hashTags?: string[];
 }
