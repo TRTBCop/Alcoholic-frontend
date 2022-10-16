@@ -64,7 +64,7 @@
   }
 
   .arSmall{
-    width: 768px;
+    width: 650px;
     margin: 2rem auto 3rem auto;
   }
 
@@ -119,4 +119,8 @@
   background: #f0f0f0;
   height: 130px;
   box-sizing: border-box;
+}
+
+.main_content{
+  flex:1;
 }
