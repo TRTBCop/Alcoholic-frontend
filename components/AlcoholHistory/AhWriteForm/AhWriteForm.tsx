@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import AhButton from '@components/AlcoholHistory/AhButton';
 import { useRouter } from 'next/router';
-import { AlcHistoryDaysDrink, AlcHistoryFormData } from '@api/model/alcHistory';
+import { AlcHistoryDaysDrink, AlcHistoryDrunked, AlcHistoryFormData } from '@api/model/alcHistory';
 import { updateAlcHistory, addAlcHistory, deleteAlcHistory } from '@api/alcHistory';
+import AhAtSelectModal from '@components/AlcoholHistory/AhAtSelectModal';
 
 interface AlcoholHistoryWriteFormProps {
   itemData: AlcHistoryDaysDrink | null;
@@ -37,13 +38,22 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
     getSelectYears();
   }, []);
 
+  const addAlcoholList = (data: AlcHistoryDrunked) => {
+    setFormdata(value => {
+      value.alcoholList.push(data);
+      return { ...value };
+    });
+  };
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>, index?: number) => {
     const { value, name } = e.target;
 
     if (name === 'alcoholDrunked') {
       if (index === undefined) return;
       const tempAlcoholList = [...formData.alcoholList];
-      tempAlcoholList[index].drunked = Number(value);
+      tempAlcoholList[index].drunked = Number(value) === 0 ? 0 : Number(value);
+      tempAlcoholList[index].alcohol_intake = tempAlcoholList[index].drunked * tempAlcoholList[index].alcohol_degree * 0.7947;
+
       setFormdata({
         ...formData,
         alcoholList: [...tempAlcoholList],
@@ -167,100 +177,113 @@ const AlcoholHistoryWriteForm: React.FC<AlcoholHistoryWriteFormProps> = ({ itemD
     });
   };
 
-  return (
-    <article className={styles.hsWriteForm}>
-      <section className={styles.hsWriteDrunkedDate}>
-        <h3>음주일자</h3>
-        <div className={styles.hsWriteDateContent}>
-          <select name="writeDateYear" onChange={onChange} value={formData.writeDateYear}>
-            <option value="">연도 선택</option>
-            {dateData.years.map(year => (
-              <option value={year} key={year}>
-                {year}
-              </option>
-            ))}
-          </select>
-          <select name="writeDateMonth" onChange={onChange} value={formData.writeDateMonth}>
-            <option value="">월 선택</option>
-            {dateData.months.map(month => (
-              <option value={month} key={month}>
-                {month}
-              </option>
-            ))}
-          </select>
-          <select name="writeDateDay" onChange={onChange} value={formData.writeDateDay}>
-            <option value="">일 선택</option>
-            {dateData.days.map(day => (
-              <option value={day} key={day}>
-                {day}
-              </option>
-            ))}
-          </select>
-        </div>
-      </section>
-      <section className={styles.hsWriteDrunkedType}>
-        <h3>음주 종류</h3>
-        <div className={styles.hsWriteDrunkedContent}>
-          {formData.alcoholList.map((data, i) => (
-            <div className={styles.hsWriteDrunkedAddedItem} key={i}>
-              <figure className={styles.hsWriteDrunkedAddedImg}>
-                <img src={data.alcohol_image} />
-                <figcaption>
-                  <p>{data.alcohol_name}</p>
-                  <span>{data.alcohol_type}</span>
-                </figcaption>
-              </figure>
-              <ul className={styles.hsWriteDrunkedAddedContent}>
-                <li>
-                  마신 양 : <input type="text" name="alcoholDrunked" value={data.drunked} onChange={e => onChange(e, i)} /> ml
-                </li>
-                <li>
-                  알코올 섭취량 : <strong>47.68</strong>
-                </li>
-              </ul>
-            </div>
-          ))}
+  const [atSelectModal, setAtSelectModal] = useState(false);
 
-          <div className={styles.hsWriteDrunkedAddBtn}>
-            <button>
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
+  const showAtSelectModal = () => {
+    setAtSelectModal(true);
+  };
+
+  const hideAtSelectModal = () => {
+    setAtSelectModal(false);
+  };
+
+  return (
+    <>
+      <article className={styles.hsWriteForm}>
+        <section className={styles.hsWriteDrunkedDate}>
+          <h3>음주일자</h3>
+          <div className={styles.hsWriteDateContent}>
+            <select name="writeDateYear" onChange={onChange} value={formData.writeDateYear}>
+              <option value="">연도 선택</option>
+              {dateData.years.map(year => (
+                <option value={year} key={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            <select name="writeDateMonth" onChange={onChange} value={formData.writeDateMonth}>
+              <option value="">월 선택</option>
+              {dateData.months.map(month => (
+                <option value={month} key={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <select name="writeDateDay" onChange={onChange} value={formData.writeDateDay}>
+              <option value="">일 선택</option>
+              {dateData.days.map(day => (
+                <option value={day} key={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-      </section>
-      <section className={styles.hsWriteDrunkedMemo}>
-        <h3>메모 내용</h3>
-        <div className={styles.hsWriteMemoContent}>
-          <textarea
-            name="memo"
-            cols={50}
-            rows={10}
-            placeholder="간단한 메모 내용을 작성해주세요."
-            value={formData.memo}
-            onChange={onChange}
-          ></textarea>
-        </div>
-      </section>
-      <section className={styles.hsWriteBtn}>
-        {itemData ? (
-          <>
-            <AhButton buttonType="btnType2" clickEvent={updateAHitem}>
-              수정
+        </section>
+        <section className={styles.hsWriteDrunkedType}>
+          <h3>음주 종류</h3>
+          <div className={styles.hsWriteDrunkedContent}>
+            {formData.alcoholList.map((data, i) => (
+              <div className={styles.hsWriteDrunkedAddedItem} key={i}>
+                <figure className={styles.hsWriteDrunkedAddedImg}>
+                  <img src={data.alcohol_image} />
+                  <figcaption>
+                    <p>{data.alcohol_name}</p>
+                    <span>{data.alcohol_type}</span>
+                  </figcaption>
+                </figure>
+                <ul className={styles.hsWriteDrunkedAddedContent}>
+                  <li>
+                    마신 양 : <input type="number" name="alcoholDrunked" value={data.drunked} onChange={e => onChange(e, i)} /> ml
+                  </li>
+                  <li>
+                    알코올 섭취량 : <strong>{data.alcohol_intake.toFixed(2)}</strong>
+                  </li>
+                </ul>
+              </div>
+            ))}
+
+            <div className={styles.hsWriteDrunkedAddBtn} onClick={showAtSelectModal}>
+              <button>
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </div>
+          </div>
+        </section>
+        <section className={styles.hsWriteDrunkedMemo}>
+          <h3>메모 내용</h3>
+          <div className={styles.hsWriteMemoContent}>
+            <textarea
+              name="memo"
+              cols={50}
+              rows={10}
+              placeholder="간단한 메모 내용을 작성해주세요."
+              value={formData.memo}
+              onChange={onChange}
+            ></textarea>
+          </div>
+        </section>
+        <section className={styles.hsWriteBtn}>
+          {itemData ? (
+            <>
+              <AhButton buttonType="btnType2" clickEvent={updateAHitem}>
+                수정
+              </AhButton>
+              <AhButton buttonType="btnType4" clickEvent={deleteAHitem}>
+                삭제
+              </AhButton>
+            </>
+          ) : (
+            <AhButton buttonType="btnType2" clickEvent={addAHitem}>
+              작성완료
             </AhButton>
-            <AhButton buttonType="btnType4" clickEvent={deleteAHitem}>
-              삭제
-            </AhButton>
-          </>
-        ) : (
-          <AhButton buttonType="btnType2" clickEvent={addAHitem}>
-            작성완료
-          </AhButton>
-        )}
-      </section>
-      <AhButton buttonType="btnType3" clickEvent={goMainPage}>
-        목록
-      </AhButton>
-    </article>
+          )}
+        </section>
+        <AhButton buttonType="btnType3" clickEvent={goMainPage}>
+          목록
+        </AhButton>
+      </article>
+      <AhAtSelectModal show={atSelectModal} hideAtSelectModal={hideAtSelectModal} addAlcoholList={addAlcoholList} />
+    </>
   );
 };
 

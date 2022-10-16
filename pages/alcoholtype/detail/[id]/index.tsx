@@ -7,6 +7,9 @@ import layoutStyles from '@layouts/Layout.module.scss';
 import { GetServerSideProps, NextPage } from 'next';
 import { getAlcType, getAlcTypeDetail, getAlcTypeReviews, getAlcTypes, getAlcTypeSimilar } from '@api/alcType';
 import { AlcoholTypeProps, AlcoholTypeReviewsProps, AlcoholDetailInfoProps } from '@api/model/alcType';
+import { useRouter } from 'next/router';
+import AddReview from '@components/AlocholType/AddReview';
+import { DetailedHTMLProps, HTMLAttributes, ReactElement, useRef, useState } from 'react';
 
 interface AlcoholTypeDetailInfoProps {
     data: AlcoholTypeProps;
@@ -16,12 +19,27 @@ interface AlcoholTypeDetailInfoProps {
 }
 
 const AlcoholTypeDetailPage: NextPage<AlcoholTypeDetailInfoProps> = ({ data, detailData, reviewList, similarList }) => {
+    const router = useRouter();
+    const layoutStyle = [layoutStyles.md];
+    const [openWriteReview, setOpenWriteReview] = useState(false);
+
+    function openAddReview() {
+        setOpenWriteReview(true);
+        layoutStyle.push(layoutStyles.noScroll);
+    }
+    function closeAddReview() {
+        setOpenWriteReview(false);
+        layoutStyle.splice(1,1,layoutStyles.noScroll);
+
+    }
+
     return (
-        <div className={layoutStyles.md}>
+        <div className={ layoutStyle.join(" ") }>
             <AlcoholTypeInfo {...data} />
             <AlcoholTypeDetailInfo {...detailData} />
             <AlcoholTypesimilarList similarList={similarList} />
-            <AlcoholTypeReview {...reviewList} />
+            <AlcoholTypeReview moveToWrite={openAddReview} {...reviewList} />
+            {(openWriteReview) ? <AddReview id={data.id+""} handleReviewCancel={closeAddReview} /> : ""}
         </div>
     );
 }

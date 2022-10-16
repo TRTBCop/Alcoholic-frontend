@@ -4,13 +4,15 @@ import AhButton from '@components/AlcoholHistory/AhButton';
 import layoutStyles from '@layouts/Layout.module.scss';
 import styles from '@styles/AlcoholHistory/AlcoholHistory.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faAngleDown, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import AhMainCard from '@components/AlcoholHistory/AhMainCard';
 import AhDetailModal from '@components/AlcoholHistory/AhDetailModal';
 import { getAlcHistory } from '@api/alcHistory';
 import { AlcHistoryDaysDrink } from '@api/model/alcHistory';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import cookies from 'next-cookies';
+import { setToken } from '@plugins/cookie';
 
 interface AlcoholHistoryPageProps {
   daysDrinkData: AlcHistoryDaysDrink[];
@@ -58,13 +60,13 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
 
   /** 상세 모달 오픈 */
   const showDetailModal = (itemData: AlcHistoryDaysDrink) => {
-    seDetailModalItemDatal(itemData);
+    setDetailModalItemData(itemData);
     setIsShowDetailModal(true);
   };
 
   /** 상세 모달을 숨김 */
   const hideDetailModal = () => {
-    seDetailModalItemDatal(null);
+    setDetailModalItemData(null);
     setIsShowDetailModal(false);
   };
 
@@ -81,7 +83,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
   }, [isShowDetailModal]);
 
   /** 상세 모달에서 보여질 정보 */
-  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDaysDrink | null>(null);
+  const [detailModalItemData, setDetailModalItemData] = useState<AlcHistoryDaysDrink | null>(null);
 
   return (
     <>
@@ -98,25 +100,34 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
           </article>
           {/* 일자별 술 일지 리스트 */}
           <article>
-            {ahListData.map((item, i) => (
-              <div className={styles.ahMainContent} key={i}>
-                <h4>{formatDate(item.write_date)}</h4>
-                <ul>
-                  {item.alcohol_list.map((alcoholData, j) => (
-                    <li onClick={() => showDetailModal(item)} key={j}>
-                      <AhMainCard {...alcoholData} write_date={item.write_date} />
-                    </li>
-                  ))}
-                </ul>
+            {ahListData.length > 0 ? (
+              ahListData.map((item, i) => (
+                <div className={styles.ahMainContent} key={i}>
+                  <h4>{formatDate(item.write_date)}</h4>
+                  <ul>
+                    {item.alcohol_list.map((alcoholData, j) => (
+                      <li onClick={() => showDetailModal(item)} key={j}>
+                        <AhMainCard {...alcoholData} write_date={item.write_date} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            ) : (
+              <div className={styles.noData}>
+                <FontAwesomeIcon icon={faNoteSticky} />
+                기록이 없습니다
               </div>
-            ))}
+            )}
           </article>
           {/* 더보기 버튼 */}
-          <article className={styles.ahListMore}>
-            <button onClick={() => setCurrentPage(value => value + 1)}>
-              더보기 <FontAwesomeIcon icon={faAngleDown} />
-            </button>
-          </article>
+          {ahListData.length > 0 && (
+            <article className={styles.ahListMore}>
+              <button onClick={() => setCurrentPage(value => value + 1)}>
+                더보기 <FontAwesomeIcon icon={faAngleDown} />
+              </button>
+            </article>
+          )}
         </div>
       </section>
       <AhDetailModal itemData={detailModalItemData} isShow={isShowDetailModal} hideDetailModal={hideDetailModal} />
@@ -124,14 +135,32 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await getAlcHistory();
-
-  return {
-    props: {
-      daysDrinkData: data.data,
-    },
-  };
+export const getServerSideProps: GetServerSideProps = async context => {
+  const allCookies = cookies(context);
+  if (allCookies.accessToken && allCookies.refreshToken) {
+    setToken(allCookies.accessToken, allCookies.refreshToken);
+    try {
+      const { data } = await getAlcHistory();
+      return {
+        props: {
+          daysDrinkData: data.data,
+        },
+      };
+    } catch (err) {
+      console.log(err);
+      return {
+        props: {
+          daysDrinkData: null,
+        },
+      };
+    }
+  } else {
+    return {
+      props: {
+        daysDrinkData: null,
+      },
+    };
+  }
 };
 
 export default AlcoholHistoryPage;

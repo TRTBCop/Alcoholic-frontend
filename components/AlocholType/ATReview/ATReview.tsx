@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from './ATReview.module.scss';
 
-const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infinite?: boolean }> = ({ id, likesCount, hatesCount, hashtags, reviews, infinite = false }) => {
+const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id: string, infinite?: boolean, moveToWrite: ()=>void }> = ({ id, likesCount, hatesCount, hashtags, reviews, infinite = false, moveToWrite }) => {
     const router = useRouter();
     /** Initialize likes & hates */
     const [likesReviews, setLikesReviews] = useState<AlcoholTypeReview[]>();
@@ -17,25 +17,20 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infini
         setHatesReviews(hates);
     }, []);
 
-    /** 리뷰 추가하는 함수 */
-    function addReview() {
-        alert('리뷰 추가');
-        
-    }
     return (
         <section className={styles.container}>
             <div className={styles.title}>술 리뷰</div>
             <p className={styles.comment}>먼저 맛을 봐 본 사람들의 후기를 봐볼까요?</p>
             <div className={styles.hashtagList}> 
                 {hashtags?.map((v) => (
-                    <div className={styles.hashtag}># {v.replaceAll(' ', '_')}</div>
+                    <div key={v} className={styles.hashtag}># {v.replaceAll(' ', '_')}</div>
                 ))}
             </div>
             <div className={styles.reviewMoreBox}>
                 {infinite ? (
                     <a className={styles.reviewMoreButton} onClick={(e) => {
                         e.preventDefault();
-                        addReview();
+                        moveToWrite();
                     }}>✏️ 리뷰쓰기</a>
                     ):(
                         <a className={styles.reviewMoreButton} onClick={(e) => {
@@ -51,7 +46,7 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infini
                     <div className={styles.reviewCategoryTitle}>이 술이 <span>좋았던 사람</span>은 <span>{likesCount}</span>명이예요 😍</div>
                     <div>
                         {likesReviews?.map((v) => (
-                            <div className={styles.review}>
+                            <div key={v.id} className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
                                 <div className={styles.reviewContent}>{v.content}</div>
                                 <div className={styles.reviewCreatedAt}>{v.createdAt}</div>
@@ -63,7 +58,7 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infini
                     <div className={styles.reviewCategoryTitle}>이 술이 <span>별로였던 사람</span>은 <span>{hatesCount}</span>명이예요 😓</div>
                     <div>
                         {hatesReviews?.map((v) => (
-                            <div className={styles.review}>
+                            <div key={v.id} className={styles.review}>
                                 <div className={styles.reviewUsername}>{v.username}</div>
                                 <div className={styles.reviewContent}>{v.content}</div>
                                 <div className={styles.reviewCreatedAt}>{v.createdAt}</div>
@@ -73,7 +68,7 @@ const AlcoholeTypeReview: React.FC<AlcoholTypeReviewsProps & { id:string, infini
                 </div>
             </div>
             {!infinite && (
-                <button className={styles.addReviewBtn} onClick={addReview}>
+                <button className={styles.addReviewBtn} onClick={moveToWrite}>
                     나도 리뷰쓰기 <FontAwesomeIcon icon={faPencil} />
                 </button>
             )}
