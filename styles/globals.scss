@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 html,
-body,
+body{
+  margin: 0; padding:0;
+  height: 100%;
+}
 div,
 span,
 applet,
@@ -155,4 +158,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+#__next {
+  display: flex;
+  flex-direction:column;
+  height: 100%;
 }
