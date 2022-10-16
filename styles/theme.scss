@@ -34,6 +34,10 @@ $font-weight-thin: 100;
 $breakpoint-sm: 768px;
 $breakpoint-lg: 1060px;
 
+// height
+$header-height: 63px;
+$footer-height: 200px;
+
 // Mixin =============================
 @mixin ellipsisText($line-cnt, $line-height) {
   overflow: hidden;
