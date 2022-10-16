@@ -60,13 +60,13 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
 
   /** 상세 모달 오픈 */
   const showDetailModal = (itemData: AlcHistoryDaysDrink) => {
-    seDetailModalItemDatal(itemData);
+    setDetailModalItemData(itemData);
     setIsShowDetailModal(true);
   };
 
   /** 상세 모달을 숨김 */
   const hideDetailModal = () => {
-    seDetailModalItemDatal(null);
+    setDetailModalItemData(null);
     setIsShowDetailModal(false);
   };
 
@@ -83,7 +83,7 @@ const AlcoholHistoryPage: NextPage<AlcoholHistoryPageProps> = ({ daysDrinkData }
   }, [isShowDetailModal]);
 
   /** 상세 모달에서 보여질 정보 */
-  const [detailModalItemData, seDetailModalItemDatal] = useState<AlcHistoryDaysDrink | null>(null);
+  const [detailModalItemData, setDetailModalItemData] = useState<AlcHistoryDaysDrink | null>(null);
 
   return (
     <>

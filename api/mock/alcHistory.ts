@@ -15,6 +15,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
     ],
     memo: '간단한 메모입니둥1',
@@ -30,6 +31,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
       {
         alcohol_name: '핸드릭스 진',
@@ -38,6 +40,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
       {
         alcohol_name: '핸드릭스 진',
@@ -46,6 +49,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
       {
         alcohol_name: '핸드릭스 진',
@@ -54,6 +58,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
       {
         alcohol_name: '핸드릭스 진',
@@ -62,6 +67,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
     ],
     memo: '간단한 메모입니둥2',
@@ -77,6 +83,7 @@ const data: AlcHistoryDaysDrink[] = [
         alcohol_intake: 35.34,
         alcohol_image:
           'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160217_243%2Fflairbarista_1455689324870U6chD_JPEG%2F%25C7%25DA%25B5%25E5%25B8%25AF%25BD%25BA.jpg&type=sc960_832',
+        alcohol_degree: 10,
       },
     ],
     memo: '간단한 메모입니둥3',
