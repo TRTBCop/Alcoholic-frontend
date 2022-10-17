@@ -6,8 +6,8 @@ const Layout: React.FC<{ children: JSX.Element | JSX.Element[] }> = ({ children 
   return (
     <>
       <AppHeader headerType="default" />
-      <main>{children}</main>
-      <AppFooter />
+      <main className={styles.main_content}>{children}</main>
+      <AppFooter/>
     </>
   );
 };

@@ -1,6 +1,5 @@
-import styles from '@styles/AlcoholRecipe/AlcoholRecipe.module.scss';
-import { AlcRecipe } from "api/model/alcRecipe";
-import { NextPage } from "next/types";
+import {  AlcRecipeDetail } from "api/model/alcRecipe";
+import { GetServerSideProps, NextPage } from "next/types";
 import layoutStyles from '@layouts/Layout.module.scss';
 import ARWriteNavBar from '@components/AlcoholRecipe/ARWriteNavBar';
 import ARWriteContents from '@components/AlcoholRecipe/ARWriteContents';
@@ -8,7 +7,7 @@ import ARWriteContents from '@components/AlcoholRecipe/ARWriteContents';
 
 
 interface AlcoholRecipeWritePageProps {
-    Data: AlcRecipe[];
+    writeData: AlcRecipeDetail ;
   }
   
 
@@ -18,7 +17,7 @@ const AlcoholRecipeWritePage: NextPage<AlcoholRecipeWritePageProps> = () => {
     return (
       <>
         <div className={layoutStyles.arSmall}>
-          <ARWriteContents/>
+          <ARWriteContents />
           <ARWriteNavBar/>
         </div>
       </>
@@ -26,3 +25,4 @@ const AlcoholRecipeWritePage: NextPage<AlcoholRecipeWritePageProps> = () => {
 }
 
 export default AlcoholRecipeWritePage;
+

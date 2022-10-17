@@ -15,9 +15,13 @@ const AROrderBar : React.FC = () =>{
     return(
         <div className={styles.orderBox}>
             <p>
-                <span className={styles.ordertext}>최신순</span>
-                <span className={styles.ordertext}>|</span>
-                <span className={styles.ordertext}>추천순</span>
+                <button className={styles.button}>
+                    <span className={styles.ordertext}>최신순</span>
+                </button>
+                <button className={styles.button}>
+                    <span className={styles.ordertext}>추천순</span>
+                </button>
+
                 <span className={styles.writetext} onClick={goWritePage}>글쓰기 <FontAwesomeIcon icon={faPen}/></span>
             </p>
             <div>

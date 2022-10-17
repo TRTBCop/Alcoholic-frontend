@@ -37,9 +37,10 @@ const ARCard: React.FC<ARCardProps> = ({onClick, ...props }) => {
           : <div className={styles.labelBoxEmpty}>  </div>
         }
         <p className={styles.title}>{props.recipeName}</p>
+        <hr/>
       </div>
       <div className={styles.imageBox}>
-        <img className={styles.imageBox} src={props.recipeImg}/>
+        <img className={styles.image} src={props.recipeImg}/>
       </div>
       <div className={styles.hashtagBox}>
         {props.hashTags && props.hashTags.map((item) => (

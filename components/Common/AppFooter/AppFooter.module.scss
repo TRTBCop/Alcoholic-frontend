@@ -1,14 +1,17 @@
 @import '~styles/theme.scss';
 
-.container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: $footer-height;
-  background-color: $dark-gray;
-  padding: 2rem;
-  padding-left: 10rem;
-  gap: 3rem;
+.footer{
+    padding: 10px 0;
+    background-color: $dark-gray;
+    width: 100%;
+}
+.container{
+    display: flex;
+    width: 65%;
+    margin: 0 auto;
+    flex-direction: row;
+    padding: 2rem;
+    gap :3rem;
 }
 
 .mainLogoBox {
@@ -40,16 +43,35 @@
 }
 
 @media screen and (max-width: $breakpoint-lg) and (min-width: $breakpoint-sm) {
-  .container {
-    flex-direction: column;
-    padding-left: 3rem;
-    gap: 1.5rem;
+    .container {
+        width: 95%;
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1.5rem;
+
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
 
     .line {
       border: 1px solid rgb(255, 255, 255);
       border-radius: 1px;
     }
   }
+}
+  @media screen and (max-width: $breakpoint-sm) {
+    .container {
+        width: 95%;
+        flex-direction: column;
+        padding-left: 3rem;
+        gap :1rem;
+
+        .line{
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 1px;
+        }
+    }
 }
 
 @media screen and (max-width: $breakpoint-sm) {

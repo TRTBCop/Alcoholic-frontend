@@ -5,50 +5,39 @@ import { useRouter } from "next/router";
 import layoutStyles from '@layouts/Layout.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import ARWriteNavBar from "@components/AlcoholRecipe/ARWriteNavBar";
+import ARWriteContents from "@components/AlcoholRecipe/ARWriteContents";
+import { getAlcRecipeEdit } from "@api/alcRecipe";
 
 
 interface AlcoholRecipeEditorProps{
-    AREditorData: AlcRecipeDetail;
+    arEditorData: AlcRecipeDetail | null;
 }
 
-const AlcoholRecipeEditorPage : NextPage<AlcRecipeDetail> = (props) =>{
+const AlcoholRecipeEditorPage : NextPage<AlcoholRecipeEditorProps> = ({arEditorData}) =>{
 
     const router = useRouter();
+
+    
     
     return (
-        <div className={layoutStyles.arMd}>
-            <div className={styles.thumbnailImgBox}>
-                <p>대표 사진</p>
-                <div>
-                    <button className={styles.thumbnailImg}>
-                        <p>파일 올리기</p>
-                        <p><FontAwesomeIcon icon={faPlusCircle}/></p>
-                        <input className={styles.fileUpload} type="file" multiple={true}></input>
-                        <p></p>
-                    </button>
-                </div>
-            </div>
-            <div className={styles.titleBox}>
-                <p>칵테일 이름 *</p>
-                <input></input>
-            </div>
-            <div className={styles.tagImportBox}>
-                <p>특징 태그 *</p>
-                <input></input>
-            </div>
-            <div className={styles.smartEditor}></div>
+        <>
+        <div className={layoutStyles.arSmall}>
+          <ARWriteContents/>
+          <ARWriteNavBar/>
         </div>
+      </>
     )
 }
 
 export default AlcoholRecipeEditorPage;
 
 
-export const getServerSideProps: GetServerSideProps = async() => {
-    return {
-        props: {
-            
-        },
-      };
-    };
-    
+export const getServerSideProps: GetServerSideProps = async (context)=> {
+  const { data } = await getAlcRecipeEdit(context.query.id as string);
+  return {
+    props: {
+      arEditorData: data.data,
+    },
+  };
+};

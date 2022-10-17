@@ -1,23 +1,32 @@
+import { updateAlrecipe } from '@api/alcRecipe';
+import { AlcFormDataFormData, AlcRecipeDetail} from '@api/model/alcRecipe';
 import { faArrowRotateBack, faCameraRetro, faTrashAlt, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import router from 'next/router';
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import styles from './ARWriteContents.module.scss'
 
 
-const ARWriteContents = () => {
+const ARWriteContents  = () => {
    
     const fileInput = React.useRef<HTMLInputElement>(null);
-    const [file, setFile] = useState("");
-    
+    const [file, setFile] = useState("");    
     const [hashtag, setHashtag] = useState<string | ''>('');
     const [hashArr, setHashArr] = useState<string[] | []>([]);
-
     const [cocktailTitle , setRecipeTitle] = useState<string>('');
+    const [cocktailContent , setcocktailContent] = useState<string>('');
     const [recipeContent, setRecipeContent] = useState<string>('');
-    const [cocktailConent , setcocktailConent] = useState<string>('');
-
     const [thumbnailCheck, setThumbnailCheck] = useState<boolean>(false);
 
+    const [formData, setFormdata] = useState<AlcFormDataFormData>({
+        file: "",
+        title: "",
+        image: "",
+        cocktail_content: "",
+        recipe_content:"",
+        createAt: "",
+        hashTags: [],
+    });
     const onClickUpload = () => {
         fileInput.current?.click();
     }
@@ -57,7 +66,6 @@ const ARWriteContents = () => {
     
     const removeHashTag = (e:React.MouseEvent<HTMLButtonElement>):void => {
         let deleteTag = e.currentTarget.firstElementChild?.innerHTML;
-        console.log(deleteTag);
         setHashArr(hashArr.filter(hashtag => hashtag  !== deleteTag));
     }
 
@@ -65,10 +73,30 @@ const ARWriteContents = () => {
         setRecipeContent(e.target.value);
     }
 
-    const cocktailConentOnChange = (e : ChangeEvent<HTMLTextAreaElement>) => {
-        setcocktailConent(e.target.value);
+    const cocktailContentOnChange = (e : ChangeEvent<HTMLTextAreaElement>) => {
+        setcocktailContent(e.target.value);
     }
 
+    /**
+    const editAlcrecipe = async() => {
+        try {
+            const { data } = await updateAlrecipe();
+            if (data.code === 200) {
+                alert('수정 완료');
+            } else {
+                alert("오류");
+                router.push('/alcoholrecipe/');
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
+ */
+    const addAlcrecipe = async() => {
+
+    }
 
     return(
         <div className={styles.writeContainer}>
@@ -96,7 +124,7 @@ const ARWriteContents = () => {
                         accept="image/*,.pdf"
                         onChange={saveImageUpload}
                     />
-                    {file && <img src={file} />}
+                    {file && <img src={file}/>}
 
                     {thumbnailCheck && 
                         <div className={styles.imgTool}>
@@ -152,8 +180,8 @@ const ARWriteContents = () => {
                 <textarea
                     name="RecipeMemo"
                     placeholder="레시피 설명"
-                    value={cocktailConent}
-                    onChange={cocktailConentOnChange}
+                    value={cocktailContent}
+                    onChange={cocktailContentOnChange}
                 />
             </div>
         </div>

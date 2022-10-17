@@ -2,7 +2,10 @@
 @import '~styles/theme.scss';
 
 html,
-body,
+body{
+  margin: 0; padding:0;
+  height: 100%;
+}
 div,
 span,
 applet,
@@ -161,4 +164,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+#__next {
+  display: flex;
+  flex-direction:column;
+  height: 100%;
 }

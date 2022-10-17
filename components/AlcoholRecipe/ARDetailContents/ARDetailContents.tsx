@@ -1,8 +1,10 @@
-import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { deleteAlcRecipe } from '@api/alcRecipe';
+import { faEye, faHeart, faHeartCircleCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AlcRecipeDetailReviews, UserInfo } from 'api/model/alcRecipe';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import profile from '../../../public/assets/img/ProfileDafult.png'
 import styles from './ARDetailContents.module.scss'
 
 interface ARDetailInfoProps {
@@ -33,24 +35,43 @@ const ARDetailContext: React.FC<ARDetailInfoProps>  = ({...detailInfo}: ARDetail
       
     const goEditPage = (id: number) => {
         router.push({
-          pathname: `/alcoholhistory/write/${id}`
+          pathname: `/alcoholrecipe/write/${id}`
         });
     };
 
+    const deleteRecipe = async () => {
+        try{
+            if (confirm('복구 할수 없습니다 삭제 하시겠습니까?')) {
+                const { data } = await deleteAlcRecipe (detailInfo.id);
+                if (data.code === 200) {
+                  alert('삭제 완료');
+                  router.push('/alcoholhistory');
+                } else {
+                  alert(`삭제가 정상적으로 진행되지 않았어요 에러코드: ${data.code}`);
+                }
+              }
+        }catch(err){
+            console.log(err);
+        }
+    }
+
     return(
         <div className={styles.container}>
-            <div className={styles.imgBox}>
-                <p className={styles.postInfoView}>
-                    <FontAwesomeIcon icon={faHeart} />
+            <p className={styles.postInfoView}>
+                    <span><FontAwesomeIcon icon={faHeart} /></span>
                     <span>{detailInfo.likes}</span>
-                    <FontAwesomeIcon icon={faEye} />
+                    <span><FontAwesomeIcon icon={faEye} /></span>
                     <span>{detailInfo.views}</span>
                     <span>{detailInfo.createAt}</span>
-                </p>
-                <img src={detailInfo.image}/>
-            </div>
+            </p>
+            <img className={styles.titleImg} src={detailInfo.image}/>
             <div className={styles.titleBox}>
-                <FontAwesomeIcon icon={faHeart} />
+                <button>
+                    <span><FontAwesomeIcon icon={faHeartCircleCheck} /></span>
+                </button>
+                <button>
+                    <span><FontAwesomeIcon icon={faHeart} /></span>
+                </button>
                 <h1>{detailInfo.title}</h1>
             </div>
             <div className={styles.hashtagBox}>
@@ -65,15 +86,21 @@ const ARDetailContext: React.FC<ARDetailInfoProps>  = ({...detailInfo}: ARDetail
                 <div className={styles.postEditBtn}>
                     <span onClick={()=>goEditPage(detailInfo.id)}>수정</span>
                     <span>|</span>
-                    <span>삭제</span>
+                    <span onClick ={deleteRecipe}>삭제</span>
                 </div>
                 <hr></hr>
             </div>
             <div className={styles.writerInfoBox}>
-                <img src={detailInfo.writer?.userProfileImg}/>
-                <span>{detailInfo.writer?.userName}</span>
-                <span>관리자</span>
-                <hr></hr>
+                {
+                    detailInfo.writer?.userProfileImg ==null ?
+                    <img src={detailInfo.writer?.userProfileImg}/>                    
+                    :<img src={profile.src}/>                    
+                }
+                    <span>{detailInfo.writer?.userName}</span>
+                    <span>관리자</span>
+            </div>
+            <div>
+            <hr/>
             </div>
         </div>
     )

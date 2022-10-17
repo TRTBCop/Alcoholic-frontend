@@ -1,7 +1,22 @@
-import styles from './ARReview.module.scss'
+import { ChangeEvent, useState } from 'react';
+import React from 'react';
+
+import styles from './ARReviewInput.module.scss'
+
+interface ArReviewProps {
+    reviewCount? : number |null;
+}
+
+const ARReviewInInput :React.FC<ArReviewProps> = ({reviewCount})=>{
+    
+    const [inputText, setInputText] = useState("");
 
 
-const ARReviewInInput = ()=>{
+    function inputChanged (e: ChangeEvent<HTMLTextAreaElement>){
+        setInputText(e.target.value);
+    };
+
+    
 
     const onCreate = () => {
         {/**댓글 생성 요청 */}
@@ -9,9 +24,9 @@ const ARReviewInInput = ()=>{
 
     return(
         <div className={styles.container}>
-            <p>댓글<span>3</span></p>
+            <h1>댓글<span> {reviewCount} </span></h1>
             <div className={styles.inputBox}>
-                <input className={styles.reviewInput} type="text" placeholder="댓글 입력"></input>
+                <textarea className={styles.reviewInput} placeholder="댓글 입력" value={inputText} onChange={inputChanged}></textarea>
                 <button className={styles.reviewButton} onClick={onCreate}>등록</button>
             </div>
         </div>
@@ -19,3 +34,4 @@ const ARReviewInInput = ()=>{
 };
 
 export default ARReviewInInput;
+

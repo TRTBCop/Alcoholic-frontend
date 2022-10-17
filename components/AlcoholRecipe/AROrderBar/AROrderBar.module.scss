@@ -7,6 +7,7 @@
  height: auto;
  margin:0 auto;
  font-weight: bold;
+
 }
 
 .ordertext{
@@ -27,4 +28,12 @@
 
 .pointColor{
     color: $accent-color;
+}
+.button{
+    width: 80px;
+    height: 30px;
+    cursor:pointer; 
+    margin-right: 1%;
+    color: $accent-color;
+    font-weight : 700;
 }
